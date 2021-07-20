@@ -171,7 +171,7 @@ async def document(call: CallbackQuery):
     await dp.bot.send_document(chat_id=id, document=file_id_6)
 
 
-@dp.callback_query_handler(text="Назад")
+@dp.callback_query_handler(text="Назад в документы")
 async def document(call: CallbackQuery):
     await call.message.edit_text(text="Выберите раздел")
     await call.message.edit_reply_markup(reply_markup=docs)

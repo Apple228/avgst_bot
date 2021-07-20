@@ -46,7 +46,7 @@ requisites = InlineKeyboardMarkup(inline_keyboard=[
     [
         InlineKeyboardButton(
             text="Назад",
-            callback_data="Назад"
+            callback_data="Назад в документы"
         )
     ]
 ])
@@ -87,7 +87,7 @@ contract_Grishatkin = InlineKeyboardMarkup(inline_keyboard=[
     [
         InlineKeyboardButton(
             text="Назад",
-            callback_data="Назад"
+            callback_data="Назад в документы"
         )
     ],
 
@@ -129,7 +129,7 @@ contract_Lifanov = InlineKeyboardMarkup(inline_keyboard=[
     [
         InlineKeyboardButton(
             text="Назад",
-            callback_data="Назад"
+            callback_data="Назад в документы"
         )
     ]
 ])
