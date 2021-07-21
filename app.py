@@ -3,6 +3,7 @@ from datetime import datetime
 
 from aiogram import executor, Dispatcher
 
+from handlers.users.gsheets import update_data
 from loader import dp, db, tm, scheduler
 import middlewares, filters, handlers
 from utils.notify_admins import on_startup_notify
@@ -14,7 +15,7 @@ async def send_message_to_admin(dp:Dispatcher):
 
 
 def scheduler_jobs():
-    scheduler.add_job(send_message_to_admin, "cron", day_of_week="mon-fri", hour=17, minute=53, end_date="2022-05-30", args=(dp,))
+    scheduler.add_job(update_data, "cron", day_of_week="mon-fri", hour=15, minute=9, end_date="2022-05-30", args=(dp,))
 
 async def on_startup(dispatcher):
     # Уведомляет про запуск
