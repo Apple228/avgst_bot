@@ -1,9 +1,10 @@
-import asyncio
 import logging
-import random
+
+import pathlib
+from pathlib import Path
 
 import gspread_asyncio
-import gspread_formatting
+
 from aiogram import types, Dispatcher
 from aiogram.dispatcher import FSMContext
 from datetime import datetime
@@ -15,9 +16,6 @@ from aiogram.dispatcher.filters.builtin import Command
 from keyboards.inline.gsheets_timer import gsheets_timer
 
 from loader import dp
-
-
-
 
 
 def get_scoped_credentials(path: str):
@@ -44,26 +42,47 @@ async def add_worksheet(async_spreadsheet: gspread_asyncio.AsyncioGspreadSpreads
     return worksheet
 
 
-#встреч/показов
+# количество новых встреч, количество повторных встреч, количество показов
 @dp.message_handler(Command("data"))
-async def update_data(dp:Dispatcher):
+async def update_data(dp: Dispatcher):
     await dp.bot.send_message(624523030, "Ежедневный сбор статистики в таблицу", reply_markup=gsheets_timer)
 
 
-
-
 @dp.callback_query_handler(text="ввести данные в таблицу")
-async def update_data_gsheets(call: CallbackQuery, state: FSMContext):
+async def state_data_gsheets(call: CallbackQuery, state: FSMContext):
+    await call.message.answer("Введите количество новых встреч за сегодня")
+    await state.set_state("Количество новых встреч")
 
-    await call.message.answer("Введите количество встреч")
-    await state.set_state("Количество встреч")
+
+@dp.message_handler(state="Количество новых встреч")
+async def state_data_gsheets(message: types.Message, state: FSMContext):
+    number_of_new_meetings = message.text
+    await state.update_data(number_of_new_meetings=number_of_new_meetings)
+    await message.answer("Введите количество повторных встреч за сегодня")
+    await state.set_state("Количество повторных встреч")
 
 
-@dp.message_handler(state="Количество встреч")
+@dp.message_handler(state="Количество повторных встреч")
+async def state_data_gsheets(message: types.Message, state: FSMContext):
+    number_of_recurring_meetings = message.text
+    await state.update_data(number_of_recurring_meetings=number_of_recurring_meetings)
+    await message.answer("Введите количество показов за сегодня")
+    await state.set_state("Количество показов")
+
+@dp.message_handler(state="Количество показов")
 async def update_data_gsheets(message: types.Message, state: FSMContext):
+    number_of_impressions = message.text
+    data = await state.get_data()
+    number_of_recurring_meetings = data.get("number_of_recurring_meetings")
+    number_of_new_meetings = data.get("number_of_new_meetings")
+
+
+    ####################################################################
     spreadsheet_id = '1hocu-OWJdIDiTmy1WlteqprXhYPn7sIKkNUi8vdjXfQ'
-    # spreadsheet_id = '1Dyffryz2Yc0uPhbSjf3zsapWlP9AMpXCgIo3UlwoF4c'
-    path = r'C:\Users\aleks\PycharmProjects\MultiLevelMenu\creds.json'
+    # spreadsheet_id = '1Dyffryz2Yc0uPhbSjf3zsapWlP9AMpXCgIo3UlwoF4c'   #ссылка на мою таблицу
+    # path = r'C:\Users\aleks\PycharmProjects\MultiLevelMenu\creds.json'
+    path = Path(pathlib.Path.cwd(), 'creds.json')
+    # path = r'/home/ubuntu/pythonProject/creds.json'
     client = gspread_asyncio.AsyncioGspreadClientManager(get_scoped_credentials(path))
     client = await client.authorize()
     async_spreadsheet = await client.open_by_key(spreadsheet_id)
@@ -71,16 +90,45 @@ async def update_data_gsheets(message: types.Message, state: FSMContext):
     worksheet = await async_spreadsheet.worksheet('Статистика от бота')
     current_datetime = datetime.now()
     values = []
-    data = str(current_datetime.day) + "." + str(current_datetime.month) + "." + \
+    data_time = str(current_datetime.day) + "." + str(current_datetime.month) + "." + \
            str(current_datetime.year) + " " + str(current_datetime.hour) + ":" + \
            str(current_datetime.minute)
-    values.append(data)
-    values.append(message.from_user.first_name+" "+message.from_user.last_name)
-    values.append(message.text)
-    logging.info(list(values))
+    values.append(data_time)
+    values.append(message.from_user.first_name + " " + message.from_user.last_name)
+    values.append(number_of_new_meetings)
+    values.append(number_of_recurring_meetings)
+    values.append(number_of_impressions)
+    logging.info(values)
     await worksheet.append_row(values)
     await message.answer("Сохранено")
 
+
+
+
+
+# @dp.message_handler(state="Количество встреч")
+# async def update_data_gsheets(message: types.Message, state: FSMContext):
+#     spreadsheet_id = '1hocu-OWJdIDiTmy1WlteqprXhYPn7sIKkNUi8vdjXfQ'
+#     # spreadsheet_id = '1Dyffryz2Yc0uPhbSjf3zsapWlP9AMpXCgIo3UlwoF4c'
+#     # path = r'C:\Users\aleks\PycharmProjects\MultiLevelMenu\creds.json'
+#     path = Path(pathlib.Path.cwd(), 'creds.json')
+#     # path = r'/home/ubuntu/pythonProject/creds.json'
+#     client = gspread_asyncio.AsyncioGspreadClientManager(get_scoped_credentials(path))
+#     client = await client.authorize()
+#     async_spreadsheet = await client.open_by_key(spreadsheet_id)
+#     # worksheet = await add_worksheet(async_spreadsheet, 'Лист2')
+#     worksheet = await async_spreadsheet.worksheet('Статистика от бота')
+#     current_datetime = datetime.now()
+#     values = []
+#     data = str(current_datetime.day) + "." + str(current_datetime.month) + "." + \
+#            str(current_datetime.year) + " " + str(current_datetime.hour) + ":" + \
+#            str(current_datetime.minute)
+#     values.append(data)
+#     values.append(message.from_user.first_name + " " + message.from_user.last_name)
+#     values.append(message.text)
+#     logging.info(list(values))
+#     await worksheet.append_row(values)
+#     await message.answer("Сохранено")
 
 #
 # async def main():

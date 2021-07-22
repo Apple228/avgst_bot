@@ -15,7 +15,7 @@ async def send_message_to_admin(dp:Dispatcher):
 
 
 def scheduler_jobs():
-    scheduler.add_job(update_data, "cron", day_of_week="mon-fri", hour=15, minute=9, end_date="2022-05-30", args=(dp,))
+    scheduler.add_job(update_data, "cron", day_of_week="mon-fri", hour=18, minute=10, end_date="2022-05-30", args=(dp,))
 
 async def on_startup(dispatcher):
     # Уведомляет про запуск
