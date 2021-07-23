@@ -13,9 +13,10 @@ from aiogram.types import CallbackQuery
 from google.oauth2.service_account import Credentials
 from aiogram.dispatcher.filters.builtin import Command
 
+from keyboards.default import cancel
 from keyboards.inline.gsheets_timer import gsheets_timer
 
-from loader import dp
+from loader import dp, db
 
 
 def get_scoped_credentials(path: str):
@@ -45,12 +46,15 @@ async def add_worksheet(async_spreadsheet: gspread_asyncio.AsyncioGspreadSpreads
 # количество новых встреч, количество повторных встреч, количество показов
 @dp.message_handler(Command("data"))
 async def update_data(dp: Dispatcher):
-    await dp.bot.send_message(624523030, "Ежедневный сбор статистики в таблицу", reply_markup=gsheets_timer)
+    users_id = await db.select_all_telegram_id()
+    count = len(users_id)
+    for i in range(count):
+        await dp.bot.send_message(users_id[i][0], "Ежедневный сбор статистики в таблицу", reply_markup=gsheets_timer)
 
 
 @dp.callback_query_handler(text="ввести данные в таблицу")
 async def state_data_gsheets(call: CallbackQuery, state: FSMContext):
-    await call.message.answer("Введите количество новых встреч за сегодня")
+    await call.message.answer("Введите количество новых встреч за сегодня", reply_markup=cancel)
     await state.set_state("Количество новых встреч")
 
 
@@ -58,7 +62,7 @@ async def state_data_gsheets(call: CallbackQuery, state: FSMContext):
 async def state_data_gsheets(message: types.Message, state: FSMContext):
     number_of_new_meetings = message.text
     await state.update_data(number_of_new_meetings=number_of_new_meetings)
-    await message.answer("Введите количество повторных встреч за сегодня")
+    await message.answer("Введите количество повторных встреч за сегодня", reply_markup=cancel)
     await state.set_state("Количество повторных встреч")
 
 
@@ -66,7 +70,7 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
 async def state_data_gsheets(message: types.Message, state: FSMContext):
     number_of_recurring_meetings = message.text
     await state.update_data(number_of_recurring_meetings=number_of_recurring_meetings)
-    await message.answer("Введите количество показов за сегодня")
+    await message.answer("Введите количество показов за сегодня", reply_markup=cancel)
     await state.set_state("Количество показов")
 
 @dp.message_handler(state="Количество показов")
@@ -75,14 +79,13 @@ async def update_data_gsheets(message: types.Message, state: FSMContext):
     data = await state.get_data()
     number_of_recurring_meetings = data.get("number_of_recurring_meetings")
     number_of_new_meetings = data.get("number_of_new_meetings")
-
-
+    await message.answer("Сохранено")
     ####################################################################
     spreadsheet_id = '1hocu-OWJdIDiTmy1WlteqprXhYPn7sIKkNUi8vdjXfQ'
     # spreadsheet_id = '1Dyffryz2Yc0uPhbSjf3zsapWlP9AMpXCgIo3UlwoF4c'   #ссылка на мою таблицу
     # path = r'C:\Users\aleks\PycharmProjects\MultiLevelMenu\creds.json'
     path = Path(pathlib.Path.cwd(), 'creds.json')
-    # path = r'/home/ubuntu/pythonProject/creds.json'
+
     client = gspread_asyncio.AsyncioGspreadClientManager(get_scoped_credentials(path))
     client = await client.authorize()
     async_spreadsheet = await client.open_by_key(spreadsheet_id)
@@ -100,7 +103,7 @@ async def update_data_gsheets(message: types.Message, state: FSMContext):
     values.append(number_of_impressions)
     logging.info(values)
     await worksheet.append_row(values)
-    await message.answer("Сохранено")
+
 
 
 
