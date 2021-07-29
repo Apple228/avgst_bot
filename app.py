@@ -15,8 +15,12 @@ from utils.set_bot_commands import set_default_commands
 
 
 def scheduler_jobs():
-    scheduler.add_job(update_data, "cron", day_of_week="mon-fri", hour=18, minute=10,
+    scheduler.add_job(update_data, "cron", day_of_week="mon-fri", hour=15, minute=10,
                       end_date="2022-05-30", args=(dp,))
+    scheduler.add_job(update_data, "cron", day_of_week="sat", hour=13, minute=0, args=(dp,))
+
+# def scheduler_jobs_on_saturday():
+#     scheduler.add_job(update_data, "cron", day="sat", hour=16, minute=00, args=(dp,))
 
 async def on_startup(dispatcher):
     # Уведомляет про запуск

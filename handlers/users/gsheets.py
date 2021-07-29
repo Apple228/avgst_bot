@@ -13,7 +13,8 @@ from aiogram.types import CallbackQuery
 from google.oauth2.service_account import Credentials
 from aiogram.dispatcher.filters.builtin import Command
 
-from keyboards.default import cancel
+from data.config import PATH
+from keyboards.default import cancel, menu
 from keyboards.inline.gsheets_timer import gsheets_timer
 
 from loader import dp, db
@@ -79,14 +80,15 @@ async def update_data_gsheets(message: types.Message, state: FSMContext):
     data = await state.get_data()
     number_of_recurring_meetings = data.get("number_of_recurring_meetings")
     number_of_new_meetings = data.get("number_of_new_meetings")
-    await message.answer("Сохранено")
+    await message.answer("Запись в таблицу..")
+    await state.reset_state()
     ####################################################################
     spreadsheet_id = '1hocu-OWJdIDiTmy1WlteqprXhYPn7sIKkNUi8vdjXfQ'
     # spreadsheet_id = '1Dyffryz2Yc0uPhbSjf3zsapWlP9AMpXCgIo3UlwoF4c'   #ссылка на мою таблицу
     # path = r'C:\Users\aleks\PycharmProjects\MultiLevelMenu\creds.json'
-    path = Path(pathlib.Path.cwd(), 'creds.json')
+    # path = Path(pathlib.Path.cwd(), 'creds.json')
 
-    client = gspread_asyncio.AsyncioGspreadClientManager(get_scoped_credentials(path))
+    client = gspread_asyncio.AsyncioGspreadClientManager(get_scoped_credentials(PATH))
     client = await client.authorize()
     async_spreadsheet = await client.open_by_key(spreadsheet_id)
     # worksheet = await add_worksheet(async_spreadsheet, 'Лист2')
@@ -94,7 +96,7 @@ async def update_data_gsheets(message: types.Message, state: FSMContext):
     current_datetime = datetime.now()
     values = []
     data_time = str(current_datetime.day) + "." + str(current_datetime.month) + "." + \
-           str(current_datetime.year) + " " + str(current_datetime.hour) + ":" + \
+           str(current_datetime.year) + " " + str(current_datetime.hour+3) + ":" + \
            str(current_datetime.minute)
     values.append(data_time)
     values.append(message.from_user.first_name + " " + message.from_user.last_name)
@@ -103,7 +105,7 @@ async def update_data_gsheets(message: types.Message, state: FSMContext):
     values.append(number_of_impressions)
     logging.info(values)
     await worksheet.append_row(values)
-
+    await message.answer("Сохранено", reply_markup=menu)
 
 
 
