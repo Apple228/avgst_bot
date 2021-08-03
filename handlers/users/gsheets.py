@@ -13,11 +13,11 @@ from aiogram.types import CallbackQuery
 from google.oauth2.service_account import Credentials
 from aiogram.dispatcher.filters.builtin import Command
 
-from data.config import PATH
+from data.config import PATH, USER_GSHEETS
 from keyboards.default import cancel, menu
 from keyboards.inline.gsheets_timer import gsheets_timer
 
-from loader import dp, db
+from loader import dp
 
 
 def get_scoped_credentials(path: str):
@@ -47,10 +47,9 @@ async def add_worksheet(async_spreadsheet: gspread_asyncio.AsyncioGspreadSpreads
 # количество новых встреч, количество повторных встреч, количество показов
 @dp.message_handler(Command("data"))
 async def update_data(dp: Dispatcher):
-    users_id = await db.select_all_telegram_id()
-    count = len(users_id)
-    for i in range(count):
-        await dp.bot.send_message(users_id[i][0], "Ежедневный сбор статистики в таблицу", reply_markup=gsheets_timer)
+
+    for user_gsheets in USER_GSHEETS:
+        await dp.bot.send_message(user_gsheets, "Ежедневный сбор статистики в таблицу", reply_markup=gsheets_timer)
 
 
 @dp.callback_query_handler(text="ввести данные в таблицу")

@@ -66,27 +66,27 @@ async def document(call: CallbackQuery):
 
 @dp.callback_query_handler(text="Договор дом без дроби Гришаткин")
 async def document(call: CallbackQuery):
-    file_id_1 = "BQACAgIAAxkBAAIVX2DLxSSEjz956bCoNKl3_toN1kTTAAJ1DAACozVYSm71hGQZSAtMHwQ"
-    file_id_2 = "BQACAgIAAxkBAAIVYWDLxUe7zZa_-BmaSd3kpzurzBn-AAJ2DAACozVYSmcelbeMBWKPHwQ"
-    file_id_3 = "BQACAgIAAxkBAAIZJ2DUOsvna8Ka8pDuxRR_03N_6Av6AAJQDwAC4VWZStb7H3XrH6qHHwQ"
+    file_id_1 = "BQACAgIAAxkBAAIcy2EJjvP9X74Pzx9nfFcGWzDQONkcAAKXEAACKThISIgJWkTRxw1tIAQ"
+    file_id_2 = "BQACAgIAAxkBAAIczWEJjxa6rxI9g47BATFfjkxYdxtLAAKYEAACKThISKRwk9GreA2SIAQ"
+    file_id_3 = "BQACAgIAAxkBAAIcz2EJjzq-SrKarTZkOl7deqFhyvYpAAKZEAACKThISCvrlHHUMHzMIAQ"
     id = call.from_user.id
     await dp.bot.send_document(chat_id=id, document=file_id_1)
     await dp.bot.send_document(chat_id=id, document=file_id_2)
     await dp.bot.send_document(chat_id=id, document=file_id_3)
 
 
-@dp.callback_query_handler(text="Договор Коммуникации Гришаткин")
+@dp.callback_query_handler(text="Договор Коммуникации Гришаткин без")
 async def document(call: CallbackQuery):
-    file_id_1 = "BQACAgIAAxkBAAIYNmDM252KenwzoLjnoeh67w6VO5hfAAJtDAACozVYSsglorUb0KqkHwQ"
+    file_id_1 = "BQACAgIAAxkBAAIc0WEJj2dozuYsxkj-i2-3m7wT_mYcAAKaEAACKThISHHtVfHxBsIKIAQ"
     id = call.from_user.id
     await dp.bot.send_document(chat_id=id, document=file_id_1)
 
 
 @dp.callback_query_handler(text="Договор дом с дробью Гришаткин")
 async def document(call: CallbackQuery):
-    file_id_1 = "BQACAgIAAxkBAAIVZmDLxX6t6kZoTHtYxjtUvnUZj5bFAAJ4DAACozVYSjZt___GPF7rHwQ"
-    file_id_2 = "BQACAgIAAxkBAAIVaWDLxZlIyFK1mYnlz86IVl530KrpAAJ5DAACozVYSs2dU_Dkau-EHwQ"
-    file_id_3 = "BQACAgIAAxkBAAIZJ2DUOsvna8Ka8pDuxRR_03N_6Av6AAJQDwAC4VWZStb7H3XrH6qHHwQ"
+    file_id_1 = "BQACAgIAAxkBAAIc02EJj4nrEqKzTZYnfFTlb_IepbFxAAKbEAACKThISAJ_DAIkjc9NIAQ"
+    file_id_2 = "BQACAgIAAxkBAAIc1WEJj55LUwVgoHtUeNXh7cysDHbOAAKcEAACKThISFShfRarrSd-IAQ"
+    file_id_3 = "BQACAgIAAxkBAAIc12EJj7E-4SFTw-KUORj2XM4h37uMAAKdEAACKThISPG4hSNiUAtSIAQ"
     id = call.from_user.id
     await dp.bot.send_document(chat_id=id, document=file_id_1)
     await dp.bot.send_document(chat_id=id, document=file_id_2)
