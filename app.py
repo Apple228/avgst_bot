@@ -3,7 +3,7 @@ from datetime import datetime
 
 from aiogram import executor, Dispatcher
 
-from handlers.users.gsheets import update_data_gsheets, check_gsheets_today, zeroing_gsheets_today
+from handlers.users.gsheets import update_data_gsheet, check_gsheets_today, zeroing_gsheets_today
 from loader import dp, db, tm, scheduler
 import middlewares, filters, handlers
 from utils.notify_admins import on_startup_notify
@@ -11,9 +11,9 @@ from utils.set_bot_commands import set_default_commands
 
 
 def scheduler_jobs():
-    scheduler.add_job(update_data_gsheets, "cron", day_of_week="mon-fri", hour=15, minute=10,
+    scheduler.add_job(update_data_gsheet, "cron", day_of_week="mon-fri", hour=15, minute=10,
                       end_date="2022-05-30", args=(dp,))
-    scheduler.add_job(update_data_gsheets, "cron", day_of_week="sat", hour=13, minute=0, args=(dp,))
+    scheduler.add_job(update_data_gsheet, "cron", day_of_week="sat", hour=13, minute=0, args=(dp,))
     scheduler.add_job(check_gsheets_today, "cron", day_of_week="mon-sat", hour=18, minute=00, args=(dp,))
     scheduler.add_job(zeroing_gsheets_today, "cron", day_of_week="mon-sat", hour=20, minute=59, args=(dp,))
 
