@@ -48,7 +48,8 @@ class Database:
         username varchar(55) NULL,
         telegram_id BIGINT NOT NULL UNIQUE,
         email varchar(55),
-        phone_number VARCHAR(15)
+        phone_number VARCHAR(15),
+        gsheets_today INT default 0
         );
         """
         await self.execute(sql, execute=True)
@@ -112,6 +113,20 @@ class Database:
     async def select_all_telegram_id(self):
         sql = "SELECT telegram_id FROM Users"
         return await self.execute(sql, fetch=True)
+
+    async def update_gsheets_today(self, telegram_id):
+        sql = "UPDATE Users SET gsheets_today=1 where telegram_id=$1"
+        return await self.execute(sql, telegram_id, execute=True)
+
+    async def zeroing_gsheets_today(self, telegram_id):
+        sql = "UPDATE Users SET gsheets_today=0 where telegram_id=$1"
+        return await self.execute(sql, telegram_id, execute=True)
+
+    async def check_gsheets_today(self, telegram_id):
+        sql = "SELECT gsheets_today from Users where telegram_id = $1"
+        return await self.execute(sql, telegram_id, fetchval=True)
+
+
 
 
 # _________________________________________________________________________________________________

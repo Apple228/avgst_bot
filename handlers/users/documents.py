@@ -22,10 +22,22 @@ async def document(call: CallbackQuery):
     file_id_1 = "BQACAgIAAxkBAAIVF2DLtt1gD4mwbWwFjlAUFr727U9-AAKsDQAC-dlZSno56K-grKY5HwQ"
     await dp.bot.send_document(chat_id=id, document=file_id_1)
 
+@dp.message_handler(text="Реквизиты Гришаткин")
+async def document(message: types.Message):
+    id = message.from_user.id
+    file_id_1 = "BQACAgIAAxkBAAIVF2DLtt1gD4mwbWwFjlAUFr727U9-AAKsDQAC-dlZSno56K-grKY5HwQ"
+    await dp.bot.send_document(chat_id=id, document=file_id_1)
+
 
 @dp.callback_query_handler(text="Реквизиты Лифанов")
 async def document(call: CallbackQuery):
     id = call.from_user.id
+    file_id_1 = "BQACAgIAAxkBAAIVGWDLty3Rk25ZvHatdpPW9U3ua1SsAAKXDAACozVYSitVc_uPBkjUHwQ"
+    await dp.bot.send_document(chat_id=id, document=file_id_1)
+
+@dp.message_handler(text="Реквизиты Лифанов")
+async def document(message: types.Message):
+    id = message.from_user.id
     file_id_1 = "BQACAgIAAxkBAAIVGWDLty3Rk25ZvHatdpPW9U3ua1SsAAKXDAACozVYSitVc_uPBkjUHwQ"
     await dp.bot.send_document(chat_id=id, document=file_id_1)
 
@@ -42,22 +54,42 @@ async def document(call: CallbackQuery):
     await call.message.edit_reply_markup(reply_markup=contract_Lifanov)
 
 
-@dp.callback_query_handler(text="Договор баня Гришаткин")
+@dp.callback_query_handler(text="Договор баня Гришаткин без дроби")
 async def document(call: CallbackQuery):
-    file_id_1 = "BQACAgIAAxkBAAIVSmDLw_88E8QVcbccKPBwW3gk0SNQAAJvDAACozVYSo4Uw4gvMLZTHwQ"
-    file_id_2 = "BQACAgIAAxkBAAIVTGDLxBuLv6Sr4qKm3LtnY530ZXHLAAJwDAACozVYSoAKT8aFQxSmHwQ"
-    file_id_3 = "BQACAgIAAxkBAAIZDWDUOMMpiwh93PuyiiCmTXC5Xbj5AAJPDwAC4VWZSkxjDBikBDptHwQ"  # Приложение 4
+    file_id_1 = "BQACAgIAAxkBAAIddWEMF2bo0qJFUqshXETVvIw97MDlAAIxEAACayBgSHviLkBoYiG6IAQ"
+    file_id_2 = "BQACAgIAAxkBAAIdd2EMF2cwMFuOXZhdCz3RjX_eE9dqAAIyEAACayBgSKC30bCkAVJiIAQ"
+    file_id_3 = "BQACAgIAAxkBAAIdeWEMF2jZ2jbaGT025ppyh0syZtI0AAIzEAACayBgSOvUT83gYIdjIAQ"  # Приложение 4
+    id = call.from_user.id
+    await dp.bot.send_document(chat_id=id, document=file_id_1)
+    await dp.bot.send_document(chat_id=id, document=file_id_2)
+    await dp.bot.send_document(chat_id=id, document=file_id_3)
+
+@dp.callback_query_handler(text="Договор баня Гришаткин с дробью")
+async def document(call: CallbackQuery):
+    file_id_1 = "BQACAgIAAxkBAAIdgWEMF7_sRtuqTcnspaO81gXqwOLmAAI3EAACayBgSGSZL0DdK_GuIAQ"
+    file_id_2 = "BQACAgIAAxkBAAIdg2EMF8DD-NKSmVBUrIMiukYo6bnaAAI4EAACayBgSIVemyP6-QgCIAQ"
+    file_id_3 = "BQACAgIAAxkBAAIdhWEMF8H9wEUSw-ceOkiCiAQJ5eenAAI5EAACayBgSBFbUg2BGXGIIAQ"  # Приложение 4
     id = call.from_user.id
     await dp.bot.send_document(chat_id=id, document=file_id_1)
     await dp.bot.send_document(chat_id=id, document=file_id_2)
     await dp.bot.send_document(chat_id=id, document=file_id_3)
 
 
-@dp.callback_query_handler(text="Договор дача Гришаткин")
+@dp.callback_query_handler(text="Договор дача Гришаткин без дроби")
 async def document(call: CallbackQuery):
-    file_id_1 = "BQACAgIAAxkBAAIVUGDLxJPhaZbuKFje1mbty8zXuwaAAAJyDAACozVYSmWraMw1yI48HwQ"
-    file_id_2 = "BQACAgIAAxkBAAIZDWDUOMMpiwh93PuyiiCmTXC5Xbj5AAJPDwAC4VWZSkxjDBikBDptHwQ"  # Приложение 4
-    file_id_3 = "BQACAgIAAxkBAAIVVGDLxLzYBPrIDHO9KSkndN1Qo1F3AAJ0DAACozVYSuiqVERerMrtHwQ"
+    file_id_1 = "BQACAgIAAxkBAAIde2EMF5Q-NNENqvidKdLxeKXPbUGKAAI0EAACayBgSKoUzAuFhaUMIAQ"
+    file_id_2 = "BQACAgIAAxkBAAIdfWEMF5QVXcJM_R_A8Eyveony7e6aAAI1EAACayBgSJeutnjTtQm3IAQ"  # Приложение 4
+    file_id_3 = "BQACAgIAAxkBAAIdf2EMF5VBIrMyJPS_3mMCC-3OXwZZAAI2EAACayBgSOdLawABGO_ztyAE"
+    id = call.from_user.id
+    await dp.bot.send_document(chat_id=id, document=file_id_1)
+    await dp.bot.send_document(chat_id=id, document=file_id_2)
+    await dp.bot.send_document(chat_id=id, document=file_id_3)
+
+@dp.callback_query_handler(text="Договор дача Гришаткин с дробью")
+async def document(call: CallbackQuery):
+    file_id_1 = "BQACAgIAAxkBAAIdh2EMF-BYlHTL2VjwTIajSLUgxlFBAAI6EAACayBgSJQ3n4GTZyesIAQ"
+    file_id_2 = "BQACAgIAAxkBAAIdiWEMF-GgWeNqPqQjyBH1z2hIy6YOAAI7EAACayBgSAb3XPplBgABCiAE"  # Приложение 4
+    file_id_3 = "BQACAgIAAxkBAAIdi2EMF-Jyo44rOBMejFTZnhmtmo-PAAI8EAACayBgSP0aNPYX3WB0IAQ"
     id = call.from_user.id
     await dp.bot.send_document(chat_id=id, document=file_id_1)
     await dp.bot.send_document(chat_id=id, document=file_id_2)

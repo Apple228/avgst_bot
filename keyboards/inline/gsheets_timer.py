@@ -5,9 +5,15 @@ gsheets_timer = InlineKeyboardMarkup(
         [
             InlineKeyboardButton(
                 text="Ввести данные",
-                callback_data="ввести данные в таблицу"
+                callback_data="Гугл таблица"
             )
         ],
+        [
+            InlineKeyboardButton(
+                text="Всё по нулям",
+                callback_data="Заполнить нулями"
+            )
+        ]
         # [
         #     InlineKeyboardButton(
         #         text="Напомнить через час",

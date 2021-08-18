@@ -69,6 +69,7 @@ async def enter_ad(message: types.Message, state: FSMContext):
     users_id = await db.select_all_telegram_id()
     count = await db.count_users()
     for i in range(0, count):
+        logging.info(users_id[i][0])
         await dp.bot.send_message(users_id[i][0], f"{message.from_user.full_name} делает объявление: \n"
                                                   f"{message.text}")
     await message.answer("Объявление сделано!", reply_markup=menu)

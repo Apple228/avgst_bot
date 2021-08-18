@@ -54,15 +54,29 @@ requisites = InlineKeyboardMarkup(inline_keyboard=[
 contract_Grishatkin = InlineKeyboardMarkup(inline_keyboard=[
     [
         InlineKeyboardButton(
-            text="Договор баня",
-            callback_data="Договор баня Гришаткин"
+            text="Договора баня без дроби",
+            callback_data="Договор баня Гришаткин без дроби"
 
         )
     ],
     [
         InlineKeyboardButton(
-            text="Договор дача",
-            callback_data="Договор дача Гришаткин"
+            text="Договора баня с дробью",
+            callback_data="Договор баня Гришаткин с дробью"
+
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            text="Договор дача без дроби",
+            callback_data="Договор дача Гришаткин без дроби"
+
+        )
+    ],
+    [
+        InlineKeyboardButton(
+            text="Договор дача с дробью",
+            callback_data="Договор дача Гришаткин с дробью"
 
         )
     ],

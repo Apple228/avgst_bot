@@ -18,4 +18,7 @@ async def download_document(message: types.Message):
     # await message.answer(f"Документ был сохранен в путь: {path_to_download}\n"
     #                      f"Файл айди: {message.document.file_id}")
 
+@dp.message_handler(content_types=types.ContentType.PHOTO)
+async def download_photo(message: types.Message):
+    await message.reply(message.photo[-1].file_id)
 

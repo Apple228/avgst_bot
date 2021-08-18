@@ -17,7 +17,7 @@ from data.config import PATH, USER_GSHEETS
 from keyboards.default import cancel, menu
 from keyboards.inline.gsheets_timer import gsheets_timer
 
-from loader import dp
+from loader import dp, db
 
 
 def get_scoped_credentials(path: str):
@@ -46,13 +46,13 @@ async def add_worksheet(async_spreadsheet: gspread_asyncio.AsyncioGspreadSpreads
 
 # количество новых встреч, количество повторных встреч, количество показов
 @dp.message_handler(Command("data"))
-async def update_data(dp: Dispatcher):
-
+async def update_data_gsheets(dp: Dispatcher):
     for user_gsheets in USER_GSHEETS:
-        await dp.bot.send_message(user_gsheets, "Ежедневный сбор статистики в таблицу", reply_markup=gsheets_timer)
+        if (await db.check_gsheets_today(telegram_id=id) == 0):
+            await dp.bot.send_message(user_gsheets, "Ежедневный сбор статистики в таблицу", reply_markup=gsheets_timer)
 
 
-@dp.callback_query_handler(text="ввести данные в таблицу")
+@dp.callback_query_handler(text="Гугл таблица")
 async def state_data_gsheets(call: CallbackQuery, state: FSMContext):
     await call.message.answer("Введите количество новых встреч за сегодня", reply_markup=cancel)
     await state.set_state("Количество новых встреч")
@@ -72,6 +72,10 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
     await state.update_data(number_of_recurring_meetings=number_of_recurring_meetings)
     await message.answer("Введите количество показов за сегодня", reply_markup=cancel)
     await state.set_state("Количество показов")
+
+@dp.message_handler(state="Количество показов")
+async def state_data_gsheets(message: types.Message, state: FSMContext):
+
 
 @dp.message_handler(state="Количество показов")
 async def update_data_gsheets(message: types.Message, state: FSMContext):
@@ -104,7 +108,32 @@ async def update_data_gsheets(message: types.Message, state: FSMContext):
     values.append(number_of_impressions)
     logging.info(values)
     await worksheet.append_row(values)
+    await db.update_gsheets_today(telegram_id=message.from_user.id)
     await message.answer("Сохранено", reply_markup=menu)
+
+
+@dp.callback_query_handler(text="Заполнить нулями")
+async def state_data_gsheets(call: CallbackQuery, state: FSMContext):
+
+
+
+
+
+@dp.message_handler(text="Напоминание про таблицу")
+async def check_gsheets_today(message: types.Message):
+    # logging.info(await db.check_gsheets_today(telegram_id=message.from_user.id))
+    for id in USER_GSHEETS:
+        if (await db.check_gsheets_today(telegram_id=id) == 0):
+            await dp.bot.send_message(id, "Напоминаю, что нужно заполнить статистику", reply_markup=gsheets_timer)
+
+@dp.message_handler(text="Не напоминать сегодня")
+async def zeroing_gsheets_today(message: types.Message):
+    # logging.info(await db.check_gsheets_today(telegram_id=message.from_user.id))
+    for id in USER_GSHEETS:
+        await db.zeroing_gsheets_today(telegram_id=id)
+
+
+
 
 
 
