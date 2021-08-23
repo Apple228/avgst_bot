@@ -34,6 +34,8 @@ async def on_startup(dispatcher):
     logging.info("Готово.")
     await on_startup_notify(dispatcher)
     scheduler_jobs()
+    await set_default_commands(dp)
+
 
 if __name__ == '__main__':
     scheduler.start()
