@@ -10,7 +10,7 @@ gsheets_timer = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(
-                text="Всё по нулям",
+                text="Нихуя не работал",
                 callback_data="Заполнить нулями"
             )
         ]

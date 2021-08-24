@@ -82,15 +82,16 @@ async def save_data_gsheets(message: types.Message, state: FSMContext):
     data = await state.get_data()
     number_of_recurring_meetings = data.get("number_of_recurring_meetings")
     number_of_new_meetings = data.get("number_of_new_meetings")
-    await message.answer("Запись в таблицу..")
+    # await message.answer("Запись в таблицу..")
     await state.reset_state()
+    await dp.bot.send_sticker(message.from_user.id, 'CAACAgIAAxkBAAIQLWEk1jSoIIEBvFImzG43r2pSNer3AAIQDwACQvzYS_tsLq_GpJXBIAQ')
     ####################################################################
     spreadsheet_id = '1hocu-OWJdIDiTmy1WlteqprXhYPn7sIKkNUi8vdjXfQ'
     # spreadsheet_id = '1Dyffryz2Yc0uPhbSjf3zsapWlP9AMpXCgIo3UlwoF4c'   #ссылка на мою таблицу
     # path = r'C:\Users\aleks\PycharmProjects\MultiLevelMenu\creds.json'
     # path = Path(pathlib.Path.cwd(), 'creds.json')
 
-    client = gspread_asyncio.AsyncioGspreadClientManager(get_scoped_credentials(PATH))
+    client = gspread_asyncio.AsyncioGspreadClientManager(get_scoped_credentials(PATH))  # импорт из конфига
     client = await client.authorize()
     async_spreadsheet = await client.open_by_key(spreadsheet_id)
     # worksheet = await add_worksheet(async_spreadsheet, 'Лист2')
@@ -98,8 +99,9 @@ async def save_data_gsheets(message: types.Message, state: FSMContext):
     current_datetime = datetime.now()
     values = []
     data_time = str(current_datetime.day) + "." + str(current_datetime.month) + "." + \
-                str(current_datetime.year) + " " + str(current_datetime.hour + 3) + ":" + \
-                str(current_datetime.minute)
+                str(current_datetime.year)
+                # + " " + str(current_datetime.hour + 3) + ":" + \
+                # str(current_datetime.minute)
     values.append(data_time)
     values.append(message.from_user.first_name + " " + message.from_user.last_name)
     values.append(number_of_new_meetings)
@@ -108,7 +110,7 @@ async def save_data_gsheets(message: types.Message, state: FSMContext):
     logging.info(values)
     await worksheet.append_row(values)
     await db.update_gsheets_today(telegram_id=message.from_user.id)
-    await message.answer(f"Сохранено\n"
+    await message.answer(f"{data_time}\n"
                          f"Количество новых встреч: {number_of_new_meetings}\n"
                          f"Количество повторных встреч: {number_of_recurring_meetings}\n"
                          f"Количество показов: {number_of_impressions}",
@@ -122,12 +124,15 @@ async def state_data_gsheets(call: CallbackQuery, state: FSMContext):
     client = await client.authorize()
     async_spreadsheet = await client.open_by_key(spreadsheet_id)
     # worksheet = await add_worksheet(async_spreadsheet, 'Лист2')
+    await dp.bot.send_sticker(call.from_user.id,
+                              "CAACAgIAAxkBAAIQJmEk1FkF6Cp75JJwbDSwKW1j7e8LAAJaDwACg1TYS2Vw3nymTXs9IAQ")
     worksheet = await async_spreadsheet.worksheet('Статистика от бота')
     current_datetime = datetime.now()
     values = []
     data_time = str(current_datetime.day) + "." + str(current_datetime.month) + "." + \
-                str(current_datetime.year) + " " + str(current_datetime.hour + 3) + ":" + \
-                str(current_datetime.minute)
+                str(current_datetime.year)
+                # + " " + str(current_datetime.hour + 3) + ":" + \
+                # str(current_datetime.minute)
     values.append(data_time)
     values.append(call.from_user.first_name + " " + call.from_user.last_name)
     values.append(0)
@@ -136,7 +141,8 @@ async def state_data_gsheets(call: CallbackQuery, state: FSMContext):
     logging.info(values)
     await worksheet.append_row(values)
     await db.update_gsheets_today(telegram_id=call.from_user.id)
-    await call.message.answer("Сохранено нулями", reply_markup=menu)
+
+    # await call.message.answer("Сохранено нулями", reply_markup=menu)
     await call.answer("Сохранено")
 
 @dp.message_handler(text="Напоминание про таблицу")
@@ -148,12 +154,18 @@ async def check_gsheets_today(message: types.Message):
 
 @dp.message_handler(Command("switch_on"))
 @dp.message_handler(text="Напоминать сегодня про таблицу")
-async def zeroing_gsheets_today(message: types.Message):
+async def zeroing_gsheets(message: types.Message):
     await message.answer("Окей, сегодня напомню по таймеру или же вызвать сбор сейчас по команде /data")
     # logging.info(await db.check_gsheets_today(telegram_id=message.from_user.id))
     for user_gsheets in USER_GSHEETS:
         await db.zeroing_gsheets_today(telegram_id=user_gsheets)
 
+
+@dp.message_handler(text="Обнуление таймера")
+async def zeroing_gsheets_today(message: types.Message):
+    # logging.info(await db.check_gsheets_today(telegram_id=message.from_user.id))
+    for user_gsheets in USER_GSHEETS:
+        await db.zeroing_gsheets_today(telegram_id=user_gsheets)
 
 @dp.message_handler(Command("switch_off"))
 @dp.message_handler(text="Не напоминать сегодня про таблицу")
