@@ -61,17 +61,30 @@ async def state_data_gsheets(call: CallbackQuery, state: FSMContext):
 @dp.message_handler(state="Количество новых встреч")
 async def state_data_gsheets(message: types.Message, state: FSMContext):
     number_of_new_meetings = message.text
-    await state.update_data(number_of_new_meetings=number_of_new_meetings)
-    await message.answer("Введите количество повторных встреч за сегодня", reply_markup=cancel)
-    await state.set_state("Количество повторных встреч")
+    try:
+        int(number_of_new_meetings)
+        await state.update_data(number_of_new_meetings=number_of_new_meetings)
+        await message.answer("Введите количество повторных встреч за сегодня", reply_markup=cancel)
+        await state.set_state("Количество повторных встреч")
+    except:
+        await message.answer("Введено не целое число, давай ещё раз")
+        await state.set_state("Количество новых встреч")
+
+
+
 
 
 @dp.message_handler(state="Количество повторных встреч")
 async def state_data_gsheets(message: types.Message, state: FSMContext):
     number_of_recurring_meetings = message.text
-    await state.update_data(number_of_recurring_meetings=number_of_recurring_meetings)
-    await message.answer("Введите количество показов за сегодня", reply_markup=cancel)
-    await state.set_state("Количество показов")
+    try:
+        int(number_of_recurring_meetings)
+        await state.update_data(number_of_recurring_meetings=number_of_recurring_meetings)
+        await message.answer("Введите количество показов за сегодня", reply_markup=cancel)
+        await state.set_state("Количество показов")
+    except:
+        await message.answer("Введено не целое число, давай ещё раз")
+        await state.set_state("Количество повторных встреч")
 
 
 
@@ -79,6 +92,11 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
 @dp.message_handler(state="Количество показов")
 async def save_data_gsheets(message: types.Message, state: FSMContext):
     number_of_impressions = message.text
+    try:
+        int(number_of_impressions)
+    except:
+        await message.answer("Введено не целое число, давай ещё раз")
+        await state.set_state("Количество показов")
     data = await state.get_data()
     number_of_recurring_meetings = data.get("number_of_recurring_meetings")
     number_of_new_meetings = data.get("number_of_new_meetings")
@@ -104,9 +122,9 @@ async def save_data_gsheets(message: types.Message, state: FSMContext):
                 # str(current_datetime.minute)
     values.append(data_time)
     values.append(message.from_user.first_name + " " + message.from_user.last_name)
-    values.append(number_of_new_meetings)
-    values.append(number_of_recurring_meetings)
-    values.append(number_of_impressions)
+    values.append(int(number_of_new_meetings))
+    values.append(int(number_of_recurring_meetings))
+    values.append(int(number_of_impressions))
     logging.info(values)
     await worksheet.append_row(values)
     await db.update_gsheets_today(telegram_id=message.from_user.id)
