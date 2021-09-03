@@ -3,6 +3,7 @@ import pathlib
 from pathlib import Path
 
 # Теперь вместо библиотеки python-dotenv библиотека environs
+
 env = Env()
 env.read_env()
 
@@ -17,6 +18,8 @@ DB_USER = env.str("DB_USER")
 DB_PASS = env.str("DB_PASS")
 DB_NAME = env.str("DB_NAME")
 DB_HOST = env.str("DB_HOST")
-USER_GSHEETS = [624523030]
-# USER_GSHEETS = [624523030, 226606977, 364700552, 96908874, 549911734, 1062255366, 706556502]
+# USER_GSHEETS = [624523030]
+USER_GSHEETS = [624523030, 226606977, 364700552, 96908874, 549911734, 1062255366, 706556502]
 # я, Меркушев, Саша, Николаев, Цветков, Инишев, Дёмин
+
+ALL_TG_ID = [624523030,226606977,364700552,96908874,549911734,1062255366,706556502,545084722,1209926925,1782415086,314120760]
