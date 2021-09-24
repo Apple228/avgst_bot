@@ -49,7 +49,9 @@ class Database:
         telegram_id BIGINT NOT NULL UNIQUE,
         email varchar(55),
         phone_number VARCHAR(15),
-        gsheets_today INT default 0
+        gsheets_today INT default 0,
+        lvl INT default 0,
+        experience INT default 0
         );
         """
         await self.execute(sql, execute=True)

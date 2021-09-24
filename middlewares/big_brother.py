@@ -13,8 +13,8 @@ class BigBrother(BaseMiddleware):
 
         if update.message:
             user = update.message.from_user.id
-        elif update.message.from_user.id:
-            user = update.callback_query.from_user.id
+        # elif update.message.from_user.id:
+        #     user = update.callback_query.from_user.id
         else:
             return
 
