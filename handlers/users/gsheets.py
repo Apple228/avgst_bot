@@ -135,7 +135,7 @@ async def save_data_gsheets(message: types.Message, state: FSMContext):
                          reply_markup=menu)
     experience = (values[2]+values[3]+values[4])*10
     await db.update_experience(experience=experience, telegram_id=message.from_user.id)
-    await message.answer(f"Поздравляем! Вы получили {experience} опыта")
+
 
 
 @dp.callback_query_handler(text="Заполнить нулями")
