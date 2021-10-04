@@ -133,7 +133,7 @@ async def save_data_gsheets(message: types.Message, state: FSMContext):
                          f"Количество повторных встреч: {number_of_recurring_meetings}\n"
                          f"Количество показов: {number_of_impressions}",
                          reply_markup=menu)
-    experience = (values[2]+values[3]+values[4])*10
+    # experience = (values[2]+values[3]+values[4])*10
     await db.update_experience(experience=experience, telegram_id=message.from_user.id)
     await message.answer(f"Поздравляем! Вы получили {experience} опыта")
 
