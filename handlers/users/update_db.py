@@ -15,7 +15,6 @@ async def change_username(message: types.Message, state: FSMContext):
     await message.answer("Пришли мне свой новый username")
     await state.set_state("username")
 
-
 @dp.message_handler(state="username")
 async def enter_username(message: types.Message, state: FSMContext):
     await db.update_user_username(username=message.text, telegram_id=message.from_user.id)

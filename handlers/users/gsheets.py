@@ -126,13 +126,16 @@ async def save_data_gsheets(message: types.Message, state: FSMContext):
     values.append(int(number_of_recurring_meetings))
     values.append(int(number_of_impressions))
     logging.info(values)
-    await worksheet.append_row(values)
+    # await worksheet.append_row(values)  # не забудь раскоментить!
     await db.update_gsheets_today(telegram_id=message.from_user.id)
     await message.answer(f"{data_time}\n"
                          f"Количество новых встреч: {number_of_new_meetings}\n"
                          f"Количество повторных встреч: {number_of_recurring_meetings}\n"
                          f"Количество показов: {number_of_impressions}",
                          reply_markup=menu)
+    experience = (values[2]+values[3]+values[4])*10
+    await db.update_experience(experience=experience, telegram_id=message.from_user.id)
+    await message.answer(f"Добавлено опыта: {experience}")
 
 
 @dp.callback_query_handler(text="Заполнить нулями")

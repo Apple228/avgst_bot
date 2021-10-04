@@ -128,7 +128,9 @@ class Database:
         sql = "SELECT gsheets_today from Users where telegram_id = $1"
         return await self.execute(sql, telegram_id, fetchval=True)
 
-
+    async def update_experience(self, experience, telegram_id):
+        sql = "UPDATE Users SET experience = experience+$1 where telegram_id=$2"
+        return await self.execute(sql, experience, telegram_id, execute=True)
 
 
 # _________________________________________________________________________________________________
