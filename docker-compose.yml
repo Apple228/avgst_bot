@@ -17,6 +17,8 @@ services:
       - botnet
     volumes:
       - ./postgres:/var/lib/postgresql
+    expose:
+      - 5432
   tgbot:
     container_name: bot
     build:

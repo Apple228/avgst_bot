@@ -4,7 +4,8 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 menu = ReplyKeyboardMarkup(
     [
         [
-            KeyboardButton(text="☎Контакты")
+            KeyboardButton(text="☎Контакты"),
+            KeyboardButton(text="🏡Домики")
         ],
         [
             KeyboardButton(text="📢Объявление для всех"),

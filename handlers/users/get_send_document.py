@@ -21,7 +21,9 @@ async def download_document(message: types.Message):
 @dp.message_handler(content_types=types.ContentType.PHOTO)
 async def download_photo(message: types.Message):
     await message.reply(message.photo[-1].file_id)
-
+@dp.message_handler(content_types=types.ContentType.VIDEO)
+async def download_video(message: types.Message):
+    await message.reply(message.video[-1].file_id)
 
 
 @dp.message_handler(content_types=types.ContentType.STICKER)
