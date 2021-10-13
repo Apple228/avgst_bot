@@ -143,7 +143,37 @@ async def sendMediaGroup(message: types.Message):
     #     album.attach_photo(file)
     # await message.answer_media_group(media=album)
 
+@dp.callback_query_handler(text="Прованс 6")
+async def Shvedskiy2(call: CallbackQuery):
+    album1 = MediaGroup()
+    fileProvans1 = ["AgACAgIAAxkBAAIqfGFmvePB92Co09jweJkZTBeKaiXDAAIpuDEbzR85S0XPxe9RB0IEAQADAgADeQADIQQ",
+             "AgACAgIAAxkBAAIqfmFmvfilrNtp9fQ9nmyjL20f8QK6AAIquDEbzR85S21ix3V_ayzoAQADAgADeQADIQQ",
+             "AgACAgIAAxkBAAIqgGFmvgu1MeFASPucW3RRsObsfbx6AAIruDEbzR85SyZxYnugzAABYQEAAwIAA3kAAyEE",
+             "AgACAgIAAxkBAAIqgmFmvh1RqsUdlP41symjXNB4t9CQAAIsuDEbzR85SycYIoVQO32nAQADAgADeQADIQQ",
+             "AgACAgIAAxkBAAIqhGFmvi20gMLfa8Rh6_FHF29pP3V_AAItuDEbzR85Sw26p62x5iLrAQADAgADeQADIQQ",
+             "AgACAgIAAxkBAAIqhmFmvj-Ov4-PAm8VSxBeFOAgTD98AAIuuDEbzR85S3bqn9IlRdEOAQADAgADeQADIQQ",
+             "AgACAgIAAxkBAAIqiGFmvlJtExdiSMFnnlbmO5pIZ_lKAAIwuDEbzR85S9-pGP83GuaJAQADAgADeQADIQQ",
+             "AgACAgIAAxkBAAIqimFmvmME5qXw7X84INcFPRK-lhn8AAIxuDEbzR85S_7XjKVZshXqAQADAgADeQADIQQ",
+             "AgACAgIAAxkBAAIqjGFmvnV6UyP1jCns-W7-nXlgksFkAAIzuDEbzR85S2Z_UOokaqrBAQADAgADeQADIQQ",
+             "AgACAgIAAxkBAAIqjmFmvoU0MjmQH0Yn3hDuPB0PFoI9AAI0uDEbzR85S-tFx0QqCraeAQADAgADeQADIQQ"]
+    for file in fileProvans1:
+        album1.attach_photo(file)
+    await call.message.answer_media_group(media=album1)
 
+    album2 = MediaGroup()
+    fileProvans2 = ["AgACAgIAAxkBAAIqkGFmv5I9lZGta5BOUi6VYSCFP74SAAI4uDEbzR85S7nvrv9xbB2_AQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIqkmFmv6yvaJfMQqsiDpQm-tWPsV_KAAI5uDEbzR85S410nkfBnmYeAQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIqlGFmv7-P7ZfhxJI_hhOWNBxdiOeQAAI6uDEbzR85SzVz9Bwr3CR6AQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIqlmFmv89v5grmMXxfFtof26g0wNKHAAI-uDEbzR85S_U-nWk8-oGxAQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIqmGFmv99WImlXdw91_qC5_NvQT6YSAAI_uDEbzR85SxOg7mwsffbjAQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIqmmFmv_GWcrp8M4z9_xb5u6beHJ5yAAJBuDEbzR85S0OCb5nW42tcAQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIqnGFmwAQQxAq73H1co2XroB6SnRYaAAJCuDEbzR85S-fAmwo0sG8tAQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIqnmFmwBfUPTkDPjCfcZEYBL60F4DGAAJDuDEbzR85S0hUVQmSiqv-AQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIqoGFmwCzn3YPh_XQMimCfT3yowH8AA0S4MRvNHzlLurwTRurInyMBAAMCAAN5AAMhBA"]
+    for file in fileProvans2:
+        album1.attach_photo(file)
+    await call.message.answer_media_group(media=album2)
+    await call.message.answer("Это Прованс 6")
 
 @dp.message_handler(text="Проект Прованс 28")
 async def sendInfoProect(message: types.Message):
