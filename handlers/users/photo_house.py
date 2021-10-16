@@ -173,6 +173,7 @@ async def Provans6(call: CallbackQuery):
     for file in fileProvans2:
         album1.attach_photo(file)
     await call.message.answer_media_group(media=album2)
+    await call.message.answer("https://www.youtube.com/watch?v=NvbMBwiftrY")
     await call.message.answer("Это Прованс 6")
 
 @dp.callback_query_handler(text="Шведский 2")
