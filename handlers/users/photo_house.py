@@ -33,6 +33,7 @@ async def provans28(call: CallbackQuery):
     await call.message.answer_media_group(media=album)
     await call.message.answer("Это Прованс 28")
 
+
 @dp.callback_query_handler(text="Шведский 24")
 async def Shvedskiy24(call: CallbackQuery):
     album = MediaGroup()
@@ -52,6 +53,7 @@ async def Shvedskiy24(call: CallbackQuery):
     await call.message.answer_media_group(media=album)
     await call.message.answer("Это Шведский 24")
 
+
 @dp.callback_query_handler(text="Шведский 28")
 async def Shvedskiy28(call: CallbackQuery):
     album1 = MediaGroup()
@@ -68,7 +70,7 @@ async def Shvedskiy28(call: CallbackQuery):
     for file in file1:
         album1.attach_photo(file)
     await call.message.answer_media_group(media=album1)
-    album2= MediaGroup()
+    album2 = MediaGroup()
     file2 = ["AgACAgIAAxkBAAIok2FkZmia3RXSzmKX783tXfJIHs_0AAJ7tjEbYqEgS6Hh3b-cGtpmAQADAgADeQADIQQ",
              "AgACAgIAAxkBAAIolWFkZnjhlVCILyJeYd-rKGcoZdBDAAJ8tjEbYqEgS0M5H-gJl7tsAQADAgADeQADIQQ",
              "AgACAgIAAxkBAAIol2FkZoq95blDxE4kkM-ox-BXuV2CAAJ-tjEbYqEgSzAHvI7RXp9rAQADAgADeQADIQQ",
@@ -80,8 +82,25 @@ async def Shvedskiy28(call: CallbackQuery):
     await call.message.answer_media_group(media=album2)
     await call.message.answer("Это Шведский 28")
 
+
+@dp.callback_query_handler(text="Шведский 23")
+async def Shvedskiy23(call: CallbackQuery):
+    album = MediaGroup()
+    fileswed23 = ["AgACAgIAAxkBAAIpXWFkdYYv-hbt4NBCBT1IGz366fXMAALEtjEbYqEgSxXKDls49PTpAQADAgADeQADIQQ",
+                  "AgACAgIAAxkBAAIpX2FkdZiILHZNfn7LufdUFhDpdLSvAALFtjEbYqEgSzHUkX-zTlNkAQADAgADeQADIQQ",
+                  "AgACAgIAAxkBAAIpYWFkdaxClvdya6aPF6ht1vY9MJoCAALGtjEbYqEgS_ft8ZUnWqc5AQADAgADeQADIQQ",
+                  "AgACAgIAAxkBAAIpY2FkdcDJ8ytkCIJ4-Q9iuDJqKOFRAALHtjEbYqEgS7dTJ9UyCjsoAQADAgADeQADIQQ",
+                  "AgACAgIAAxkBAAIpZWFkdc7nFG8QgPJwyBzNppmaxgdnAALJtjEbYqEgS-nqGMFsXTc2AQADAgADeQADIQQ",
+                  "AgACAgIAAxkBAAIpZ2FkdeFAh7a70ckDnoK6Cqb9ZGWeAALKtjEbYqEgSzNPcaN0UmvGAQADAgADeQADIQQ",
+                  "AgACAgIAAxkBAAIpaWFkdfREBNVKNNlTcXaXvPXRWL0UAALLtjEbYqEgS_HmCWSSbIMnAQADAgADeQADIQQ"]
+    for file in fileswed23:
+        album.attach_photo(file)
+    await call.message.answer_media_group(media=album)
+    await call.message.answer("Это Шведский 23")
+
+
 @dp.callback_query_handler(text="Барн 7")
-async def Barn8(call: CallbackQuery):
+async def Barn7(call: CallbackQuery):
     album1 = MediaGroup()
     filebarn1 = ["AgACAgIAAxkBAAIoyWFkbLcjX5OnCW3l0tz9dKprf6R2AAKKtjEbYqEgS_St1opzhsxtAQADAgADeQADIQQ",
                  "AgACAgIAAxkBAAIoy2FkbNmrbVLyY_O6zYAD1iDoc-9eAAKLtjEbYqEgS2LEu9QupxTqAQADAgADeQADIQQ",
@@ -121,6 +140,7 @@ async def Barn8(call: CallbackQuery):
     await call.message.answer_media_group(media=album3)
     await call.message.answer("Это Барн 7")
 
+
 @dp.message_handler(text="Фото Прованс 28")
 async def sendMediaGroup(message: types.Message):
     album = MediaGroup()
@@ -139,9 +159,9 @@ async def sendMediaGroup(message: types.Message):
              # "AgACAgIAAxkBAAIL5GELp-7F_dcCqrOg-yTDxWrFhbUtAAK-tzEb0cpYSP9Tlrif-N8HAQADAgADeQADIAQ",
              # "AgACAgIAAxkBAAIL5mELqAcIqTgxEXAtox4fEqVW_gH1AAK_tzEb0cpYSEig4E4_3bjKAQADAgADeQADIAQ",
              ]
-    # for file in files:
-    #     album.attach_photo(file)
-    # await message.answer_media_group(media=album)
+    for file in files:
+        album.attach_photo(file)
+    await message.answer_media_group(media=album)
 
 @dp.callback_query_handler(text="Прованс 6")
 async def Provans6(call: CallbackQuery):
@@ -171,7 +191,7 @@ async def Provans6(call: CallbackQuery):
                  "AgACAgIAAxkBAAIqnmFmwBfUPTkDPjCfcZEYBL60F4DGAAJDuDEbzR85S0hUVQmSiqv-AQADAgADeQADIQQ",
                  "AgACAgIAAxkBAAIqoGFmwCzn3YPh_XQMimCfT3yowH8AA0S4MRvNHzlLurwTRurInyMBAAMCAAN5AAMhBA"]
     for file in fileProvans2:
-        album1.attach_photo(file)
+        album2.attach_photo(file)
     await call.message.answer_media_group(media=album2)
     await call.message.answer("https://www.youtube.com/watch?v=NvbMBwiftrY")
     await call.message.answer("Это Прованс 6")
@@ -198,8 +218,8 @@ async def Swedskiy2 (call: CallbackQuery):
                  "AgACAgIAAxkBAAIq0GFm1GPCDMee2or1XY-EsNgEkk2dAAJ-uDEbzR85Syf-tZCjxzmNAQADAgADeQADIQQ",
                  "AgACAgIAAxkBAAIq0mFm1KlytzqaHaIR_DdgwrOvRypdAAKAuDEbzR85S9-Ft5n0cqkKAQADAgADeQADIQQ",
                  "AgACAgIAAxkBAAIq1GFm1L_vLBkCBMrkdyzhLAXF5P9CAAKBuDEbzR85S8_nYvBbjlFPAQADAgADeQADIQQ"]
-    for file in fileSwed:
-        album1.attach_photo(file)
+    for file in fileswed1:
+        album2.attach_photo(file)
     await call.message.answer_media_group(media=album2)
 
 @dp.message_handler(text="Проект Прованс 28")
@@ -260,9 +280,11 @@ async def sendInfoProect(message: types.Message):
  Чистовые отделки + 1 мес. ( ламинат, плитка, натяжные потолки, обои, металлические лестницы)
 Покраска 3го слоя +1мес.""")
 
-@dp.callback_query_handler(text="Прованс 6")
-async def provans6(call: CallbackQuery):
-    await call.message.answer("https://www.youtube.com/watch?v=NvbMBwiftrY")
+#
+# @dp.callback_query_handler(text="Прованс 6")
+# async def provans6(call: CallbackQuery):
+#     await call.message.answer("https://www.youtube.com/watch?v=NvbMBwiftrY")
+
 
 @dp.message_handler(text="Видео Прованс 6")
 async def sendInfoProect(message: types.Message):

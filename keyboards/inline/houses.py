@@ -26,6 +26,10 @@ houses = InlineKeyboardMarkup(row_width=2,
                                         text="Барн 7",
                                         callback_data="Барн 7"
                                     ),
+                                    InlineKeyboardButton(
+                                        text="Шведский 23",
+                                        callback_data="Шведский 23"
+                                    ),
                                 ],
                                 [
                                     InlineKeyboardButton(

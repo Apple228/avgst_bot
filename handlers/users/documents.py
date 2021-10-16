@@ -116,9 +116,9 @@ async def document(call: CallbackQuery):
 
 @dp.callback_query_handler(text="Договор дом с дробью Гришаткин")
 async def document(call: CallbackQuery):
-    file_id_1 = "BQACAgIAAxkBAAIc02EJj4nrEqKzTZYnfFTlb_IepbFxAAKbEAACKThISAJ_DAIkjc9NIAQ"
-    file_id_2 = "BQACAgIAAxkBAAIc1WEJj55LUwVgoHtUeNXh7cysDHbOAAKcEAACKThISFShfRarrSd-IAQ"
-    file_id_3 = "BQACAgIAAxkBAAIc12EJj7E-4SFTw-KUORj2XM4h37uMAAKdEAACKThISPG4hSNiUAtSIAQ"
+    file_id_1 = "BQACAgIAAxkBAAIpgWFki4i0yhcrcIRPMkw9z_Ib0fhhAAL-DwACGjcYSzyGIyuqc55nIQQ"
+    file_id_2 = "BQACAgIAAxkBAAIpg2Fki5A4HAhva8rJrgdkv0QfT7tfAAL_DwACGjcYS4LxysLFlrqoIQQ"
+    file_id_3 = "BQACAgIAAxkBAAIphWFki5iPctrB4SUWvE8MwDAWXPQcAAMQAAIaNxhLwmvQb_7Ra9whBA"
     id = call.from_user.id
     await dp.bot.send_document(chat_id=id, document=file_id_1)
     await dp.bot.send_document(chat_id=id, document=file_id_2)
