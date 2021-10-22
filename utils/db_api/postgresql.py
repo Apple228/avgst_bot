@@ -49,6 +49,7 @@ class Database:
         telegram_id BIGINT NOT NULL UNIQUE,
         email varchar(55),
         phone_number VARCHAR(15),
+        birthday date,
         gsheets_today INT default 0,
         lvl INT default 0,
         experience INT default 0
@@ -132,7 +133,9 @@ class Database:
         sql = "UPDATE Users SET experience = experience+$1 where telegram_id=$2"
         return await self.execute(sql, experience, telegram_id, execute=True)
 
-
+    async def update_birthday(self, date, telegram_id):
+        sql = "UPDATE Users SET birthday=$1 WHERE telegram_id=$2"
+        return await self.execute(sql, date, telegram_id, execute=True)
 # _________________________________________________________________________________________________
 class TaskManager:
 

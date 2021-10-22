@@ -9,7 +9,7 @@ from .get_send_document import dp
 from .inline_mode import dp
 from .documents import dp
 from .it_support import dp
-
+from .birthday import dp
 from .help import dp
 from .get_send_document import dp
 

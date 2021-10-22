@@ -102,7 +102,14 @@ async def save_data_gsheets(message: types.Message, state: FSMContext):
     number_of_new_meetings = data.get("number_of_new_meetings")
     # await message.answer("Запись в таблицу..")
     await state.reset_state()
-    await dp.bot.send_sticker(message.from_user.id, 'CAACAgIAAxkBAAIQLWEk1jSoIIEBvFImzG43r2pSNer3AAIQDwACQvzYS_tsLq_GpJXBIAQ')
+    number_of_new_meetings=int(number_of_new_meetings)
+    number_of_recurring_meetings=int(number_of_recurring_meetings)
+    number_of_impressions=int(number_of_impressions)
+    if number_of_new_meetings+number_of_recurring_meetings+number_of_impressions==0:
+        await dp.bot.send_sticker(message.from_user.id,
+                                  'CAACAgIAAxkBAAIsbGFwO07ceJt4xqc5eUng1F3m7lBRAAJRAwACusCVBXvInMslDXU1IQQ')
+    else:
+        await dp.bot.send_sticker(message.from_user.id, 'CAACAgIAAxkBAAIQLWEk1jSoIIEBvFImzG43r2pSNer3AAIQDwACQvzYS_tsLq_GpJXBIAQ')
     ####################################################################
     spreadsheet_id = '1hocu-OWJdIDiTmy1WlteqprXhYPn7sIKkNUi8vdjXfQ'
     # spreadsheet_id = '1Dyffryz2Yc0uPhbSjf3zsapWlP9AMpXCgIo3UlwoF4c'   #ссылка на мою таблицу
@@ -122,20 +129,17 @@ async def save_data_gsheets(message: types.Message, state: FSMContext):
                 # str(current_datetime.minute)
     values.append(data_time)
     values.append(message.from_user.first_name + " " + message.from_user.last_name)
-    values.append(int(number_of_new_meetings))
-    values.append(int(number_of_recurring_meetings))
-    values.append(int(number_of_impressions))
+    values.append(number_of_new_meetings)
+    values.append(number_of_recurring_meetings)
+    values.append(number_of_impressions)
     logging.info(values)
-    # await worksheet.append_row(values)  # не забудь раскоментить!
+    await worksheet.append_row(values)
     await db.update_gsheets_today(telegram_id=message.from_user.id)
     await message.answer(f"{data_time}\n"
                          f"Количество новых встреч: {number_of_new_meetings}\n"
                          f"Количество повторных встреч: {number_of_recurring_meetings}\n"
                          f"Количество показов: {number_of_impressions}",
                          reply_markup=menu)
-    experience = (values[2]+values[3]+values[4])*10
-    await db.update_experience(experience=experience, telegram_id=message.from_user.id)
-
 
 
 @dp.callback_query_handler(text="Заполнить нулями")
