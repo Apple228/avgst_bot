@@ -222,6 +222,31 @@ async def Swedskiy2 (call: CallbackQuery):
         album2.attach_photo(file)
     await call.message.answer_media_group(media=album2)
 
+@dp.callback_query_handler(text="Шведский 36")
+async def Swedskiy36 (call: CallbackQuery):
+    album1 = MediaGroup()
+    fileSwed36 = ["AgACAgIAAxkBAAItpWF8AAH36InVMx0y58lFSGmMBo7D8gACz7UxG3l_4EsuTPu02Zqi6QEAAwIAA3kAAyEE",
+                "AgACAgIAAxkBAAItp2F8ARSGtFonknv_pYvziX_L3ctvAALQtTEbeX_gS1uyIKj2El3TAQADAgADeQADIQQ",
+                "AgACAgIAAxkBAAItqWF8AcDzOxnyYIFguCmeoUtclwd7AALRtTEbeX_gS7aekbMAAa7fswEAAwIAA3kAAyEE",
+                "AgACAgIAAxkBAAItq2F8Afryr_NUrhCjpUI-boZjdBD-AALTtTEbeX_gS4TnkcU8oEFLAQADAgADeQADIQQ",
+                "AgACAgIAAxkBAAItrWF8AhmjuiWlfn8ugOnF5menRxWvAALUtTEbeX_gS80j8mPUYTrvAQADAgADeQADIQQ",
+                "AgACAgIAAxkBAAItr2F8Ai8v5IVI0ByFXJjcJHRrfwy4AALVtTEbeX_gS3NGMwF6U9N3AQADAgADeQADIQQ",
+                "AgACAgIAAxkBAAItsWF8Akj6YL2h2vyuqZwyOSUWz5o9AALWtTEbeX_gSymY8kDebm5wAQADAgADeQADIQQ",
+                "AgACAgIAAxkBAAIts2F8AmiAqr3Jg4XjWSqQaB67_3GLAALXtTEbeX_gS3c2xfBcpF2KAQADAgADeQADIQQ",
+                "AgACAgIAAxkBAAIttWF8Ap3kgh4Q1r-rbY9Q4UtF8I5LAALZtTEbeX_gSxIrWa7NPuQUAQADAgADeQADIQQ",
+                "AgACAgIAAxkBAAItt2F8Ar59nDDivhyb5S3UlpawfxS1AALatTEbeX_gS4eOGpu7qRH3AQADAgADeQADIQQ"]
+    for file in fileSwed36:
+        album1.attach_photo(file)
+    await call.message.answer_media_group(media=album1)
+
+    album2 = MediaGroup()
+    fileSwed36_2 = ["AgACAgIAAxkBAAItuWF8AvdHBpOA7GmD1-EKlJOLgStoAALctTEbeX_gS2FWqn320hASAQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAItu2F8AwdjuHHe2pmFYpTNn8MNIPILAALdtTEbeX_gSyZx5WhebWd4AQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAItvWF8Ax__cGRmBO03dtF_Xuy0h4BaAALetTEbeX_gS4S25HHl9i-4AQADAgADeQADIQQ"]
+    for file in fileSwed36_2:
+        album2.attach_photo(file)
+    await call.message.answer_media_group(media=album2)
+
 @dp.message_handler(text="Проект Прованс 28")
 async def sendInfoProect(message: types.Message):
     await message.answer(""" Дачные дома с отделкой без коммуникаций:
