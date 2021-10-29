@@ -1,5 +1,5 @@
 import logging
-
+from keyboards.default.numbers_for_gsheets import numbers
 import pathlib
 from pathlib import Path
 
@@ -54,7 +54,7 @@ async def update_data_gsheet(dp: Dispatcher):
 
 @dp.callback_query_handler(text="Гугл таблица")
 async def state_data_gsheets(call: CallbackQuery, state: FSMContext):
-    await call.message.answer("Введите количество новых встреч за сегодня", reply_markup=cancel)
+    await call.message.answer("Введите количество новых встреч за сегодня", reply_markup=numbers)
     await state.set_state("Количество новых встреч")
 
 
@@ -64,7 +64,7 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
     try:
         int(number_of_new_meetings)
         await state.update_data(number_of_new_meetings=number_of_new_meetings)
-        await message.answer("Введите количество повторных встреч за сегодня", reply_markup=cancel)
+        await message.answer("Введите количество повторных встреч за сегодня", reply_markup=numbers)
         await state.set_state("Количество повторных встреч")
     except:
         await message.answer("Введено не целое число, давай ещё раз")
@@ -80,7 +80,7 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
     try:
         int(number_of_recurring_meetings)
         await state.update_data(number_of_recurring_meetings=number_of_recurring_meetings)
-        await message.answer("Введите количество показов за сегодня", reply_markup=cancel)
+        await message.answer("Введите количество показов за сегодня", reply_markup=numbers)
         await state.set_state("Количество показов")
     except:
         await message.answer("Введено не целое число, давай ещё раз")

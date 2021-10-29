@@ -136,6 +136,8 @@ class Database:
     async def update_birthday(self, date, telegram_id):
         sql = "UPDATE Users SET birthday=$1 WHERE telegram_id=$2"
         return await self.execute(sql, date, telegram_id, execute=True)
+
+
 # _________________________________________________________________________________________________
 class TaskManager:
 
@@ -209,15 +211,15 @@ class TaskManager:
               "where task_from_telegram_id=$1"
         return await self.execute(sql, task_from_telegram_id, fetch=True)
 
-    async def select_id(self): #получаем айди задачи
+    async def select_id(self):  # получаем айди задачи
         sql = "SELECT id FROM tasks ORDER BY id DESC LIMIT 1"
         return await self.execute(sql, fetchrow=True)
 
-    async def update_status(self, status, id): # меняем статус таски
+    async def update_status(self, status, id):  # меняем статус таски
         sql = "UPDATE tasks SET status=$1 where id=$2"
         return await self.execute(sql, status, id, execute=True)
 
-    async def select_task_from_telegram_id(self, id):   # получаем tg_id того, кто поставил таску
+    async def select_task_from_telegram_id(self, id):  # получаем tg_id того, кто поставил таску
         sql = "SELECT task_from_telegram_id FROM tasks where id =$1"
         return await self.execute(sql, id, fetchrow=True)
 
@@ -225,3 +227,57 @@ class TaskManager:
         sql = "SELECT task_for, task_from, task_from_telegram_id, text_tasks from tasks " \
               "where id=$1"
         return await self.execute(sql, id, fetchrow=True)
+
+
+# _________________________________________________________________________________________________
+# class Employees:
+#
+#     def __init__(self):
+#         self.pool: Union[Pool, None] = None
+#
+#     async def create_employees(self):
+#         self.pool = await asyncpg.create_pool(
+#             user=config.DB_USER,
+#             password=config.DB_PASS,
+#             host=config.DB_HOST,
+#             database=config.DB_NAME
+#         )
+#
+#     async def execute(self, command, *args,
+#                       fetch: bool = False,  # этот фетч означает, что хотим забрать все данные
+#                       fetchval: bool = False,  # доставать одно значение
+#                       fetchrow: bool = False,  # данные в одном списке
+#                       execute: bool = False  # никакие данные возвращать не надо
+#                       ):
+#         async with self.pool.acquire() as connection:
+#             connection: Connection
+#             async with connection.transaction():
+#                 if fetch:
+#                     result = await connection.fetch(command, *args)
+#                 elif fetchval:
+#                     result = await connection.fetchval(command, *args)
+#                 elif fetchrow:
+#                     result = await connection.fetchrow(command, *args)
+#                 elif execute:
+#                     result = await connection.execute(command, *args)
+#             return result
+#
+#
+#     async def create_table_employees(self):
+#         sql = """
+#              CREATE TABLE IF NOT EXISTS Tasks (
+#             id SERIAL PRIMARY KEY,
+#             fullname VARCHAR(60) NOT NULL,
+#             post VARCHAR(40),
+#             date_birthday date
+#
+#          );
+#         """
+#         await self.execute(sql, execute=True)
+
+    @staticmethod
+    def format_args(sql, parameters: dict):
+        sql += " AND ".join([
+            f"{item} = ${num}" for num, item in enumerate(parameters.keys(),
+                                                          start=1)
+        ])
