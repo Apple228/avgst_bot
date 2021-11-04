@@ -7,7 +7,7 @@ import gspread_asyncio
 
 from aiogram import types, Dispatcher
 from aiogram.dispatcher import FSMContext
-from datetime import datetime
+import datetime
 
 from aiogram.types import CallbackQuery
 from google.oauth2.service_account import Credentials
@@ -121,12 +121,11 @@ async def save_data_gsheets(message: types.Message, state: FSMContext):
     async_spreadsheet = await client.open_by_key(spreadsheet_id)
     # worksheet = await add_worksheet(async_spreadsheet, 'Лист2')
     worksheet = await async_spreadsheet.worksheet('Статистика от бота')
-    current_datetime = datetime.now()
+
     values = []
-    data_time = str(current_datetime.day) + "." + str(current_datetime.month) + "." + \
-                str(current_datetime.year)
-                # + " " + str(current_datetime.hour + 3) + ":" + \
-                # str(current_datetime.minute)
+    today = datetime.date.today()
+    data_time = today.strftime('%d.%m.%y')
+
     values.append(data_time)
     values.append(message.from_user.first_name + " " + message.from_user.last_name)
     values.append(number_of_new_meetings)
@@ -152,12 +151,12 @@ async def state_data_gsheets(call: CallbackQuery, state: FSMContext):
     await dp.bot.send_sticker(call.from_user.id,
                               "CAACAgIAAxkBAAIQJmEk1FkF6Cp75JJwbDSwKW1j7e8LAAJaDwACg1TYS2Vw3nymTXs9IAQ")
     worksheet = await async_spreadsheet.worksheet('Статистика от бота')
-    current_datetime = datetime.now()
+
     values = []
-    data_time = str(current_datetime.day) + "." + str(current_datetime.month) + "." + \
-                str(current_datetime.year)
-                # + " " + str(current_datetime.hour + 3) + ":" + \
-                # str(current_datetime.minute)
+
+    today = datetime.date.today()
+    data_time=today.strftime('%d.%m.%y')
+
     values.append(data_time)
     values.append(call.from_user.first_name + " " + call.from_user.last_name)
     values.append(0)

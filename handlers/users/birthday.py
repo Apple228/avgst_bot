@@ -2,7 +2,7 @@ from aiogram import types
 from aiogram.dispatcher import FSMContext
 from aiogram.types import CallbackQuery
 from keyboards.inline.birthday import update_birthday
-from loader import dp
+from loader import dp, db
 import datetime
 dictionary_birthday_genitive ={
     #'Лифанов Павел (директора)':'05.11',
@@ -68,10 +68,13 @@ dictionary_birthday_genitive ={
 @dp.message_handler(text="День рождения")
 async def birthday_today(message: types.Message):
     today = datetime.date.today()
+    users_id = await db.select_all_telegram_id()
+    count = await db.count_users()
     print(today.strftime('%d.%m'))
     for name, date in dictionary_birthday_genitive.items():
         if date == today.strftime('%d.%m'):
-            await message.answer(f'Сегодня день рождения у {name}')
+            for i in range(0, count):
+                await dp.bot.send_message(chat_id=users_id[i][0], text=f'Сегодня день рождения у {name}')
 
 # @dp.message_handler(text="День рождения")
 # async def birthday1(message:types.Message):
