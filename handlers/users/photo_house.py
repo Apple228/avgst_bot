@@ -102,19 +102,20 @@ async def Shvedskiy23(call: CallbackQuery):
 @dp.callback_query_handler(text="Барн 7")
 async def Barn7(call: CallbackQuery):
     album1 = MediaGroup()
-    filebarn1 = ["AgACAgIAAxkBAAIoyWFkbLcjX5OnCW3l0tz9dKprf6R2AAKKtjEbYqEgS_St1opzhsxtAQADAgADeQADIQQ",
-                 "AgACAgIAAxkBAAIoy2FkbNmrbVLyY_O6zYAD1iDoc-9eAAKLtjEbYqEgS2LEu9QupxTqAQADAgADeQADIQQ",
-                 "AgACAgIAAxkBAAIozWFkbOx2oM9EjdRIxWi_Oxx413wzAAKMtjEbYqEgS83oCAW9J8w3AQADAgADeQADIQQ",
-                 "AgACAgIAAxkBAAIoz2FkbP3n_M79mbg2DeZTAjBPn-XHAAKOtjEbYqEgS10Iio123ObTAQADAgADeQADIQQ",
-                 "AgACAgIAAxkBAAIo0WFkbRgDNstgOLUbK5rmvhjTDyKUAAKPtjEbYqEgS-06hoeLprY4AQADAgADeQADIQQ",
-                 "AgACAgIAAxkBAAIo02FkbSi615cAASAXuOH8sd1xXO7hFwACkLYxG2KhIEu4UMiBRuqQogEAAwIAA3kAAyEE",
-                 "AgACAgIAAxkBAAIo1WFkbTtOxcTmSnf03C1Av3-EW5W4AAKRtjEbYqEgSypwfCUO5aNGAQADAgADeQADIQQ",
-                 "AgACAgIAAxkBAAIo12FkbVGheTM7iEb0QLEwBHGBU8kgAAKStjEbYqEgS3yAlHJrJrYzAQADAgADeQADIQQ",
-                 "AgACAgIAAxkBAAIo2WFkbWR3FgRKVmStcHqI2t1MeqDrAAKUtjEbYqEgS3ImYLqyGqveAQADAgADeQADIQQ",
-                 "AgACAgIAAxkBAAIo22FkbdWQsTMgvDMRBpCPAQEEQeGWAAKWtjEbYqEgS920OLE3iJmtAQADAgADeQADIQQ"]
+    filebarn1 = ["AgACAgIAAxkBAAIvKmGD7YQpuJyEih_EjXCsMC9rSgZaAAIHuDEbaiMgSA-eUspdMzsuAQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIvLGGD7aqn2bPebRjY1rN2b-4hAzM3AAIIuDEbaiMgSBPr_wLfjENkAQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIvLmGD7b3bvnVaCq4HhzyybefVayb5AAIJuDEbaiMgSIdejg8BjWJyAQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIvMGGD7eE5TAfL6QGOGDycuKmxLBhvAAIKuDEbaiMgSECACzoyL_DLAQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIvMmGD7fELK-G8KJQ_fYSfrzFHB4H3AAILuDEbaiMgSOVxxsRNETNeAQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIvNmGD7iy381wZ2m9VpK3vz9-X2zN6AAIOuDEbaiMgSJIiQgv0VcjWAQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIvOGGD7kAVDExboSFYGCyOpaMPD4iMAAIPuDEbaiMgSPVkN3oFY3OVAQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIvOmGD7lCTmyQJnFGSszkq2G_gPUNoAAIQuDEbaiMgSM1mQ5EkcvX6AQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIvPGGD7mGes6LHS3OEEVfcLsKIZpjKAAIRuDEbaiMgSL9pVNHN-E_BAQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIvPmGD7nGiSgv3U_ezrhojl3b4GIBHAAISuDEbaiMgSF5gIKeW2QS9AQADAgADeQADIQQ"]
     for file in filebarn1:
         album1.attach_photo(file)
     await call.message.answer_media_group(media=album1)
+    await call.message.answer("Это Барн 7 снаружи")
 
     album2 = MediaGroup()
     filebarn2 = ["AgACAgIAAxkBAAIo3WFkbjWV0uJipdpVXFtwEIacq4cKAAKYtjEbYqEgS2TO2qEBFozYAQADAgADeQADIQQ",
@@ -132,13 +133,14 @@ async def Barn7(call: CallbackQuery):
     await call.message.answer_media_group(media=album2)
     album3 = MediaGroup()
     filebarn3 = ["AgACAgIAAxkBAAIo8WFkby2Ol6JRBNCMqbXa9CsKSVuUAAKltjEbYqEgS5WiG972sTAfAQADAgADeQADIQQ",
+                 "AgACAgIAAxkBAAIo22FkbdWQsTMgvDMRBpCPAQEEQeGWAAKWtjEbYqEgS920OLE3iJmtAQADAgADeQADIQQ",
                  "AgACAgIAAxkBAAIo82Fkb0Ez73DUMteTrwMCWIFArfcPAAKmtjEbYqEgS549PfkRx9xjAQADAgADeQADIQQ",
                  "AgACAgIAAxkBAAIo9WFkb1AwsoGDOeDuMnTrDjLvPuq7AAKntjEbYqEgS8voV_BjjQPkAQADAgADeQADIQQ",
                  "AgACAgIAAxkBAAIo92Fkb2BYseebDemFxdMEUTrPEcEpAAKotjEbYqEgSzTIYKQr7HgUAQADAgADeQADIQQ"]
     for file in filebarn3:
         album3.attach_photo(file)
     await call.message.answer_media_group(media=album3)
-    await call.message.answer("Это Барн 7")
+    await call.message.answer("Это Барн 7 внутри")
 
 
 @dp.message_handler(text="Фото Прованс 28")
