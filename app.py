@@ -4,6 +4,7 @@ from datetime import datetime
 from aiogram import executor, Dispatcher
 
 from handlers.users.birthday import birthday_today
+from handlers.users.coffee_random import coffee_random_choice
 from handlers.users.gsheets import update_data_gsheet, check_gsheets_today, zeroing_gsheets_today
 from loader import dp, db, tm, scheduler
 import middlewares, filters, handlers
@@ -18,6 +19,7 @@ def scheduler_jobs():
     scheduler.add_job(check_gsheets_today, "cron", day_of_week="mon-sat", hour=18, minute=00, args=(dp,))
     scheduler.add_job(zeroing_gsheets_today, "cron", day_of_week="mon-sat", hour=21, minute=20, args=(dp,))
     scheduler.add_job(birthday_today, "cron", day_of_week="mon-sun", hour=6, minute=00, args=(dp,))
+    scheduler.add_job(coffee_random_choice, "cron" , day_of_week="mon-fri", hour=6, minute=30, args=(dp,))
 
 
 
