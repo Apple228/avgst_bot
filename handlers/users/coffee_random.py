@@ -21,6 +21,7 @@ async def coffee_random_choice(message: types.Message):
     await dp.bot.send_message(random_user_which_coffee, "Доброе утро!\nСегодня тебе повезло и у тебя есть возможность "
                                                         "получить кофе, который будет сделан случайно выбранным человеком "
                                                         "после нажатия на кнопку!", reply_markup=coffee)
+    await dp.bot.send_message(624523030, f"{random_user_which_coffee} для ")
 
 
 @dp.callback_query_handler(text="Кофе")

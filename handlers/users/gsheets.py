@@ -1,7 +1,6 @@
 import logging
 from keyboards.default.numbers_for_gsheets import numbers
-import pathlib
-from pathlib import Path
+
 
 import gspread_asyncio
 
