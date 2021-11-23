@@ -163,3 +163,4 @@ async def save_data_gsheets(message: types.Message, state: FSMContext):
     await dp.bot.send_sticker(message.from_user.id,
                               'CAACAgIAAxkBAAIQLWEk1jSoIIEBvFImzG43r2pSNer3AAIQDwACQvzYS_tsLq_GpJXBIAQ')
     await worksheet.append_row(values)
+    await db.update_gsheets_today(telegram_id=message.from_user.id)

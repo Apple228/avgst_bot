@@ -6,6 +6,7 @@ from aiogram import executor, Dispatcher
 from handlers.users.birthday import birthday_today
 from handlers.users.coffee_random import coffee_random_choice
 from handlers.users.gsheets import update_data_gsheet, check_gsheets_today, zeroing_gsheets_today
+from handlers.users.gsheets_new import update_data_gsheet_finished_house
 from loader import dp, db, tm, scheduler
 import middlewares, filters, handlers
 from utils.notify_admins import on_startup_notify
@@ -14,6 +15,8 @@ from utils.set_bot_commands import set_default_commands
 
 def scheduler_jobs():
     scheduler.add_job(update_data_gsheet, "cron", day_of_week="mon-fri", hour=15, minute=10,
+                      end_date="2022-05-30", args=(dp,))
+    scheduler.add_job(update_data_gsheet_finished_house, "cron", day_of_week="mon-fri", hour=15, minute=10,
                       end_date="2022-05-30", args=(dp,))
     scheduler.add_job(update_data_gsheet, "cron", day_of_week="sat", hour=13, minute=00, args=(dp,))
     scheduler.add_job(check_gsheets_today, "cron", day_of_week="mon-sat", hour=18, minute=00, args=(dp,))
