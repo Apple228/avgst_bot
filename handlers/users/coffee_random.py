@@ -5,7 +5,7 @@ import random
 from aiogram import types
 from aiogram.types import CallbackQuery
 
-from data.config import ALL_TG_ID, USER_GSHEETS
+from data.config import ALL_TG_ID, USER_GSHEETS, TEST_COFEE
 from keyboards.inline.coffee import coffee
 from loader import dp, db
 
@@ -30,6 +30,10 @@ async def coffee_random_choice_2(call: CallbackQuery):
     global random_user_which_coffee
     random_user_makes_coffee = random.choice(ALL_TG_ID)
     fullname_user_which_coffee = await db.select_full_name(telegram_id=random_user_which_coffee)
+    fullname_user_makes_coffee = await db.select_full_name(telegram_id=random_user_makes_coffee)
+
+    await call.message.edit_text(f"Сегодня кофе для тебя будет делать {fullname_user_makes_coffee}")
+    # await call.message.edit_reply_markup()
     # firstname, lastname = fullname_user_which_coffee.split()
     # print(firstname)
     # print(lastname)

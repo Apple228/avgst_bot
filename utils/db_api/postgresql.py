@@ -183,7 +183,7 @@ class TaskManager:
         task_for_telegram_id BIGINT NOT NULL,
         task_from VARCHAR(55) NOT NULL,
         task_from_telegram_id BIGINT NOT NULL,
-        text_tasks VARCHAR(1000),
+        text_tasks VARCHAR(2000),
         status VARCHAR(55)
         );
         """
@@ -279,9 +279,9 @@ class TaskManager:
 #         """
 #         await self.execute(sql, execute=True)
 
-    @staticmethod
-    def format_args(sql, parameters: dict):
-        sql += " AND ".join([
-            f"{item} = ${num}" for num, item in enumerate(parameters.keys(),
-                                                          start=1)
-        ])
+    # @staticmethod
+    # def format_args(sql, parameters: dict):
+    #     sql += " AND ".join([
+    #         f"{item} = ${num}" for num, item in enumerate(parameters.keys(),
+    #                                                       start=1)
+    #     ])

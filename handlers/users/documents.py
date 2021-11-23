@@ -32,7 +32,7 @@ async def document(message: types.Message):
 @dp.callback_query_handler(text="Реквизиты Лифанов")
 async def document(call: CallbackQuery):
     id = call.from_user.id
-    file_id_1 = "BQACAgIAAxkBAAIVGWDLty3Rk25ZvHatdpPW9U3ua1SsAAKXDAACozVYSitVc_uPBkjUHwQ"
+    file_id_1 = "BQACAgIAAxkBAAIywWGWNn5R4ELEC8N_MzVTNtlKMsU9AAIEDgACUdqwSWGzzpOGAS4_IgQ"
     await dp.bot.send_document(chat_id=id, document=file_id_1)
 
 @dp.message_handler(text="Реквизиты Лифанов")
