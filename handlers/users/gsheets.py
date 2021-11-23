@@ -12,7 +12,7 @@ from aiogram.types import CallbackQuery
 from google.oauth2.service_account import Credentials
 from aiogram.dispatcher.filters.builtin import Command
 
-from data.config import PATH, USER_GSHEETS
+from data.config import PATH, SALES_DEPARTMENT
 from keyboards.default import cancel, menu
 from keyboards.inline.gsheets_timer import gsheets_timer
 
@@ -46,7 +46,7 @@ async def add_worksheet(async_spreadsheet: gspread_asyncio.AsyncioGspreadSpreads
 # количество новых встреч, количество повторных встреч, количество показов
 @dp.message_handler(Command("data"))
 async def update_data_gsheet(dp: Dispatcher):
-    for user_gsheets in USER_GSHEETS:
+    for user_gsheets in SALES_DEPARTMENT:
         if (await db.check_gsheets_today(telegram_id=user_gsheets) == 0):
             await dp.bot.send_message(user_gsheets, "Ежедневный сбор статистики в таблицу", reply_markup=gsheets_timer)
 
@@ -171,7 +171,7 @@ async def state_data_gsheets(call: CallbackQuery, state: FSMContext):
 @dp.message_handler(text="Напоминание про таблицу")
 async def check_gsheets_today(message: types.Message):
     # logging.info(await db.check_gsheets_today(telegram_id=message.from_user.id))
-    for user_gsheets in USER_GSHEETS:
+    for user_gsheets in SALES_DEPARTMENT:
         if (await db.check_gsheets_today(telegram_id=user_gsheets) == 0):
             await dp.bot.send_message(user_gsheets, "Напоминаю, что нужно заполнить статистику", reply_markup=gsheets_timer)
 
@@ -180,21 +180,21 @@ async def check_gsheets_today(message: types.Message):
 async def zeroing_gsheets(message: types.Message):
     await message.answer("Окей, сегодня напомню по таймеру или же вызвать сбор сейчас по команде /data")
     # logging.info(await db.check_gsheets_today(telegram_id=message.from_user.id))
-    for user_gsheets in USER_GSHEETS:
+    for user_gsheets in SALES_DEPARTMENT:
         await db.zeroing_gsheets_today(telegram_id=user_gsheets)
 
 
 @dp.message_handler(text="Обнуление таймера")
 async def zeroing_gsheets_today(message: types.Message):
     # logging.info(await db.check_gsheets_today(telegram_id=message.from_user.id))
-    for user_gsheets in USER_GSHEETS:
+    for user_gsheets in SALES_DEPARTMENT:
         await db.zeroing_gsheets_today(telegram_id=user_gsheets)
 
 @dp.message_handler(Command("switch_off"))
 @dp.message_handler(text="Не напоминать сегодня про таблицу")
 async def one_gsheets_today(message: types.Message):
     await message.answer("Окей, сегодня без рассылки")
-    for user_gsheets in USER_GSHEETS:
+    for user_gsheets in SALES_DEPARTMENT:
         await db.update_gsheets_today(telegram_id=user_gsheets)
 
 # @dp.message_handler(state="Количество встреч")

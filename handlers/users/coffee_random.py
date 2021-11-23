@@ -5,7 +5,7 @@ import random
 from aiogram import types
 from aiogram.types import CallbackQuery
 
-from data.config import ALL_TG_ID, USER_GSHEETS, TEST_COFEE
+from data.config import ALL_TG_ID,  TEST_COFEE
 from keyboards.inline.coffee import coffee
 from loader import dp, db
 

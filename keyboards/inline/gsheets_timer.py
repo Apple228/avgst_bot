@@ -22,3 +22,26 @@ gsheets_timer = InlineKeyboardMarkup(
         # ]
     ]
 )
+
+gsheets_timer_finished_house = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(
+                text="Ввести данные",
+                callback_data="Отдел готовых домов"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                text="Нихуя не работал",
+                callback_data="Заполнить нулями"
+            )
+        ]
+        # [
+        #     InlineKeyboardButton(
+        #         text="Напомнить через час",
+        #         callback_data="через час"
+        #     )
+        # ]
+    ]
+)

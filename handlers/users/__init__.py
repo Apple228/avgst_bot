@@ -1,6 +1,7 @@
 from .start import dp
 from .photo_house import dp
 from .gsheets import dp
+from .gsheets_new import dp
 from .set_task_inline import dp
 from .menu import dp
 from .update_db import dp
