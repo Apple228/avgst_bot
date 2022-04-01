@@ -22,7 +22,7 @@ def scheduler_jobs():
     scheduler.add_job(check_gsheets_today, "cron", day_of_week="mon-sat", hour=18, minute=00, args=(dp,))
     scheduler.add_job(zeroing_gsheets_today, "cron", day_of_week="mon-sat", hour=21, minute=20, args=(dp,))
     scheduler.add_job(birthday_today, "cron", day_of_week="mon-sun", hour=6, minute=00, args=(dp,))
-    scheduler.add_job(coffee_random_choice, "cron" , day_of_week="mon-fri", hour=6, minute=30, args=(dp,))
+    # scheduler.add_job(coffee_random_choice, "cron" , day_of_week="mon-fri", hour=6, minute=30, args=(dp,))
 
 
 

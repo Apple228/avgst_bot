@@ -12,7 +12,7 @@ from aiogram.types import CallbackQuery
 from google.oauth2.service_account import Credentials
 from aiogram.dispatcher.filters.builtin import Command
 
-from data.config import PATH, SALES_DEPARTMENT
+from data.config import PATH, SALES_DEPARTMENT, DEPARTMENT_OF_READY_HOUSES
 from keyboards.default import cancel, menu
 from keyboards.inline.gsheets_timer import gsheets_timer
 
@@ -119,7 +119,7 @@ async def save_data_gsheets(message: types.Message, state: FSMContext):
     client = await client.authorize()
     async_spreadsheet = await client.open_by_key(spreadsheet_id)
     # worksheet = await add_worksheet(async_spreadsheet, 'Лист2')
-    worksheet = await async_spreadsheet.worksheet('Статистика от бота')
+    worksheet = await async_spreadsheet.worksheet('БОТ Стр')
 
     values = []
     today = datetime.date.today()
@@ -149,7 +149,7 @@ async def state_data_gsheets(call: CallbackQuery, state: FSMContext):
     # worksheet = await add_worksheet(async_spreadsheet, 'Лист2')
     await dp.bot.send_sticker(call.from_user.id,
                               "CAACAgIAAxkBAAIQJmEk1FkF6Cp75JJwbDSwKW1j7e8LAAJaDwACg1TYS2Vw3nymTXs9IAQ")
-    worksheet = await async_spreadsheet.worksheet('Статистика от бота')
+    worksheet = await async_spreadsheet.worksheet('БОТ Стр')
 
     values = []
 
@@ -165,7 +165,7 @@ async def state_data_gsheets(call: CallbackQuery, state: FSMContext):
     await worksheet.append_row(values)
     await db.update_gsheets_today(telegram_id=call.from_user.id)
 
-    # await call.message.answer("Сохранено нулями", reply_markup=menu)
+    await call.message.answer("Сохранено нулями", reply_markup=menu)
     await call.answer("Сохранено")
 
 @dp.message_handler(text="Напоминание про таблицу")
@@ -180,14 +180,14 @@ async def check_gsheets_today(message: types.Message):
 async def zeroing_gsheets(message: types.Message):
     await message.answer("Окей, сегодня напомню по таймеру или же вызвать сбор сейчас по команде /data")
     # logging.info(await db.check_gsheets_today(telegram_id=message.from_user.id))
-    for user_gsheets in SALES_DEPARTMENT:
+    for user_gsheets in (SALES_DEPARTMENT+DEPARTMENT_OF_READY_HOUSES):
         await db.zeroing_gsheets_today(telegram_id=user_gsheets)
 
 
 @dp.message_handler(text="Обнуление таймера")
 async def zeroing_gsheets_today(message: types.Message):
     # logging.info(await db.check_gsheets_today(telegram_id=message.from_user.id))
-    for user_gsheets in SALES_DEPARTMENT:
+    for user_gsheets in (SALES_DEPARTMENT+DEPARTMENT_OF_READY_HOUSES):
         await db.zeroing_gsheets_today(telegram_id=user_gsheets)
 
 @dp.message_handler(Command("switch_off"))
