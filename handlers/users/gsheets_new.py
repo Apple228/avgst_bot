@@ -20,7 +20,8 @@ async def update_data_gsheet_finished_house(dp: Dispatcher):
     for user_gsheets in DEPARTMENT_OF_READY_HOUSES:
         if (await db.check_gsheets_today(telegram_id=user_gsheets) == 0):
             await dp.bot.send_message(user_gsheets, "Ежедневный сбор статистики в таблицу", reply_markup=gsheets_timer_finished_house)
-
+            username = await db.select_full_name(user_gsheets)
+            await dp.bot.send_message(624523030, f"Сообщение отправлено для {username}")
 
 @dp.callback_query_handler(text="Отдел готовых домов")
 async def state_data_gsheets(call: CallbackQuery, state: FSMContext):
@@ -33,13 +34,35 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
     try:
         int(interested_in_Barn7)
         await state.update_data(interested_in_Barn7=interested_in_Barn7)
-        await message.answer("Заинтересовал Шведский 2", reply_markup=numbers)
-        await state.set_state("Заинтересовал Шведский 2")
+        await message.answer("Заинтересовал Барн 10", reply_markup=numbers)
+        await state.set_state("Заинтересовал Барн 10")
     except:
         await message.answer("Введено не целое число, давай ещё раз")
         await state.set_state("Заинтересовал Барн 7")
 
+@dp.message_handler(state="Заинтересовал Барн 10")
+async def state_data_gsheets(message: types.Message, state: FSMContext):
+    interested_in_Barn10 = message.text
+    try:
+        int(interested_in_Barn10)
+        await state.update_data(interested_in_Barn10=interested_in_Barn10)
+        await message.answer("Заинтересовал Шведский 23", reply_markup=numbers)
+        await state.set_state("Заинтересовал Шведский 23")
+    except:
+        await message.answer("Введено не целое число, давай ещё раз")
+        await state.set_state("Заинтересовал Барн 7")
 
+@dp.message_handler(state="Заинтересовал Шведский 23")
+async def state_data_gsheets(message: types.Message, state: FSMContext):
+    interested_in_Swedish23 = message.text
+    try:
+        int(interested_in_Swedish23)
+        await state.update_data(interested_in_Swedish23=interested_in_Swedish23)
+        await message.answer("Заинтересовал Шведский 2", reply_markup=numbers)
+        await state.set_state("Заинтересовал Шведский 2")
+    except:
+        await message.answer("Введено не целое число, давай ещё раз")
+        await state.set_state("Заинтересовал Шведский 2")
 
 @dp.message_handler(state="Заинтересовал Шведский 2")
 async def state_data_gsheets(message: types.Message, state: FSMContext):
@@ -47,49 +70,60 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
     try:
         int(interested_in_Swedish2)
         await state.update_data(interested_in_Swedish2=interested_in_Swedish2)
-        await message.answer("Заинтересовал Прованс 24", reply_markup=numbers)
-        await state.set_state("Заинтересовал Прованс 24")
-    except:
-        await message.answer("Введено не целое число, давай ещё раз")
-        await state.set_state("Заинтересовал Шведский 2")
-
-@dp.message_handler(state="Заинтересовал Прованс 24")
-async def state_data_gsheets(message: types.Message, state: FSMContext):
-    interested_in_Provence_24 = message.text
-    try:
-        int(interested_in_Provence_24)
-        await state.update_data(interested_in_Provence_24=interested_in_Provence_24)
-        await message.answer("Заинтересовал Барн 6", reply_markup=numbers)
-        await state.set_state("Заинтересовал Барн 6")
-    except:
-        await message.answer("Введено не целое число, давай ещё раз")
-        await state.set_state("Заинтересовал Прованс 24")
-
-
-@dp.message_handler(state="Заинтересовал Барн 6")
-async def state_data_gsheets(message: types.Message, state: FSMContext):
-    interested_in_Barn6 = message.text
-    try:
-        int(interested_in_Barn6)
-        await state.update_data(interested_in_Barn6=interested_in_Barn6)
-        await message.answer("Заинтересовал Барн 3", reply_markup=numbers)
-        await state.set_state("Заинтересовал Барн 3")
-    except:
-        await message.answer("Введено не целое число, давай ещё раз")
-        await state.set_state("Заинтересовал Барн 6")
-
-
-@dp.message_handler(state="Заинтересовал Барн 3")
-async def state_data_gsheets(message: types.Message, state: FSMContext):
-    interested_in_Barn3 = message.text
-    try:
-        int(interested_in_Barn3)
-        await state.update_data(interested_in_Barn3=interested_in_Barn3)
         await message.answer("Заинтересовал индивидуальный проект", reply_markup=numbers)
         await state.set_state("Заинтересовал индивидуальный проект")
     except:
         await message.answer("Введено не целое число, давай ещё раз")
-        await state.set_state("Заинтересовал Барн 3")
+        await state.set_state("Заинтересовал Шведский 2")
+# @dp.message_handler(state="Заинтересовал Шведский 2")
+# async def state_data_gsheets(message: types.Message, state: FSMContext):
+#     interested_in_Swedish2 = message.text
+#     try:
+#         int(interested_in_Swedish2)
+#         await state.update_data(interested_in_Swedish2=interested_in_Swedish2)
+#         await message.answer("Заинтересовал Прованс 24", reply_markup=numbers)
+#         await state.set_state("Заинтересовал Прованс 24")
+#     except:
+#         await message.answer("Введено не целое число, давай ещё раз")
+#         await state.set_state("Заинтересовал Шведский 2")
+
+# @dp.message_handler(state="Заинтересовал Прованс 24")
+# async def state_data_gsheets(message: types.Message, state: FSMContext):
+#     interested_in_Provence_24 = message.text
+#     try:
+#         int(interested_in_Provence_24)
+#         await state.update_data(interested_in_Provence_24=interested_in_Provence_24)
+#         await message.answer("Заинтересовал Барн 6", reply_markup=numbers)
+#         await state.set_state("Заинтересовал Барн 6")
+#     except:
+#         await message.answer("Введено не целое число, давай ещё раз")
+#         await state.set_state("Заинтересовал Прованс 24")
+
+
+# @dp.message_handler(state="Заинтересовал Барн 6")
+# async def state_data_gsheets(message: types.Message, state: FSMContext):
+#     interested_in_Barn6 = message.text
+#     try:
+#         int(interested_in_Barn6)
+#         await state.update_data(interested_in_Barn6=interested_in_Barn6)
+#         await message.answer("Заинтересовал Барн 3", reply_markup=numbers)
+#         await state.set_state("Заинтересовал Барн 3")
+#     except:
+#         await message.answer("Введено не целое число, давай ещё раз")
+#         await state.set_state("Заинтересовал Барн 6")
+#
+#
+# @dp.message_handler(state="Заинтересовал Барн 3")
+# async def state_data_gsheets(message: types.Message, state: FSMContext):
+#     interested_in_Barn3 = message.text
+#     try:
+#         int(interested_in_Barn3)
+#         await state.update_data(interested_in_Barn3=interested_in_Barn3)
+#         await message.answer("Заинтересовал индивидуальный проект", reply_markup=numbers)
+#         await state.set_state("Заинтересовал индивидуальный проект")
+#     except:
+#         await message.answer("Введено не целое число, давай ещё раз")
+#         await state.set_state("Заинтересовал Барн 3")
 
 @dp.message_handler(state="Заинтересовал индивидуальный проект")
 async def state_data_gsheets(message: types.Message, state: FSMContext):
@@ -140,10 +174,12 @@ async def save_data_gsheets(message: types.Message, state: FSMContext):
     values.append(data_time)
     values.append(message.from_user.first_name + " " + message.from_user.last_name)
     values.append(data.get("interested_in_Barn7"))
+    values.append(data.get("interested_in_Barn10"))
+    values.append(data.get("interested_in_Swedish23"))
     values.append(data.get("interested_in_Swedish2"))
-    values.append(data.get("interested_in_Provence_24"))
-    values.append(data.get("interested_in_Barn6"))
-    values.append(data.get("interested_in_Barn3"))
+
+    # values.append(data.get("interested_in_Barn6"))
+    # values.append(data.get("interested_in_Barn3"))
     values.append(data.get("interested_in_an_individual_project"))
     values.append(data.get("number_of_impressions_new"))
     values.append(number_of_repeated_meetings_new)
@@ -152,7 +188,7 @@ async def save_data_gsheets(message: types.Message, state: FSMContext):
     logging.info(values)
     await dp.bot.send_sticker(message.from_user.id,
                               'CAACAgIAAxkBAAIQLWEk1jSoIIEBvFImzG43r2pSNer3AAIQDwACQvzYS_tsLq_GpJXBIAQ', reply_markup=menu)
-    worksheet = await async_spreadsheet.worksheet('БОТ ГД')
+    worksheet = await async_spreadsheet.worksheet('БОТ ГД2')
     await worksheet.append_row(values)
     await state.reset_state()
     await db.update_gsheets_today(telegram_id=message.from_user.id)
