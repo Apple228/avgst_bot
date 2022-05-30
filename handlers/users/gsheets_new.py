@@ -75,11 +75,24 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
     try:
 
         await state.update_data(interested_in_an_other_project=int(interested_in_an_other_project))
+        await message.answer("Кол-во показов Барн 10", reply_markup=numbers)
+        await state.set_state("Кол-во показов Барн 10")
+    except:
+        await message.answer("Введено не целое число, давай ещё раз")
+        await state.set_state("Заинтересовал другой проект")
+
+@dp.message_handler(state="Кол-во показов Барн 10")
+async def state_data_gsheets(message: types.Message, state: FSMContext):
+    number_of_impressions_Barn_10 = message.text
+    try:
+
+        await state.update_data(
+            number_of_impressions_Barn_10=int(number_of_impressions_Barn_10))
         await message.answer("Кол-во показов в продажу домов", reply_markup=numbers)
         await state.set_state("Кол-во показов в продажу домов")
     except:
         await message.answer("Введено не целое число, давай ещё раз")
-        await state.set_state("Заинтересовал другой проект")
+        await state.set_state("Кол-во показов в продажу домов")
 
 
 @dp.message_handler(state="Кол-во показов в продажу домов")
@@ -94,6 +107,7 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
     except:
         await message.answer("Введено не целое число, давай ещё раз")
         await state.set_state("Кол-во показов в продажу домов")
+
 
 
 @dp.message_handler(state="Кол-во показов в стройку")
@@ -123,7 +137,9 @@ async def save_data_gsheets(message: types.Message, state: FSMContext):
     # values.append(data.get("interested_in_Barn6"))
     # values.append(data.get("interested_in_Barn3"))
     values.append(int(data.get("interested_in_an_other_project")))
+    values.append(int(data.get("number_of_impressions_Barn_10")))
     values.append(int(data.get("number_of_impressions_in_the_sale_of_houses")))
+
     values.append(number_of_impressions_in_construction)
     # values.append(data.get("number_of_concluded_contracts"))
     # values.append(the_amount_of_concluded_contracts)
@@ -167,6 +183,7 @@ async def state_data_gsheets(call: CallbackQuery, state: FSMContext):
 
     values.append(data_time)
     values.append(call.from_user.first_name + " " + call.from_user.last_name)
+    values.append(0)
     values.append(0)
     values.append(0)
     values.append(0)
