@@ -19,7 +19,7 @@ from loader import dp, db
 @dp.message_handler(Command("data_new"))
 async def update_data_gsheet_finished_house(dp: Dispatcher):
     for user_gsheets in DEPARTMENT_OF_READY_HOUSES:
-        if (await db.check_gsheets_today(telegram_id=user_gsheets) == 0):
+    #     if (await db.check_gsheets_today(telegram_id=user_gsheets) == 0):
             await dp.bot.send_message(user_gsheets, "Ежедневный сбор статистики в таблицу",
                                       reply_markup=gsheets_timer_finished_house)
             username = await db.select_full_name(user_gsheets)
@@ -56,17 +56,30 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
         await state.set_state("Заинтересовал Барн 10")
 
 
+
 @dp.message_handler(state="Заинтересовал Шведский 2")
 async def state_data_gsheets(message: types.Message, state: FSMContext):
     interested_in_Swedish2 = message.text
     try:
 
         await state.update_data(interested_in_Swedish2=int(interested_in_Swedish2))
+        await message.answer("Заинтересовал Барн 11", reply_markup=numbers)
+        await state.set_state("Заинтересовал Барн 11")
+    except:
+        await message.answer("Введено не целое число, давай ещё раз")
+        await state.set_state("Заинтересовал Шведский 2")
+
+@dp.message_handler(state="Заинтересовал Барн 11")
+async def state_data_gsheets(message: types.Message, state: FSMContext):
+    interested_in_Barn11 = message.text
+    try:
+
+        await state.update_data(interested_in_Barn11=int(interested_in_Barn11))
         await message.answer("Заинтересовал другой проект", reply_markup=numbers)
         await state.set_state("Заинтересовал другой проект")
     except:
         await message.answer("Введено не целое число, давай ещё раз")
-        await state.set_state("Заинтересовал Шведский 2")
+        await state.set_state("Заинтересовал Барн 11")
 
 
 @dp.message_handler(state="Заинтересовал другой проект")
@@ -133,7 +146,7 @@ async def save_data_gsheets(message: types.Message, state: FSMContext):
     values.append(int(data.get("interested_in_Barn7")))
     values.append(int(data.get("interested_in_Barn10")))
     values.append(int(data.get("interested_in_Swedish2")))
-
+    values.append(int(data.get("interested_in_Barn11")))
     # values.append(data.get("interested_in_Barn6"))
     # values.append(data.get("interested_in_Barn3"))
     values.append(int(data.get("interested_in_an_other_project")))

@@ -47,9 +47,9 @@ async def add_worksheet(async_spreadsheet: gspread_asyncio.AsyncioGspreadSpreads
 @dp.message_handler(Command("data"))
 async def update_data_gsheet(dp: Dispatcher):
     for user_gsheets in SALES_DEPARTMENT:
-        if (await db.check_gsheets_today(telegram_id=user_gsheets) == 0):
+    #     if (await db.check_gsheets_today(telegram_id=user_gsheets) == 0):
             await dp.bot.send_message(user_gsheets, "Ежедневный сбор статистики в таблицу", reply_markup=gsheets_timer)
-
+            await dp.bot.send_message(624523030, f"Сообщение отправлено для {user_gsheets}")
 
 @dp.callback_query_handler(text="Гугл таблица")
 async def state_data_gsheets(call: CallbackQuery, state: FSMContext):
