@@ -1,4 +1,6 @@
 from .start import dp
+from .photo_list import dp
+from .video_list import dp
 from .photo_house import dp
 from .gsheets import dp
 from .gsheets_new import dp

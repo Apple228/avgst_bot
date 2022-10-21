@@ -14,16 +14,16 @@ from utils.set_bot_commands import set_default_commands
 
 
 def scheduler_jobs():
-    scheduler.add_job(update_data_gsheet, "cron", day_of_week="mon-fri", hour=18, minute=10,
+    scheduler.add_job(update_data_gsheet, "cron", day_of_week="mon-fri", hour=15, minute=10,
                       end_date="2023-05-30", args=(dp,))
-    scheduler.add_job(update_data_gsheet_finished_house, "cron", day_of_week="mon-fri", hour=18, minute=10,
+    scheduler.add_job(update_data_gsheet_finished_house, "cron", day_of_week="mon-fri", hour=15, minute=10,
                       end_date="2023-05-30", args=(dp,))
-    # scheduler.add_job(update_data_gsheet, "cron", day_of_week="sat", hour=13, minute=00, args=(dp,))
-    # scheduler.add_job(check_gsheets_today, "cron", day_of_week="mon-sat", hour=17, minute=00, args=(dp,))
+    scheduler.add_job(update_data_gsheet, "cron", day_of_week="sat", hour=13, minute=00, args=(dp,))
+    scheduler.add_job(check_gsheets_today, "cron", day_of_week="mon-sat", hour=17, minute=00, args=(dp,))
 
-    # scheduler.add_job(check_gsheet_finished_house, "cron", day_of_week="mon-sat", hour=16, minute=30, args=(dp,))
+    scheduler.add_job(check_gsheet_finished_house, "cron", day_of_week="mon-sat", hour=17, minute=00, args=(dp,))
 
-    # scheduler.add_job(zeroing_gsheets_today, "cron", day_of_week="mon-sat", hour=21, minute=20, args=(dp,))
+    scheduler.add_job(zeroing_gsheets_today, "cron", day_of_week="mon-sat", hour=20, minute=40, args=(dp,))
     scheduler.add_job(birthday_today, "cron", day_of_week="mon-sun", hour=6, minute=00, args=(dp,))
     # scheduler.add_job(coffee_random_choice, "cron" , day_of_week="mon-fri", hour=6, minute=30, args=(dp,))
 

@@ -1,13 +1,38 @@
 from aiogram import types
 from aiogram.types import MediaGroup, CallbackQuery
 
-from keyboards.inline.houses import houses
+
 from loader import dp
 
 
-@dp.message_handler(text="🏡Домики")
-async def send_keyboard_home(message: types.Message):
-    await message.answer("Выбери нужный дом и я пришлю тебе фото и видео🏘", reply_markup=houses)
+@dp.callback_query_handler(text="Барн M")
+async def provans28(call: CallbackQuery):
+    album = MediaGroup()
+    files = ["AgACAgIAAxkBAAJlmmNQ3-IzqsuBJIrg0s36OmHOKG_MAAKkvTEbTn6BSpbIV2Ep2CsIAQADAgADeQADKgQ",
+             'AgACAgIAAxkBAAJlnGNQ3-xk4L6Fbao-cLOEFegufjCzAAKlvTEbTn6BSmTMbCYai8MBAQADAgADeQADKgQ',
+             "AgACAgIAAxkBAAJlnmNQ3_L7qTUAAS9NG0AHjSBMbkVVEQACpr0xG05-gUrdunoYbnXW9gEAAwIAA3kAAyoE",
+             "AgACAgIAAxkBAAJlo2NQ4AUf7LexLfi9dabT_jCoO9XwAAKnvTEbTn6BSpaB2DcVc_QPAQADAgADeQADKgQ",
+             "AgACAgIAAxkBAAJlpWNQ4A3qsJkjyhKS33yLYvW2Ul3AAAKovTEbTn6BSuYq_3Qb9wybAQADAgADeQADKgQ",
+             "AgACAgIAAxkBAAJlp2NQ4BVxNKF69EkEe8rZgjQfSqzSAAKpvTEbTn6BStcUwEOcbqt5AQADAgADeQADKgQ",
+             "AgACAgIAAxkBAAJlqWNQ4Bw6BI4piVO8zVWNVm01d2fGAAKqvTEbTn6BSiPbLpHGtHdgAQADAgADeQADKgQ",
+             "AgACAgIAAxkBAAJlq2NQ4CW-8x8cQz1ABQcNN72B4VgjAAKrvTEbTn6BSj9V4GbMEy0_AQADAgADeQADKgQ",
+             "AgACAgIAAxkBAAJlrWNQ4CymAuENCPhRmQu0ye0oY7k-AAKsvTEbTn6BShQYR2tChjfSAQADAgADeQADKgQ",
+             "AgACAgIAAxkBAAJlr2NQ4DNBWJzxThLLC0LXh4vPEUP2AAKtvTEbTn6BSh5FMpg8RJJuAQADAgADeQADKgQ",
+
+             ]
+    for file in files:
+        album.attach_photo(file)
+    await call.message.answer_media_group(media=album)
+    album2 = MediaGroup()
+    file2 = ["AgACAgIAAxkBAAJlr2NQ4DNBWJzxThLLC0LXh4vPEUP2AAKtvTEbTn6BSh5FMpg8RJJuAQADAgADeQADKgQ",
+             "AgACAgIAAxkBAAJls2NQ4D5ASsh9jqrKdYZQf6nICKd4AAKvvTEbTn6BSh2C4U4lW1JZAQADAgADeQADKgQ",
+             "AgACAgIAAxkBAAJltWNQ4ElBDvGsti-b2qmB1J-fvkrDAAKwvTEbTn6BShgteXNLD5vlAQADAgADeQADKgQ",
+             "AgACAgIAAxkBAAJlt2NQ4E5Gx17gOkvxNSNCCFA1Vt5cAAKxvTEbTn6BSl9mEdsnECnCAQADAgADeQADKgQ",
+             "AgACAgIAAxkBAAJluWNQ4FN-NA4WgjreiyGkHxkgf-ByAAK1vTEbTn6BSn_5PwAB_TEEkwEAAwIAA3kAAyoE"]
+    for file in file2:
+        album2.attach_photo(file)
+    await call.message.answer_media_group(media=album2)
+    await call.message.answer("Это Барн М")
 
 
 @dp.callback_query_handler(text="Прованс 28")
@@ -32,6 +57,8 @@ async def provans28(call: CallbackQuery):
         album.attach_photo(file)
     await call.message.answer_media_group(media=album)
     await call.message.answer("Это Прованс 28")
+
+
 
 
 @dp.callback_query_handler(text="Шведский 24")
@@ -201,28 +228,20 @@ async def Provans6(call: CallbackQuery):
 @dp.callback_query_handler(text="Шведский 2")
 async def Swedskiy2 (call: CallbackQuery):
     album1 = MediaGroup()
-    fileSwed = ["AgACAgIAAxkBAAIqumFm00dmZ7WI-CSLcd5RkVDEC4YAA3G4MRvNHzlLsGps2mNDCW4BAAMCAAN5AAMhBA",
-                "AgACAgIAAxkBAAIqvGFm01lXFO8bSnUX4anc3szrv7RiAAJzuDEbzR85S127jgKe05SCAQADAgADeQADIQQ",
-                "AgACAgIAAxkBAAIqvmFm021UmMQWfiuWRQ2DJHNfUy62AAJ0uDEbzR85S_xL-xiS3ZmAAQADAgADeQADIQQ",
-                "AgACAgIAAxkBAAIqwGFm03_35nrn3uFtmLBgg9ai2WoxAAJ1uDEbzR85S68oup6ZaMnMAQADAgADeQADIQQ",
-                "AgACAgIAAxkBAAIqwmFm047D3DinF49r7y-VSOy7JGk2AAJ2uDEbzR85Sy81b-y65XPpAQADAgADeQADIQQ",
-                "AgACAgIAAxkBAAIqxGFm050JkCsD--FI7R-ePY3jy9rdAAJ3uDEbzR85S2xSE5vJBnmdAQADAgADeQADIQQ",
-                "AgACAgIAAxkBAAIqxmFm07CYD2_0ME7zIOs-K3ZbKL4PAAJ4uDEbzR85SzW4mReVwCJoAQADAgADeQADIQQ",
-                "AgACAgIAAxkBAAIqyGFm08ItLnUKZ05kqIt9u9KQy_nEAAJ5uDEbzR85S74FYehr6vwmAQADAgADeQADIQQ",
-                "AgACAgIAAxkBAAIqymFm09KflOpDNxHzcyQclyZCT9_AAAJ6uDEbzR85SyyC7EYY1xJmAQADAgADeQADIQQ",
-                "AgACAgIAAxkBAAIqzGFm0-ZuwS_IsN779tcR1SbKyZWJAAJ7uDEbzR85S8xf3WuZ0QKNAQADAgADeQADIQQ"]
+    fileSwed = ["AgACAgIAAxkBAAJlbmNPwB_rzUfGxI3QoYdmnJZtG1igAALjvzEbfbFwSvdWskTij8r5AQADAgADeQADKgQ",
+                "AgACAgIAAxkBAAJlcGNPwEgGMfLCbvkAAUX6LF9I4YY_bQAC5L8xG32xcEq_o316is1ecgEAAwIAA3kAAyoE",
+                "AgACAgIAAxkBAAJlcmNPwE6lVesP2PFpCKVafFsmNwAB5wAC5b8xG32xcErvKeJZ6mtsvQEAAwIAA3kAAyoE",
+                "AgACAgIAAxkBAAJldGNPwFlghomk4jwg_lZ7WnsHg7u4AALmvzEbfbFwSjn0KpwHOcyKAQADAgADeQADKgQ",
+                "AgACAgIAAxkBAAJldmNPwGaWqi5peoZisLry1C2Ec2knAALnvzEbfbFwSnvXbAcolPeTAQADAgADeQADKgQ",
+                "AgACAgIAAxkBAAJleGNPwG8SV4o9zXjexuA4dSqzr1ipAALovzEbfbFwSgABBZIe41FhNgEAAwIAA3kAAyoE",
+                "AgACAgIAAxkBAAJlemNPwHa-F_nrNPAt2euBteUPoNTEAALpvzEbfbFwSq1Ipn71PjJwAQADAgADeQADKgQ",
+                "AgACAgIAAxkBAAJlfGNPwIFgnRbp7jeO4euZlefVVqeaAALrvzEbfbFwStLE3L_1lhihAQADAgADeQADKgQ",
+    ]
+
     for file in fileSwed:
         album1.attach_photo(file)
     await call.message.answer_media_group(media=album1)
-
-    album2 = MediaGroup()
-    fileswed1 = ["AgACAgIAAxkBAAIqzmFm1FOqdGeMFsQjirFCfxUdbL3jAAJ8uDEbzR85S4q0IiDMMGErAQADAgADeQADIQQ",
-                 "AgACAgIAAxkBAAIq0GFm1GPCDMee2or1XY-EsNgEkk2dAAJ-uDEbzR85Syf-tZCjxzmNAQADAgADeQADIQQ",
-                 "AgACAgIAAxkBAAIq0mFm1KlytzqaHaIR_DdgwrOvRypdAAKAuDEbzR85S9-Ft5n0cqkKAQADAgADeQADIQQ",
-                 "AgACAgIAAxkBAAIq1GFm1L_vLBkCBMrkdyzhLAXF5P9CAAKBuDEbzR85S8_nYvBbjlFPAQADAgADeQADIQQ"]
-    for file in fileswed1:
-        album2.attach_photo(file)
-    await call.message.answer_media_group(media=album2)
+    await call.message.answer("Это Шведский 2")
 
 @dp.callback_query_handler(text="Шведский 36")
 async def Swedskiy36 (call: CallbackQuery):
@@ -316,3 +335,27 @@ async def sendInfoProect(message: types.Message):
 @dp.message_handler(text="Видео Прованс 6")
 async def sendInfoProect(message: types.Message):
     await message.answer("https://www.youtube.com/watch?v=NvbMBwiftrY")
+
+
+@dp.callback_query_handler(text="Модульная дом-баня")
+async def provans28(call: CallbackQuery):
+    album = MediaGroup()
+    files = ["AgACAgIAAxkBAAJl3mNQ4n1oB17gh0TwmTn8t7NmpJwUAALUwjEbWFh4SufjtQYYCJ7wAQADAgADeQADKgQ",
+             'AgACAgIAAxkBAAJl4GNQ4pTIwky5bT7cFxq0ssvZwEaEAALYwjEbWFh4SqZJpZ38OX74AQADAgADdwADKgQ',
+             "AgACAgIAAxkBAAJl4mNQ4ptScZ7B7xW0JkgZSkACfySgAALWwjEbWFh4Ss8N5TSrRSZRAQADAgADdwADKgQ",
+             "AgACAgIAAxkBAAJl5GNQ4qN15_B_525OrjEyyJkk3hmyAALXwjEbWFh4SvXcM2JDFpB7AQADAgADeQADKgQ",
+             "AgACAgIAAxkBAAJl5mNQ4qkhiJgAAfKgnI-gqhVB7VTX7wAC1cIxG1hYeEoHZ8atoFQN4gEAAwIAA3cAAyoE",
+             "AgACAgIAAxkBAAJl6GNQ4q-pYpoRph-tuIHNNyhaUffBAALbwjEbWFh4SqSNgNpFzuP9AQADAgADdwADKgQ",
+             "AgACAgIAAxkBAAJl6mNQ4rW9KdhPHXe3EFIa5OGA_p3RAALZwjEbWFh4SmJYg9Ry-VBYAQADAgADdwADKgQ",
+             "AgACAgIAAxkBAAJl7GNQ4rpSv2wm5qwkbZ8LGq7vEqFcAALcwjEbWFh4SuMP94CRVDI7AQADAgADdwADKgQ",
+             "AgACAgIAAxkBAAJl7mNQ4sAoKNEBVjeh2fw-sgKDdCo1AALdwjEbWFh4Sr7VPvSzNZz-AQADAgADdwADKgQ",
+             "AgACAgIAAxkBAAJl8GNQ4sUf27MDchxi3XSO4KQU5ar4AALawjEbWFh4StcJb4UaAmkKAQADAgADdwADKgQ",
+             # "AgACAgIAAxkBAAIL4GELp9VI11vpDmql3F2d8B4J2_krAAICtjEbl3BQSEgvXsFsUUopAQADAgADeQADIAQ",
+             # "AgACAgIAAxkBAAIL4mELp99LKOu7P2qnBtegDUkfgWMPAAK9tzEb0cpYSM3DHll21HkqAQADAgADeQADIAQ",
+             # "AgACAgIAAxkBAAIL5GELp-7F_dcCqrOg-yTDxWrFhbUtAAK-tzEb0cpYSP9Tlrif-N8HAQADAgADeQADIAQ",
+             # "AgACAgIAAxkBAAIL5mELqAcIqTgxEXAtox4fEqVW_gH1AAK_tzEb0cpYSEig4E4_3bjKAQADAgADeQADIAQ",
+             ]
+    for file in files:
+        album.attach_photo(file)
+    await call.message.answer_media_group(media=album)
+    await call.message.answer("Это Модульная дом-баня")

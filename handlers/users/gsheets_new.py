@@ -20,7 +20,7 @@ from loader import dp, db
 async def update_data_gsheet_finished_house(dp: Dispatcher):
     for user_gsheets in DEPARTMENT_OF_READY_HOUSES:
     #     if (await db.check_gsheets_today(telegram_id=user_gsheets) == 0):
-            await dp.bot.send_message(user_gsheets, "Ежедневный сбор статистики в таблицу",
+            await dp.bot.send_message(user_gsheets, "Ежедневный сбор статистики в таблицу <b>за сегодня!!! (11 число)</b>",
                                       reply_markup=gsheets_timer_finished_house)
             username = await db.select_full_name(user_gsheets)
             await dp.bot.send_message(624523030, f"Сообщение отправлено для {username}")

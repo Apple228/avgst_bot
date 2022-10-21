@@ -3,22 +3,22 @@ houses = InlineKeyboardMarkup(row_width=2,
                             inline_keyboard=[
                                 [
                                     InlineKeyboardButton(
-                                        text="Прованс 28",
-                                        callback_data="Прованс 28"
+                                        text="Барн 10",
+                                        callback_data="Барн 10"
                                     ),
                                     InlineKeyboardButton(
-                                        text="Шведский 28",
-                                        callback_data="Шведский 28"
+                                        text="Барн M",
+                                        callback_data="Барн M"
                                     ),
                                 ],
                                 [
                                     InlineKeyboardButton(
-                                        text="Шведский 24",
-                                        callback_data="Шведский 24"
+                                        text="Барн L",
+                                        callback_data="Барн L"
                                     ),
                                     InlineKeyboardButton(
-                                        text="Прованс 6",
-                                        callback_data="Прованс 6"
+                                        text="Барн XL",
+                                        callback_data="Барн XL"
                                     )
                                 ],
                                 [
@@ -36,11 +36,33 @@ houses = InlineKeyboardMarkup(row_width=2,
                                         text="Шведский 2",
                                         callback_data="Шведский 2"
                                     ),
+                                    InlineKeyboardButton(
+                                        text="Модульная дом-баня",
+                                        callback_data="Модульная дом-баня"
+                                    ),
                                 ],
                                 [
                                     InlineKeyboardButton(
-                                        text="Шведский 36",
-                                        callback_data="Шведский 36"
+                                        text="Прованс 24",
+                                        callback_data="Прованс 24"
+                                    ),
+
+
+                                    InlineKeyboardButton(
+                                        text="Прованс 6",
+                                        callback_data="Прованс 6"
+                                    ),
+                                ],
+                                [
+                                    InlineKeyboardButton(
+                                        text="Шведский 3",
+                                        callback_data="Шведский 3"
+                                    ),
+
+
+                                    InlineKeyboardButton(
+                                        text="Премьер 4",
+                                        callback_data="Премьер 4"
                                     ),
                                 ]
                             ])

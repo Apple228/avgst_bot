@@ -17,10 +17,10 @@ async def cancel(message: types.Message, state: FSMContext):
     await state.reset_state()
 
 
-@dp.message_handler(Command("menu"))
-async def show_menu(message: types.Message):
+@dp.message_handler(Command("menu"), state="*")
+async def show_menu(message: types.Message, state: FSMContext):
     await message.answer("Выберите действие из меню ниже", reply_markup=menu)
-
+    await state.reset_state()
 
 @dp.message_handler(text="☎Контакты")
 async def select_contacts(message: types.Message):
