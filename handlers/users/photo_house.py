@@ -1,38 +1,43 @@
-from aiogram import types
-from aiogram.types import MediaGroup, CallbackQuery
+import os
 
+from aiogram import types
+from aiogram.types import MediaGroup, CallbackQuery, InputFile
 
 from loader import dp
 
 
 @dp.callback_query_handler(text="Барн M")
-async def provans28(call: CallbackQuery):
-    album = MediaGroup()
-    files = ["AgACAgIAAxkBAAJlmmNQ3-IzqsuBJIrg0s36OmHOKG_MAAKkvTEbTn6BSpbIV2Ep2CsIAQADAgADeQADKgQ",
-             'AgACAgIAAxkBAAJlnGNQ3-xk4L6Fbao-cLOEFegufjCzAAKlvTEbTn6BSmTMbCYai8MBAQADAgADeQADKgQ',
-             "AgACAgIAAxkBAAJlnmNQ3_L7qTUAAS9NG0AHjSBMbkVVEQACpr0xG05-gUrdunoYbnXW9gEAAwIAA3kAAyoE",
-             "AgACAgIAAxkBAAJlo2NQ4AUf7LexLfi9dabT_jCoO9XwAAKnvTEbTn6BSpaB2DcVc_QPAQADAgADeQADKgQ",
-             "AgACAgIAAxkBAAJlpWNQ4A3qsJkjyhKS33yLYvW2Ul3AAAKovTEbTn6BSuYq_3Qb9wybAQADAgADeQADKgQ",
-             "AgACAgIAAxkBAAJlp2NQ4BVxNKF69EkEe8rZgjQfSqzSAAKpvTEbTn6BStcUwEOcbqt5AQADAgADeQADKgQ",
-             "AgACAgIAAxkBAAJlqWNQ4Bw6BI4piVO8zVWNVm01d2fGAAKqvTEbTn6BSiPbLpHGtHdgAQADAgADeQADKgQ",
-             "AgACAgIAAxkBAAJlq2NQ4CW-8x8cQz1ABQcNN72B4VgjAAKrvTEbTn6BSj9V4GbMEy0_AQADAgADeQADKgQ",
-             "AgACAgIAAxkBAAJlrWNQ4CymAuENCPhRmQu0ye0oY7k-AAKsvTEbTn6BShQYR2tChjfSAQADAgADeQADKgQ",
-             "AgACAgIAAxkBAAJlr2NQ4DNBWJzxThLLC0LXh4vPEUP2AAKtvTEbTn6BSh5FMpg8RJJuAQADAgADeQADKgQ",
+async def barnM(call: CallbackQuery):
+    # photo_bytes = InputFile(path_or_bytesio='photo/houses/barnM/1.jpg')
+    # await call.message.answer_photo(photo=photo_bytes)
+    content = os.listdir('photo/houses/barnM/')
 
-             ]
-    for file in files:
-        album.attach_photo(file)
+    album = MediaGroup()
+    # files = ["AgACAgIAAxkBAAJlmmNQ3-IzqsuBJIrg0s36OmHOKG_MAAKkvTEbTn6BSpbIV2Ep2CsIAQADAgADeQADKgQ",
+    #          'AgACAgIAAxkBAAJlnGNQ3-xk4L6Fbao-cLOEFegufjCzAAKlvTEbTn6BSmTMbCYai8MBAQADAgADeQADKgQ',
+    #          "AgACAgIAAxkBAAJlnmNQ3_L7qTUAAS9NG0AHjSBMbkVVEQACpr0xG05-gUrdunoYbnXW9gEAAwIAA3kAAyoE",
+    #          "AgACAgIAAxkBAAJlo2NQ4AUf7LexLfi9dabT_jCoO9XwAAKnvTEbTn6BSpaB2DcVc_QPAQADAgADeQADKgQ",
+    #          "AgACAgIAAxkBAAJlpWNQ4A3qsJkjyhKS33yLYvW2Ul3AAAKovTEbTn6BSuYq_3Qb9wybAQADAgADeQADKgQ",
+    #          "AgACAgIAAxkBAAJlp2NQ4BVxNKF69EkEe8rZgjQfSqzSAAKpvTEbTn6BStcUwEOcbqt5AQADAgADeQADKgQ",
+    #          "AgACAgIAAxkBAAJlqWNQ4Bw6BI4piVO8zVWNVm01d2fGAAKqvTEbTn6BSiPbLpHGtHdgAQADAgADeQADKgQ",
+    #          "AgACAgIAAxkBAAJlq2NQ4CW-8x8cQz1ABQcNN72B4VgjAAKrvTEbTn6BSj9V4GbMEy0_AQADAgADeQADKgQ",
+    #          "AgACAgIAAxkBAAJlrWNQ4CymAuENCPhRmQu0ye0oY7k-AAKsvTEbTn6BShQYR2tChjfSAQADAgADeQADKgQ",
+    #          "AgACAgIAAxkBAAJlr2NQ4DNBWJzxThLLC0LXh4vPEUP2AAKtvTEbTn6BSh5FMpg8RJJuAQADAgADeQADKgQ",
+    #
+    #          ]
+    for file in content:
+        album.attach_photo(InputFile(path_or_bytesio=f'photo/houses/barnM/{file}'))
     await call.message.answer_media_group(media=album)
-    album2 = MediaGroup()
-    file2 = ["AgACAgIAAxkBAAJlr2NQ4DNBWJzxThLLC0LXh4vPEUP2AAKtvTEbTn6BSh5FMpg8RJJuAQADAgADeQADKgQ",
-             "AgACAgIAAxkBAAJls2NQ4D5ASsh9jqrKdYZQf6nICKd4AAKvvTEbTn6BSh2C4U4lW1JZAQADAgADeQADKgQ",
-             "AgACAgIAAxkBAAJltWNQ4ElBDvGsti-b2qmB1J-fvkrDAAKwvTEbTn6BShgteXNLD5vlAQADAgADeQADKgQ",
-             "AgACAgIAAxkBAAJlt2NQ4E5Gx17gOkvxNSNCCFA1Vt5cAAKxvTEbTn6BSl9mEdsnECnCAQADAgADeQADKgQ",
-             "AgACAgIAAxkBAAJluWNQ4FN-NA4WgjreiyGkHxkgf-ByAAK1vTEbTn6BSn_5PwAB_TEEkwEAAwIAA3kAAyoE"]
-    for file in file2:
-        album2.attach_photo(file)
-    await call.message.answer_media_group(media=album2)
-    await call.message.answer("Это Барн М")
+    # album2 = MediaGroup()
+    # file2 = ["AgACAgIAAxkBAAJlr2NQ4DNBWJzxThLLC0LXh4vPEUP2AAKtvTEbTn6BSh5FMpg8RJJuAQADAgADeQADKgQ",
+    #          "AgACAgIAAxkBAAJls2NQ4D5ASsh9jqrKdYZQf6nICKd4AAKvvTEbTn6BSh2C4U4lW1JZAQADAgADeQADKgQ",
+    #          "AgACAgIAAxkBAAJltWNQ4ElBDvGsti-b2qmB1J-fvkrDAAKwvTEbTn6BShgteXNLD5vlAQADAgADeQADKgQ",
+    #          "AgACAgIAAxkBAAJlt2NQ4E5Gx17gOkvxNSNCCFA1Vt5cAAKxvTEbTn6BSl9mEdsnECnCAQADAgADeQADKgQ",
+    #          "AgACAgIAAxkBAAJluWNQ4FN-NA4WgjreiyGkHxkgf-ByAAK1vTEbTn6BSn_5PwAB_TEEkwEAAwIAA3kAAyoE"]
+    # for file in file2:
+    #     album2.attach_photo(file)
+    # await call.message.answer_media_group(media=album2)
+    # await call.message.answer("Это Барн М")
 
 
 @dp.callback_query_handler(text="Прованс 28")

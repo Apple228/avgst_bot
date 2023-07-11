@@ -13,7 +13,7 @@ menu = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton(text="📊Новая задача"),
-            KeyboardButton(text="📝Список задач")
+            KeyboardButton(text="📝Новый лид")
         ],
         [
             KeyboardButton(text="📄Документы"),
