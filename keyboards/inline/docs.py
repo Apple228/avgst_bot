@@ -5,32 +5,24 @@ docs = InlineKeyboardMarkup(inline_keyboard=[
         InlineKeyboardButton(
             text="Реквизиты",
             callback_data="Реквизиты"
+        ),
+        InlineKeyboardButton(
+            text="Регламент ОГД",
+            callback_data="Регламент ОГД"
         )
     ],
     [
         InlineKeyboardButton(
             text="Договора Гришаткин",
             callback_data="Договора Гришаткин"
-        )
-    ],
-    [
+        ),
         InlineKeyboardButton(
             text="Договора Лифанов",
             callback_data="Договора Лифанов"
         )
     ],
-    [
-        InlineKeyboardButton(
-            text="Акции",
-            callback_data="Акции"
-        ),
-        InlineKeyboardButton(
-            text="Регламенты",
-            callback_data="Регламенты"
-        )
-    ],
-])
 
+])
 
 requisites = InlineKeyboardMarkup(inline_keyboard=[
     [
@@ -41,6 +33,16 @@ requisites = InlineKeyboardMarkup(inline_keyboard=[
         InlineKeyboardButton(
             text="Реквизиты Лифанов",
             callback_data="Реквизиты Лифанов"
+        ),
+    ],
+    [
+        InlineKeyboardButton(
+            text="Реквизиты АС Каркас",
+            callback_data="Реквизиты АС Каркас"
+        ),
+        InlineKeyboardButton(
+            text="Реквизиты Якущенко",
+            callback_data="Реквизиты Якущенко"
         ),
     ],
     [
@@ -147,6 +149,3 @@ contract_Lifanov = InlineKeyboardMarkup(inline_keyboard=[
         )
     ]
 ])
-
-
-

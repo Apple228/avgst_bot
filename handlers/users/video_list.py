@@ -33,6 +33,14 @@ async def videoProvans24(call: CallbackQuery):
 @dp.callback_query_handler(text="Прованс 24 видео")
 async def videoProvans24(call: CallbackQuery):
     await call.message.answer("https://youtu.be/eb6iThtoEsI")
+
+@dp.callback_query_handler(text="Барн L видео")
+async def videoProvans24(call: CallbackQuery):
+    await call.message.answer("https://vk.com/video-124869734_456240144")
+
+@dp.callback_query_handler(text="Шведский М видео")
+async def videoProvans24(call: CallbackQuery):
+    await call.message.answer("https://youtu.be/PJQniBweztA")
 @dp.callback_query_handler(text="Видео с производства")
 async def videoProizodstvo(call: CallbackQuery):
     await call.message.answer("https://www.youtube.com/watch?v=KnsOR6zkFaA")

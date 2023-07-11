@@ -14,8 +14,8 @@ photo_list = InlineKeyboardMarkup(row_width=2,
                                       ],
                                       [
                                           InlineKeyboardButton(
-                                              text="Фото производства",
-                                              callback_data="Фото производства"
+                                              text="Фото посёлка",
+                                              callback_data="Фото посёлка"
                                           ),
                                           InlineKeyboardButton(
                                               text="Фото домов",

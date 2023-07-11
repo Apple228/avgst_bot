@@ -53,5 +53,15 @@ houses_video = InlineKeyboardMarkup(row_width=2,
                                                 callback_data="Прованс 24 видео"
                                             ),
                                         ],
+                                        [
+                                            InlineKeyboardButton(
+                                                text="Барн L",
+                                                callback_data="Барн L видео"
+                                            ),
+                                            InlineKeyboardButton(
+                                                text="Шведский М",
+                                                callback_data="Шведский М видео"
+                                            ),
+                                        ]
 
                                     ])

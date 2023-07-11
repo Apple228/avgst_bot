@@ -10,7 +10,7 @@ from keyboards.default.menu import incoming_and_outgoing
 from loader import dp, db
 
 
-
+@dp.message_handler(Command("cancel"), state="*")
 @dp.message_handler(text="Отмена", state="*")
 async def cancel(message: types.Message, state: FSMContext):
     await message.answer("Отменено", reply_markup=menu)
@@ -22,7 +22,7 @@ async def show_menu(message: types.Message, state: FSMContext):
     await message.answer("Выберите действие из меню ниже", reply_markup=menu)
     await state.reset_state()
 
-@dp.message_handler(text="☎Контакты")
+@dp.message_handler(text="Контакты")
 async def select_contacts(message: types.Message):
     contacts = await db.select_contacts()
     user_data = list(contacts)

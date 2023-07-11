@@ -4,12 +4,12 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 menu = ReplyKeyboardMarkup(
     [
         [
-            KeyboardButton(text="📹Видео"),
+            KeyboardButton(text="💡Сделать опрос", request_poll=types.KeyboardButtonPollType()),
             KeyboardButton(text="📷Фото")
         ],
         [
             KeyboardButton(text="📢Объявление для всех"),
-            KeyboardButton(text="💡Сделать опрос", request_poll=types.KeyboardButtonPollType())
+            KeyboardButton(text="📹Видео"),
         ],
         [
             KeyboardButton(text="📊Новая задача"),

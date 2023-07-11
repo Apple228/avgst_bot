@@ -1,70 +1,52 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
 houses = InlineKeyboardMarkup(row_width=2,
-                            inline_keyboard=[
-                                [
-                                    InlineKeyboardButton(
-                                        text="Барн 10",
-                                        callback_data="Барн 10"
-                                    ),
-                                    InlineKeyboardButton(
-                                        text="Барн M",
-                                        callback_data="Барн M"
-                                    ),
-                                ],
-                                [
-                                    InlineKeyboardButton(
-                                        text="Барн L",
-                                        callback_data="Барн L"
-                                    ),
-                                    InlineKeyboardButton(
-                                        text="Барн XL",
-                                        callback_data="Барн XL"
-                                    )
-                                ],
-                                [
-                                    InlineKeyboardButton(
-                                        text="Барн 7",
-                                        callback_data="Барн 7"
-                                    ),
-                                    InlineKeyboardButton(
-                                        text="Шведский 23",
-                                        callback_data="Шведский 23"
-                                    ),
-                                ],
-                                [
-                                    InlineKeyboardButton(
-                                        text="Шведский 2",
-                                        callback_data="Шведский 2"
-                                    ),
-                                    InlineKeyboardButton(
-                                        text="Модульная дом-баня",
-                                        callback_data="Модульная дом-баня"
-                                    ),
-                                ],
-                                [
-                                    InlineKeyboardButton(
-                                        text="Прованс 24",
-                                        callback_data="Прованс 24"
-                                    ),
+                              inline_keyboard=[
+                                  [
+                                      InlineKeyboardButton(
+                                          text="Барн L",
+                                          callback_data="Барн L"
+                                      ),
+                                      InlineKeyboardButton(
+                                          text="Финляндия M",
+                                          callback_data="Финляндия M"
+                                      ),
+                                  ],
+                                  [
+                                      InlineKeyboardButton(
+                                          text="Модульный 49",
+                                          callback_data="Модульный 49"
+                                      ),
+                                      InlineKeyboardButton(
+                                          text="Модульная Дом-Баня",
+                                          callback_data="Модульная Дом-Баня"
+                                      ),
+                                  ],
+                                  [
+                                      InlineKeyboardButton(
+                                          text="Прованс XL",
+                                          callback_data="Прованс XL"
+                                      ),
+                                      InlineKeyboardButton(
+                                          text="Шведский 3",
+                                          callback_data="Шведский 3"
+                                      ),
+                                  ],
+                                  [
+                                      InlineKeyboardButton(
+                                          text="Шведский L",
+                                          callback_data="Шведский L"
+                                      ),
+                                      InlineKeyboardButton(
+                                          text="Финляндия XL",
+                                          callback_data="Финляндия XL"
+                                      ),
+                                  ],
+                                  [
+                                      InlineKeyboardButton(
+                                          text="Финляндия L",
+                                          callback_data="Финляндия L"
+                                      ),
+                                  ]
 
-
-                                    InlineKeyboardButton(
-                                        text="Прованс 6",
-                                        callback_data="Прованс 6"
-                                    ),
-                                ],
-                                [
-                                    InlineKeyboardButton(
-                                        text="Шведский 3",
-                                        callback_data="Шведский 3"
-                                    ),
-
-
-                                    InlineKeyboardButton(
-                                        text="Премьер 4",
-                                        callback_data="Премьер 4"
-                                    ),
-                                ]
-                            ])
-
-
+                              ])

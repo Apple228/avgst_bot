@@ -9,7 +9,7 @@ from data.config import PATH
 from keyboards.default import menu
 from keyboards.default.form_keyboards import location_keyboard, interesting_keyboard, target_keyboard, square_keyboard, \
     count_room_keyboard, equipment_keyboard, project_keyboard, budget_keyboard, payment_method_keyboard, \
-    mortgage_advice_keyboard, start_keyboard
+    mortgage_advice_keyboard, start_keyboard, planing_build_keyboard
 from loader import dp
 from google.oauth2.service_account import Credentials
 import gspread_asyncio
@@ -42,11 +42,7 @@ async def bot_start(message: types.Message, state: FSMContext):
     await message.answer("Имя клиента", reply_markup=ReplyKeyboardRemove())
     await state.set_state("Имя клиента")
 
-@dp.message_handler(Command("cancel"), state="*")
-@dp.message_handler(text="Отмена", state="*")
-async def cancel(message: types.Message, state: FSMContext):
-    await message.answer("Отменено", reply_markup=start_keyboard)
-    await state.reset_state()
+
 
 
 @dp.message_handler(state="Имя клиента")
@@ -77,10 +73,15 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
 async def state_data_gsheets(message: types.Message, state: FSMContext):
     client_interesting = message.text
     await state.update_data(client_interesting=client_interesting)
+    await message.answer("Когда планируется стройка?", reply_markup=planing_build_keyboard)
+    await state.set_state("Когда планируется стройка?")
+
+@dp.message_handler(state="Когда планируется стройка?")
+async def state_data_gsheets(message: types.Message, state: FSMContext):
+    planing_build = message.text
+    await state.update_data(planing_build=planing_build)
     await message.answer("Как используем дом?", reply_markup=target_keyboard)
     await state.set_state("Как используем дом?")
-
-
 @dp.message_handler(state="Как используем дом?")
 async def state_data_gsheets(message: types.Message, state: FSMContext):
     client_target = message.text
@@ -150,14 +151,15 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
                          f"4. {data.get('client_phone_number')}\n"
                          f"5. {data.get('client_location')}\n"
                          f"6. {data.get('client_interesting')}\n"
-                         f"7. {data.get('client_target')}\n"
-                         f"8. {data.get('client_square')}\n"
-                         f"9. {data.get('count_room')}\n"
-                         f"10. {data.get('equipment')}\n"
-                         f"11. {data.get('project')}\n"
-                         f"12. {data.get('budget')}\n"
-                         f"13. {data.get('payment_method')}\n"
-                         f"14. {data.get('mortgage_advice')}\n",
+                         f"7. {data.get('planing_build')}\n"
+                         f"8. {data.get('client_target')}\n"
+                         f"9. {data.get('client_square')}\n"
+                         f"10. {data.get('count_room')}\n"
+                         f"11. {data.get('equipment')}\n"
+                         f"12. {data.get('project')}\n"
+                         f"13. {data.get('budget')}\n"
+                         f"14. {data.get('payment_method')}\n"
+                         f"15. {data.get('mortgage_advice')}\n",
                          reply_markup=menu)
     await state.reset_state()
     spreadsheet_id = '1hocu-OWJdIDiTmy1WlteqprXhYPn7sIKkNUi8vdjXfQ'
@@ -167,7 +169,7 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
 
     worksheet = await async_spreadsheet.worksheet('Опросник выставка лето 2023')
     values = [message.from_user.full_name, today.strftime('%d.%m.%y'), data.get('client_name'),
-              data.get('client_phone_number'), data.get('client_location'),data.get('client_interesting'),
+              data.get('client_phone_number'), data.get('client_location'),data.get('client_interesting'), data.get('planing_build'),
               data.get('client_target'), data.get('client_square'), data.get('count_room'),
               data.get('equipment'), data.get('project'), data.get('budget'), data.get('payment_method'),
               data.get('mortgage_advice')]
