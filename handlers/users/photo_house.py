@@ -8,36 +8,51 @@ from loader import dp
 
 @dp.callback_query_handler(text="Барн M")
 async def barnM(call: CallbackQuery):
-    # photo_bytes = InputFile(path_or_bytesio='photo/houses/barnM/1.jpg')
-    # await call.message.answer_photo(photo=photo_bytes)
     content = os.listdir('photo/houses/barnM/')
-
-    album = MediaGroup()
-    # files = ["AgACAgIAAxkBAAJlmmNQ3-IzqsuBJIrg0s36OmHOKG_MAAKkvTEbTn6BSpbIV2Ep2CsIAQADAgADeQADKgQ",
-    #          'AgACAgIAAxkBAAJlnGNQ3-xk4L6Fbao-cLOEFegufjCzAAKlvTEbTn6BSmTMbCYai8MBAQADAgADeQADKgQ',
-    #          "AgACAgIAAxkBAAJlnmNQ3_L7qTUAAS9NG0AHjSBMbkVVEQACpr0xG05-gUrdunoYbnXW9gEAAwIAA3kAAyoE",
-    #          "AgACAgIAAxkBAAJlo2NQ4AUf7LexLfi9dabT_jCoO9XwAAKnvTEbTn6BSpaB2DcVc_QPAQADAgADeQADKgQ",
-    #          "AgACAgIAAxkBAAJlpWNQ4A3qsJkjyhKS33yLYvW2Ul3AAAKovTEbTn6BSuYq_3Qb9wybAQADAgADeQADKgQ",
-    #          "AgACAgIAAxkBAAJlp2NQ4BVxNKF69EkEe8rZgjQfSqzSAAKpvTEbTn6BStcUwEOcbqt5AQADAgADeQADKgQ",
-    #          "AgACAgIAAxkBAAJlqWNQ4Bw6BI4piVO8zVWNVm01d2fGAAKqvTEbTn6BSiPbLpHGtHdgAQADAgADeQADKgQ",
-    #          "AgACAgIAAxkBAAJlq2NQ4CW-8x8cQz1ABQcNN72B4VgjAAKrvTEbTn6BSj9V4GbMEy0_AQADAgADeQADKgQ",
-    #          "AgACAgIAAxkBAAJlrWNQ4CymAuENCPhRmQu0ye0oY7k-AAKsvTEbTn6BShQYR2tChjfSAQADAgADeQADKgQ",
-    #          "AgACAgIAAxkBAAJlr2NQ4DNBWJzxThLLC0LXh4vPEUP2AAKtvTEbTn6BSh5FMpg8RJJuAQADAgADeQADKgQ",
-    #
-    #          ]
+    album1 = MediaGroup()
+    album2 = MediaGroup()
+    album3 = MediaGroup()
+    have_album2 = False
+    have_album3 = False
     for file in content:
-        album.attach_photo(InputFile(path_or_bytesio=f'photo/houses/barnM/{file}'))
-    await call.message.answer_media_group(media=album)
-    # album2 = MediaGroup()
-    # file2 = ["AgACAgIAAxkBAAJlr2NQ4DNBWJzxThLLC0LXh4vPEUP2AAKtvTEbTn6BSh5FMpg8RJJuAQADAgADeQADKgQ",
-    #          "AgACAgIAAxkBAAJls2NQ4D5ASsh9jqrKdYZQf6nICKd4AAKvvTEbTn6BSh2C4U4lW1JZAQADAgADeQADKgQ",
-    #          "AgACAgIAAxkBAAJltWNQ4ElBDvGsti-b2qmB1J-fvkrDAAKwvTEbTn6BShgteXNLD5vlAQADAgADeQADKgQ",
-    #          "AgACAgIAAxkBAAJlt2NQ4E5Gx17gOkvxNSNCCFA1Vt5cAAKxvTEbTn6BSl9mEdsnECnCAQADAgADeQADKgQ",
-    #          "AgACAgIAAxkBAAJluWNQ4FN-NA4WgjreiyGkHxkgf-ByAAK1vTEbTn6BSn_5PwAB_TEEkwEAAwIAA3kAAyoE"]
-    # for file in file2:
-    #     album2.attach_photo(file)
-    # await call.message.answer_media_group(media=album2)
-    # await call.message.answer("Это Барн М")
+        if int(file.split(".")[0])<=10:
+            album1.attach_photo(InputFile(path_or_bytesio=f'photo/houses/barnM/{file}'))
+        elif 10<int(file.split(".")[0])<=20:
+            album2.attach_photo(InputFile(path_or_bytesio=f'photo/houses/barnM/{file}'))
+            have_album2 = True
+        elif 20<int(file.split(".")[0])<=30:
+            album3.attach_photo(InputFile(path_or_bytesio=f'photo/houses/barnM/{file}'))
+            have_album3 = True
+    await call.message.answer_media_group(media=album1)
+    if have_album2:
+        await call.message.answer_media_group(media=album2)
+    if have_album3:
+        await call.message.answer_media_group(media=album3)
+
+
+@dp.callback_query_handler(text="Барн L")
+async def barnM(call: CallbackQuery):
+    content = os.listdir('photo/houses/barnL/')
+    album1 = MediaGroup()
+    album2 = MediaGroup()
+    album3 = MediaGroup()
+    have_album2 = False
+    have_album3 = False
+    for file in content:
+        if int(file.split(".")[0])<=10:
+            album1.attach_photo(InputFile(path_or_bytesio=f'photo/houses/barnL/{file}'))
+        elif 10<int(file.split(".")[0])<=20:
+            album2.attach_photo(InputFile(path_or_bytesio=f'photo/houses/barnL/{file}'))
+            have_album2 = True
+        elif 20<int(file.split(".")[0])<=30:
+            album3.attach_photo(InputFile(path_or_bytesio=f'photo/houses/barnL/{file}'))
+            have_album3 = True
+    await call.message.answer_media_group(media=album1)
+    if have_album2:
+        await call.message.answer_media_group(media=album2)
+    if have_album3:
+        await call.message.answer_media_group(media=album3)
+
 
 
 @dp.callback_query_handler(text="Прованс 28")
@@ -52,7 +67,7 @@ async def provans28(call: CallbackQuery):
              "AgACAgIAAxkBAAId4WENDWWrTPC3VtREnkJImsHgs1RlAAK7tzEb0cpYSD9Y_OfEKoqbAQADAgADeQADIAQ",
              "AgACAgIAAxkBAAId42ENDXCmIj5m5U12cGkZfNu2L951AAIDtjEbl3BQSKGycDN7oR8fAQADAgADeQADIAQ",
              "AgACAgIAAxkBAAId5WENDX-tcWhBIA2hrCv1svF6G34dAAK8tzEb0cpYSK0_cLfSbCntAQADAgADeQADIAQ",
-             "AgACAgIAAxkBAAId52ENDYsjA-H99b-dFo8N6nfqmgVjAAIBtjEbl3BQSIzsmHYpM__1AQADAgADeQADIAQ",
+             "AgACAgIAAxkBAAId52ENDYsjA-H99b-dFo8N6nfqmgVjAAIBtjБарнEbl3BQSIzsmHYpM__1AQADAgADeQADIAQ",
              # "AgACAgIAAxkBAAIL4GELp9VI11vpDmql3F2d8B4J2_krAAICtjEbl3BQSEgvXsFsUUopAQADAgADeQADIAQ",
              # "AgACAgIAAxkBAAIL4mELp99LKOu7P2qnBtegDUkfgWMPAAK9tzEb0cpYSM3DHll21HkqAQADAgADeQADIAQ",
              # "AgACAgIAAxkBAAIL5GELp-7F_dcCqrOg-yTDxWrFhbUtAAK-tzEb0cpYSP9Tlrif-N8HAQADAgADeQADIAQ",

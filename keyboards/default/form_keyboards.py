@@ -73,7 +73,7 @@ equipment_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,
 project_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,
                                        keyboard=[
                                            [
-                                               KeyboardButton(text="Барнхаус XL>"),
+                                               KeyboardButton(text="Барнхаус XL"),
                                                KeyboardButton(text="Барнхаус L"),
                                                KeyboardButton(text="Прованс XL"),
                                            ],
