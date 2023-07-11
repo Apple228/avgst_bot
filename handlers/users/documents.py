@@ -42,6 +42,11 @@ async def document(call: CallbackQuery):
     file_id_1 = "BQACAgIAAxkBAAIywWGWNn5R4ELEC8N_MzVTNtlKMsU9AAIEDgACUdqwSWGzzpOGAS4_IgQ"
     await dp.bot.send_document(chat_id=id, document=file_id_1)
 
+@dp.callback_query_handler(text="Регламент ОГД")
+async def document(call: CallbackQuery):
+    id = call.from_user.id
+    file_id_1 = "BQACAgIAAxkBAAJz5GSt5Bkzje8iEiBG_hqP-hMWOAoTAALkLAAC1G4xSQx3R_C_qZAjLwQ"
+    await dp.bot.send_document(chat_id=id, document=file_id_1)
 
 
 

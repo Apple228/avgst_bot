@@ -158,6 +158,7 @@ async def barnM(call: CallbackQuery):
         await call.message.answer_media_group(media=album2)
     if have_album3:
         await call.message.answer_media_group(media=album3)
+    await call.message.answer('3D тур поселка https://6481fc89b9d3e315553d1233--frolicking-heliotrope-01e7ac.netlify.app/')
 
 
 @dp.callback_query_handler(text="Фото посёлка")
