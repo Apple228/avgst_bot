@@ -36,7 +36,12 @@ tyr3DBarn10_keyboard = InlineKeyboardMarkup(row_width=2,
                                                         text="Барн XL",
                                                         callback_data="Барн XL 3D тур"
                                                     ),
-
+                                                ],
+                                                [
+                                                    InlineKeyboardButton(
+                                                        text="Посёлок",
+                                                        callback_data="Посёлок 3D тур"
+                                                    ),
                                                 ]
 
                                             ])

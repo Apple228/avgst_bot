@@ -26,6 +26,9 @@ async def tyr3DBarn10(call: CallbackQuery):
 async def tyr3DBarn10(call: CallbackQuery):
     await call.message.answer("Барн XL 3D тур https://zima360.ru/wp-content/uploads/2022/07/nnhouse2avangardlight/")
 
+@dp.callback_query_handler(text="Посёлок 3D тур")
+async def tyr3DBarn10(call: CallbackQuery):
+    await call.message.answer("Посёлок 3D тур https://6481fc89b9d3e315553d1233--frolicking-heliotrope-01e7ac.netlify.app/")
 @dp.callback_query_handler(text="Барн XL видео")
 async def videoProvans24(call: CallbackQuery):
     await call.message.answer("https://youtu.be/9W_VsR4NbQo")

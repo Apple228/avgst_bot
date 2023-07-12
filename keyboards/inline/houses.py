@@ -47,6 +47,10 @@ houses = InlineKeyboardMarkup(row_width=2,
                                           text="Финляндия L",
                                           callback_data="Финляндия L"
                                       ),
+                                      InlineKeyboardButton(
+                                          text="Норвегия L",
+                                          callback_data="Норвегия L"
+                                      ),
                                   ]
 
                               ])

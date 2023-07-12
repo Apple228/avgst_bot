@@ -505,3 +505,34 @@ async def barnM(call: CallbackQuery):
         await call.message.answer_media_group(media=album2)
     if have_album3:
         await call.message.answer_media_group(media=album3)
+
+
+@dp.callback_query_handler(text="Норвегия L")
+async def barnM(call: CallbackQuery):
+    path = 'photo//houses/NorvL/'
+    content = os.listdir(path)
+    size = 0
+    for file in content:
+        if size < int(file.split(".")[0]):
+            size = int(file.split(".")[0])
+    album1 = MediaGroup()
+    album2 = MediaGroup()
+    album3 = MediaGroup()
+    have_album2 = False
+    have_album3 = False
+
+    for i in range(1, size + 1):
+        if i <= 10:
+            album1.attach_photo(InputFile(path_or_bytesio=f'{path}{i}.jpg'))
+        elif 10 < i <= 20:
+            album2.attach_photo(InputFile(path_or_bytesio=f'{path}{i}.jpg'))
+            have_album2 = True
+        elif 20 < i <= 30:
+            album3.attach_photo(InputFile(path_or_bytesio=f'{path}{i}.jpg'))
+            have_album3 = True
+
+    await call.message.answer_media_group(media=album1)
+    if have_album2:
+        await call.message.answer_media_group(media=album2)
+    if have_album3:
+        await call.message.answer_media_group(media=album3)
