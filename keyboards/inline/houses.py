@@ -51,6 +51,27 @@ houses = InlineKeyboardMarkup(row_width=2,
                                           text="Норвегия L",
                                           callback_data="Норвегия L"
                                       ),
+                                  ],
+                                  [
+                                      InlineKeyboardButton(
+                                          text = "Шведский M",
+                                          callback_data="Шведский M"
+                                      ),
+                                      InlineKeyboardButton(
+                                          text = "Барн XL",
+                                          callback_data="Барн XL"
+                                      )
+                                  ],
+                                  [
+                                      InlineKeyboardButton(
+                                          text = "Модульный 38",
+                                          callback_data = "Модульный 38"
+                                      ),
+                                      InlineKeyboardButton(
+                                          text = "Норвегия XL",
+                                          callback_data="Норвегия XL"
+                                      )
                                   ]
+
 
                               ])
