@@ -130,10 +130,15 @@ payment_method_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,
                                                   ],
                                               ])
 
-mortgage_advice_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,
-                                               keyboard=[
-                                                   [
-                                                       KeyboardButton(text="Да"),
-                                                       KeyboardButton(text="Нет"),
-                                                   ],
-                                               ])
+comment_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,
+                                       keyboard=[
+                                           [
+                                               KeyboardButton(text="Нет комментария"),
+
+                                           ],
+                                           [
+                                               KeyboardButton(text="B2B"),
+                                               KeyboardButton(text="Горячий"),
+                                           ]
+
+                                       ])

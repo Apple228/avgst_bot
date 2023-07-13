@@ -1,8 +1,7 @@
 import os
 
-from aiogram import types
 from aiogram.types import MediaGroup, CallbackQuery, InputFile
-from pathlib import Path
+
 from loader import dp
 
 

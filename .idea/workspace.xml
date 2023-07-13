@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10598377-e570-471d-b89a-05d3872bc5cb" name="Changes" comment="">
+    <list default="true" id="9a64f2e1-4474-4190-88b7-74172f94d021" name="Changes" comment="добавление фоток">
+      <change afterPath="$PROJECT_DIR$/docs/Договора АС Каркас/Приложение_4_Авангард_Строй_Нижний_Новгород.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/ИЮЛЬ 2023 дома.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/ИЮЛЬ 2023 модули.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/ИЮНЬ 2023 дома МСК.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/ИЮНЬ 2023 модули МСК.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/КПшки МСК/Приложение_4_Авангард_Строй_Нижний_Новгород.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Карточка ООО Авангард строй НН.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Карточка_ООО АС Каркас.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Карточка_ООО_Авангард_Строй_Нижний_Новгород_Примсоцбанк.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Карточка_организации_ИП_Якущенко.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Регламент ведения клиента.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7c47b14c-e1b7-4fb6-b845-3d074ecf03fa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7c47b14c-e1b7-4fb6-b845-3d074ecf03fa.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/documents.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/documents.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/form.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/form.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/users/photo_house.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/users/photo_house.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboards/default/form_keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/form_keyboards.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboards/default/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/default/menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboards/inline/docs.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/inline/docs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/set_bot_commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/set_bot_commands.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,16 +34,27 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2SUCxHTMJh0w7j2Ys3wEL2RtHWl" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="postgresql" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "last_opened_file_path": "C:/Users/avlazarev/Desktop/avgst_bot/docs/Договора АС Каркас"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\avlazarev\Desktop\avgst_bot\docs\Договора АС Каркас" />
+      <recent name="C:\Users\avlazarev\Desktop\avgst_bot\docs\КПшки МСК" />
+      <recent name="C:\Users\avlazarev\Desktop\avgst_bot\docs" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\avlazarev\Desktop\avgst_bot\docs" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -84,6 +116,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="добавление фоток" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/avgst_bot$app.coverage" NAME="app Coverage Results" MODIFIED="1689193884195" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/avgst_bot$app.coverage" NAME="app Coverage Results" MODIFIED="1689282825238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

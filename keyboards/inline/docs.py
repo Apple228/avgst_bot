@@ -21,6 +21,16 @@ docs = InlineKeyboardMarkup(inline_keyboard=[
             callback_data="Договора Лифанов"
         )
     ],
+[
+        InlineKeyboardButton(
+            text="Договора АС Каркас",
+            callback_data="Договора АС Каркас"
+        ),
+        InlineKeyboardButton(
+            text="Договора Нижний Новгород",
+            callback_data="Договора Нижний Новгород"
+        )
+    ],
 
 ])
 
@@ -148,4 +158,32 @@ contract_Lifanov = InlineKeyboardMarkup(inline_keyboard=[
             callback_data="Назад в документы"
         )
     ]
+])
+
+price_tables_keyboard = InlineKeyboardMarkup(inline_keyboard=[
+    [
+        InlineKeyboardButton(
+            text="Цены для НН",
+            callback_data="Цены для НН"
+        ),
+        InlineKeyboardButton(
+            text="Цены для МСК",
+            callback_data="Цены для МСК"
+        ),
+    ],
+
+])
+
+kp_keyboard = InlineKeyboardMarkup(inline_keyboard=[
+    [
+        InlineKeyboardButton(
+            text="КПшки для НН",
+            callback_data="КПшки для НН"
+        ),
+        InlineKeyboardButton(
+            text="КПшки для МСК",
+            callback_data="КПшки для МСК"
+        ),
+    ],
+
 ])
