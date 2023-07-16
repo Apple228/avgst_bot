@@ -85,15 +85,15 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
                          f"3. {data.get('client_name')}\n"
                          f"4. {data.get('client_phone_number')}\n"
                          f"5. {data.get('client_location')}\n"
-                         f"6. {data.get('client_interesting')}\n"
+                         # f"6. {data.get('client_interesting')}\n"
                          f"7. {data.get('planing_build')}\n"
-                         f"8. {data.get('client_target')}\n"
-                         f"9. {data.get('client_square')}\n"
-                         f"10. {data.get('count_room')}\n"
-                         f"11. {data.get('equipment')}\n"
-                         f"12. {data.get('project')}\n"
-                         f"13. {data.get('budget')}\n"
-                         f"14. {data.get('payment_method')}\n"
+                         # f"8. {data.get('client_target')}\n"
+                         # f"9. {data.get('client_square')}\n"
+                         # f"10. {data.get('count_room')}\n"
+                         # f"11. {data.get('equipment')}\n"
+                         # f"12. {data.get('project')}\n"
+                         # f"13. {data.get('budget')}\n"
+                         # f"14. {data.get('payment_method')}\n"
                          f"15. {data.get('comment')}\n",
                          reply_markup=menu)
     await state.reset_state()
