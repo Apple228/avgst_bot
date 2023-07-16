@@ -131,8 +131,9 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
     await state.update_data(planing_build=planing_build)
     # await message.answer("Как используем дом?", reply_markup=target_keyboard)
     # await state.set_state("Как используем дом?")
-    await message.answer("Бюджет?", reply_markup=budget_keyboard)
-    await state.set_state("Бюджет?")
+    await message.answer("Комментарий", reply_markup=comment_keyboard)
+    await state.set_state("Комментарий")
+
 
 @dp.message_handler(state="Как используем дом?")
 async def state_data_gsheets(message: types.Message, state: FSMContext):
