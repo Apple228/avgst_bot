@@ -172,8 +172,6 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
     await message.answer("Бюджет?", reply_markup=budget_keyboard)
     await state.set_state("Бюджет?")
 
-
-
 @dp.message_handler(state="Бюджет?")
 async def state_data_gsheets(message: types.Message, state: FSMContext):
     budget = message.text
