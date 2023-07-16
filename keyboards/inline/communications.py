@@ -27,6 +27,10 @@ communications_keyboard = InlineKeyboardMarkup(row_width=2,
                                                            text="Наружные коммуникации",
                                                            callback_data="Наружные коммуникации"
                                                        ),
+                                                       InlineKeyboardButton(
+                                                           text="Канализация",
+                                                           callback_data="Канализация"
+                                                       )
 
                                                    ],
 
