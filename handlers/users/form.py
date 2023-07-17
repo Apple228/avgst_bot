@@ -85,15 +85,15 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
                          f"3. {data.get('client_name')}\n"
                          f"4. {data.get('client_phone_number')}\n"
                          f"5. {data.get('client_location')}\n"
-                         f"6. {data.get('client_interesting')}\n"
+                         # f"6. {data.get('client_interesting')}\n"
                          f"7. {data.get('planing_build')}\n"
-                         f"8. {data.get('client_target')}\n"
-                         f"9. {data.get('client_square')}\n"
-                         f"10. {data.get('count_room')}\n"
-                         f"11. {data.get('equipment')}\n"
-                         f"12. {data.get('project')}\n"
-                         f"13. {data.get('budget')}\n"
-                         f"14. {data.get('payment_method')}\n"
+                         # f"8. {data.get('client_target')}\n"
+                         # f"9. {data.get('client_square')}\n"
+                         # f"10. {data.get('count_room')}\n"
+                         # f"11. {data.get('equipment')}\n"
+                         # f"12. {data.get('project')}\n"
+                         # f"13. {data.get('budget')}\n"
+                         # f"14. {data.get('payment_method')}\n"
                          f"15. {data.get('comment')}\n",
                          reply_markup=menu)
     await state.reset_state()
@@ -113,23 +113,28 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
 async def state_data_gsheets(message: types.Message, state: FSMContext):
     client_location = message.text
     await state.update_data(client_location=client_location)
-    await message.answer("Что интересует?", reply_markup=interesting_keyboard)
-    await state.set_state("Что интересует?")
-
-
-@dp.message_handler(state="Что интересует?")
-async def state_data_gsheets(message: types.Message, state: FSMContext):
-    client_interesting = message.text
-    await state.update_data(client_interesting=client_interesting)
+    # await message.answer("Что интересует?", reply_markup=interesting_keyboard)
+    # await state.set_state("Что интересует?")
     await message.answer("Когда планируется стройка?", reply_markup=planing_build_keyboard)
     await state.set_state("Когда планируется стройка?")
+
+# @dp.message_handler(state="Что интересует?")
+# async def state_data_gsheets(message: types.Message, state: FSMContext):
+#     client_interesting = message.text
+#     await state.update_data(client_interesting=client_interesting)
+#     await message.answer("Когда планируется стройка?", reply_markup=planing_build_keyboard)
+#     await state.set_state("Когда планируется стройка?")
 
 @dp.message_handler(state="Когда планируется стройка?")
 async def state_data_gsheets(message: types.Message, state: FSMContext):
     planing_build = message.text
     await state.update_data(planing_build=planing_build)
-    await message.answer("Как используем дом?", reply_markup=target_keyboard)
-    await state.set_state("Как используем дом?")
+    # await message.answer("Как используем дом?", reply_markup=target_keyboard)
+    # await state.set_state("Как используем дом?")
+    await message.answer("Комментарий", reply_markup=comment_keyboard)
+    await state.set_state("Комментарий")
+
+
 @dp.message_handler(state="Как используем дом?")
 async def state_data_gsheets(message: types.Message, state: FSMContext):
     client_target = message.text
@@ -168,14 +173,14 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
     await message.answer("Бюджет?", reply_markup=budget_keyboard)
     await state.set_state("Бюджет?")
 
-
-
 @dp.message_handler(state="Бюджет?")
 async def state_data_gsheets(message: types.Message, state: FSMContext):
     budget = message.text
     await state.update_data(budget=budget)
-    await message.answer("Способ оплаты?", reply_markup=payment_method_keyboard)
-    await state.set_state("Способ оплаты?")
+    await message.answer("Комментарий", reply_markup=comment_keyboard)
+    await state.set_state("Комментарий")
+    # await message.answer("Способ оплаты?", reply_markup=payment_method_keyboard)
+    # await state.set_state("Способ оплаты?")
 
 
 @dp.message_handler(state="Способ оплаты?")
