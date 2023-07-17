@@ -65,6 +65,7 @@
       <workItem from="1689281906533" duration="1816000" />
       <workItem from="1689283945929" duration="188000" />
       <workItem from="1689599942590" duration="704000" />
+      <workItem from="1689615281667" duration="320000" />
     </task>
     <task id="LOCAL-00001" summary="добавление фоток">
       <created>1689193950851</created>
@@ -101,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689600036118</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Фотки Норвегии ХЛ">
+      <created>1689615315307</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1689615315307</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,6 +127,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Фотки Норвегии ХЛ" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/avgst_bot$app.coverage" NAME="app Coverage Results" MODIFIED="1689599958026" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/avgst_bot$app.coverage" NAME="app Coverage Results" MODIFIED="1689615588304" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
