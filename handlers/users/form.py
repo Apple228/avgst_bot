@@ -86,16 +86,16 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
                          f"3. {data.get('client_name')}\n"
                          f"4. {data.get('client_phone_number')}\n"
                          f"5. {data.get('client_location')}\n"
-                         # f"6. {data.get('client_interesting')}\n"
+                         f"6. {data.get('client_interesting')}\n"
                          f"7. {data.get('planing_build')}\n"
-                         # f"8. {data.get('client_target')}\n"
-                         # f"9. {data.get('client_square')}\n"
-                         # f"10. {data.get('count_room')}\n"
-                         # f"11. {data.get('equipment')}\n"
-                         # f"12. {data.get('project')}\n"
-                         # f"13. {data.get('budget')}\n"
-                         # f"14. {data.get('payment_method')}\n"
-                         f"8. {data.get('comment')}\n",
+                         f"8. {data.get('client_target')}\n"
+                         f"9. {data.get('client_square')}\n"
+                         f"10. {data.get('count_room')}\n"
+                         f"11. {data.get('equipment')}\n"
+                         f"12. {data.get('project')}\n"
+                         f"13. {data.get('budget')}\n"
+                         f"14. {data.get('payment_method')}\n"
+                         f"15. {data.get('comment')}\n",
                          reply_markup=menu)
     await state.reset_state()
     spreadsheet_id = '1hocu-OWJdIDiTmy1WlteqprXhYPn7sIKkNUi8vdjXfQ'
@@ -103,7 +103,7 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
     client = await client.authorize()
     async_spreadsheet = await client.open_by_key(spreadsheet_id)
 
-    worksheet = await async_spreadsheet.worksheet('тест бота')
+    worksheet = await async_spreadsheet.worksheet('Опросник выставка лето 2023')
     values = [message.from_user.full_name, today.strftime('%d.%m.%y'), data.get('client_name'),
               data.get('client_phone_number'), data.get('client_location'),data.get('client_interesting'), data.get('planing_build'),
               data.get('client_target'), data.get('client_square'), data.get('count_room'),
@@ -114,26 +114,26 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
 async def state_data_gsheets(message: types.Message, state: FSMContext):
     client_location = message.text
     await state.update_data(client_location=client_location)
-    # await message.answer("Что интересует?", reply_markup=interesting_keyboard)
-    # await state.set_state("Что интересует?")
+    await message.answer("Что интересует?", reply_markup=interesting_keyboard)
+    await state.set_state("Что интересует?")
+    # await message.answer("Когда планируется стройка?", reply_markup=planing_build_keyboard)
+    # await state.set_state("Когда планируется стройка?")
+
+@dp.message_handler(state="Что интересует?")
+async def state_data_gsheets(message: types.Message, state: FSMContext):
+    client_interesting = message.text
+    await state.update_data(client_interesting=client_interesting)
     await message.answer("Когда планируется стройка?", reply_markup=planing_build_keyboard)
     await state.set_state("Когда планируется стройка?")
-
-# @dp.message_handler(state="Что интересует?")
-# async def state_data_gsheets(message: types.Message, state: FSMContext):
-#     client_interesting = message.text
-#     await state.update_data(client_interesting=client_interesting)
-#     await message.answer("Когда планируется стройка?", reply_markup=planing_build_keyboard)
-#     await state.set_state("Когда планируется стройка?")
 
 @dp.message_handler(state="Когда планируется стройка?")
 async def state_data_gsheets(message: types.Message, state: FSMContext):
     planing_build = message.text
     await state.update_data(planing_build=planing_build)
-    # await message.answer("Как используем дом?", reply_markup=target_keyboard)
-    # await state.set_state("Как используем дом?")
-    await message.answer("Комментарий", reply_markup=comment_keyboard)
-    await state.set_state("Комментарий")
+    await message.answer("Как используем дом?", reply_markup=target_keyboard)
+    await state.set_state("Как используем дом?")
+    # await message.answer("Комментарий", reply_markup=comment_keyboard)
+    # await state.set_state("Комментарий")
 
 
 @dp.message_handler(state="Как используем дом?")
@@ -178,10 +178,8 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
 async def state_data_gsheets(message: types.Message, state: FSMContext):
     budget = message.text
     await state.update_data(budget=budget)
-    await message.answer("Комментарий", reply_markup=comment_keyboard)
-    await state.set_state("Комментарий")
-    # await message.answer("Способ оплаты?", reply_markup=payment_method_keyboard)
-    # await state.set_state("Способ оплаты?")
+    await message.answer("Способ оплаты?", reply_markup=payment_method_keyboard)
+    await state.set_state("Способ оплаты?")
 
 
 @dp.message_handler(state="Способ оплаты?")
@@ -192,46 +190,33 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
     await state.set_state("Комментарий")
 
 #Ксюхины тесты
-@dp.message_handler(text = "/get_data")
+@dp.message_handler(text = "/get_stats_today")
 async def get_records(message: types.message, state: FSMContext):
 
     spreadsheet_id = '1hocu-OWJdIDiTmy1WlteqprXhYPn7sIKkNUi8vdjXfQ'
     client = gspread_asyncio.AsyncioGspreadClientManager(get_scoped_credentials(PATH))  # импорт из конфига
     client = await client.authorize()
     async_spreadsheet = await client.open_by_key(spreadsheet_id)
-    worksheet = await async_spreadsheet.worksheet('тест бота')
+    worksheet = await async_spreadsheet.worksheet('Опросник выставка лето 2023')
 
-    data = await worksheet.range(name = "A1:B5")
-    # l = []
-    # for cell in data:
-    #     l.append(cell.value)
-    # itog = {}
-    # name = []
-    # date = []
-    # for j in range(len(l)):
-    #     if j % 2 == 0:
-    #         name.append(l[j])
-    #     else:
-    #         date.append(l[j])
-    # lenght = len(name)
-    # prom_list = []
-    # for i in range(lenght):
-    #     prom_list.append([])
-    # for i in range(lenght):
-    #     prom_list[i].append(name[i])
-    #     prom_list[i].append(date[i])
-    # count = 0
-    # for el in prom_list:
-    #     itog[el[0]] = el[1]
-    # print(itog)
-    #
-    # print(prom_list)
+    data = await worksheet.range(name = "A2:B2000")
 
+    all_rows = []
+    text = "|".join([cell.value for cell in data])
+    text = text.split("|")
+    for i in range(0, len(text)-1, 2):
+        all_rows.append((text[i], text[i+1]))
 
+    today = datetime.date.today()
 
-    # l = []
-    # text = ", ".join([cell.value for cell in data])
-    # text = text.split(",")
-    # for i in range(len(text)-1):
-    #     l.append((text[i], text[i+1]))
-    # print(l)
+    today_row = []
+    for row in all_rows:
+        if today.strftime('%d.%m.%y') in row:
+            today_row.append(row[0])
+    msg = f"Всего за сегодня {len(today_row)} лидов\n"
+    d = {e: 0 for e in today_row}  # создаем словарь на основе списка с 0 значениями
+    for key in today_row: d[key] += 1  # тупо считаем повторяющиеся
+    for key, value in d.items():
+        print(key, value)  # тупо выводим
+        msg += f"{key} {value}\n"
+    await message.answer(msg)
