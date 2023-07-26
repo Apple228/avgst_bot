@@ -95,7 +95,7 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
                          # f"12. {data.get('project')}\n"
                          # f"13. {data.get('budget')}\n"
                          # f"14. {data.get('payment_method')}\n"
-                         f"15. {data.get('comment')}\n",
+                         f"8. {data.get('comment')}\n",
                          reply_markup=menu)
     await state.reset_state()
     spreadsheet_id = '1hocu-OWJdIDiTmy1WlteqprXhYPn7sIKkNUi8vdjXfQ'
@@ -103,7 +103,7 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
     client = await client.authorize()
     async_spreadsheet = await client.open_by_key(spreadsheet_id)
 
-    worksheet = await async_spreadsheet.worksheet('Опросник выставка лето 2023')
+    worksheet = await async_spreadsheet.worksheet('тест бота')
     values = [message.from_user.full_name, today.strftime('%d.%m.%y'), data.get('client_name'),
               data.get('client_phone_number'), data.get('client_location'),data.get('client_interesting'), data.get('planing_build'),
               data.get('client_target'), data.get('client_square'), data.get('count_room'),
@@ -191,4 +191,47 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
     await message.answer("Комментарий", reply_markup=comment_keyboard)
     await state.set_state("Комментарий")
 
+#Ксюхины тесты
+@dp.message_handler(text = "/get_data")
+async def get_records(message: types.message, state: FSMContext):
 
+    spreadsheet_id = '1hocu-OWJdIDiTmy1WlteqprXhYPn7sIKkNUi8vdjXfQ'
+    client = gspread_asyncio.AsyncioGspreadClientManager(get_scoped_credentials(PATH))  # импорт из конфига
+    client = await client.authorize()
+    async_spreadsheet = await client.open_by_key(spreadsheet_id)
+    worksheet = await async_spreadsheet.worksheet('тест бота')
+
+    data = await worksheet.range(name = "A1:B5")
+    # l = []
+    # for cell in data:
+    #     l.append(cell.value)
+    # itog = {}
+    # name = []
+    # date = []
+    # for j in range(len(l)):
+    #     if j % 2 == 0:
+    #         name.append(l[j])
+    #     else:
+    #         date.append(l[j])
+    # lenght = len(name)
+    # prom_list = []
+    # for i in range(lenght):
+    #     prom_list.append([])
+    # for i in range(lenght):
+    #     prom_list[i].append(name[i])
+    #     prom_list[i].append(date[i])
+    # count = 0
+    # for el in prom_list:
+    #     itog[el[0]] = el[1]
+    # print(itog)
+    #
+    # print(prom_list)
+
+
+
+    # l = []
+    # text = ", ".join([cell.value for cell in data])
+    # text = text.split(",")
+    # for i in range(len(text)-1):
+    #     l.append((text[i], text[i+1]))
+    # print(l)
