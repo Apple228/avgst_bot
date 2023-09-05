@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10598377-e570-471d-b89a-05d3872bc5cb" name="Changes" comment="" />
+    <list default="true" id="10598377-e570-471d-b89a-05d3872bc5cb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_07_2023_0_18_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_07_2023_0_18__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +25,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="D:/moneyBot/My project" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunManager">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -65,7 +71,10 @@
       <workItem from="1689281906533" duration="1816000" />
       <workItem from="1689283945929" duration="188000" />
       <workItem from="1689599942590" duration="704000" />
-      <workItem from="1689615281667" duration="320000" />
+      <workItem from="1689615281667" duration="644000" />
+      <workItem from="1690376381081" duration="6368000" />
+      <workItem from="1690551179141" duration="309000" />
+      <workItem from="1691764299543" duration="45000" />
     </task>
     <task id="LOCAL-00001" summary="добавление фоток">
       <created>1689193950851</created>
@@ -109,7 +118,28 @@
       <option name="project" value="LOCAL" />
       <updated>1689615315307</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Фотки Норвегии ХЛ">
+      <created>1689615833995</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1689615833995</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Получение данных из таблицы">
+      <created>1690385840328</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1690385840328</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Обновление Кпшек">
+      <created>1690551469278</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1690551469278</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,9 +154,11 @@
     <MESSAGE value="Фотки коммуникаций" />
     <MESSAGE value="Удаление дока" />
     <MESSAGE value="Фотки Норвегии ХЛ" />
-    <option name="LAST_COMMIT_MESSAGE" value="Фотки Норвегии ХЛ" />
+    <MESSAGE value="Получение данных из таблицы" />
+    <MESSAGE value="Обновление Кпшек" />
+    <option name="LAST_COMMIT_MESSAGE" value="Обновление Кпшек" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/avgst_bot$app.coverage" NAME="app Coverage Results" MODIFIED="1689615588304" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/avgst_bot$app.coverage" NAME="app Coverage Results" MODIFIED="1690551436126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
