@@ -72,6 +72,7 @@
       <workItem from="1690551179141" duration="309000" />
       <workItem from="1691764299543" duration="45000" />
       <workItem from="1693920289520" duration="355000" />
+      <workItem from="1695196561272" duration="306000" />
     </task>
     <task id="LOCAL-00001" summary="добавление фоток">
       <created>1689193950851</created>
@@ -150,7 +151,21 @@
       <option name="project" value="LOCAL" />
       <updated>1693920623693</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Обновление Кпшек">
+      <created>1695196636679</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1695196636679</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Обновление Кпшек">
+      <created>1695196787350</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1695196787350</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,6 +185,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Обновление Кпшек" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/avgst_bot$app.coverage" NAME="app Coverage Results" MODIFIED="1693920449320" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/avgst_bot$app.coverage" NAME="app Coverage Results" MODIFIED="1695196856211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
