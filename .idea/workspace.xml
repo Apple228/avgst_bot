@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="10598377-e570-471d-b89a-05d3872bc5cb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/КПшки МСК/КПшки.pdf" afterDir="false" />
-    </list>
+    <list default="true" id="10598377-e570-471d-b89a-05d3872bc5cb" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,7 +71,7 @@
       <workItem from="1690376381081" duration="6368000" />
       <workItem from="1690551179141" duration="309000" />
       <workItem from="1691764299543" duration="45000" />
-      <workItem from="1693920289520" duration="324000" />
+      <workItem from="1693920289520" duration="355000" />
     </task>
     <task id="LOCAL-00001" summary="добавление фоток">
       <created>1689193950851</created>
@@ -145,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693920387727</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Обновление Кпшек">
+      <created>1693920623693</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1693920623693</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
