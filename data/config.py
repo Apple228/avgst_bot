@@ -15,7 +15,7 @@ IT_SUPPORT = env.list("IT_SUPPORT")
 PATH = Path(pathlib.Path.cwd(), 'creds.json')
 
 DB_USER = env.str("DB_USER")
-DB_PASS = env.str("PGPASSWORD")
+DB_PASS = env.str("DB_PASS")
 DB_NAME = env.str("DB_NAME")
 DB_HOST = env.str("DB_HOST")
 # USER_GSHEETS = [624523030, 1257825667]

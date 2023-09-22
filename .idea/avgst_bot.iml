@@ -3,6 +3,9 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources/7c47b14c-e1b7-4fb6-b845-3d074ecf03fa/storage_v2/_src_/database/postgres.edMnLQ" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources/51321ca1-682e-4dca-989c-3a0fbec7f63a" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/inspectionProfiles" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
