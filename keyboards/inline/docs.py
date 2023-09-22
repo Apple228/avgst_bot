@@ -187,3 +187,53 @@ kp_keyboard = InlineKeyboardMarkup(inline_keyboard=[
     ],
 
 ])
+kp_mosc_keyboard = InlineKeyboardMarkup(row_width=2,
+                                        inline_keyboard=[
+                                  [
+                                      InlineKeyboardButton(
+                                          text="КП Барн L",
+                                          callback_data="КП Барн L"
+                                      ),
+
+                                  ],
+                                  [
+                                      InlineKeyboardButton(
+                                          text="КП Финляндия XL",
+                                          callback_data="КП Финляндия XL"
+                                      ),
+                                      InlineKeyboardButton(
+                                          text="КП Финляндия L",
+                                          callback_data="КП Финляндия L"
+                                      ),
+                                  ],
+                                  [
+                                      InlineKeyboardButton(
+                                          text="КП Модульный 49",
+                                          callback_data="КП Модульный 49"
+                                      ),
+                                      InlineKeyboardButton(
+                                          text="КП Модульный 57",
+                                          callback_data="КП Модульный 57"
+                                      ),
+                                  ],
+                                  [
+                                      InlineKeyboardButton(
+                                          text="КП Норвегия XL",
+                                          callback_data="КП Норвегия XL"
+                                      ),
+                                      InlineKeyboardButton(
+                                          text="КП Норвегия L",
+                                          callback_data="КП Норвегия L"
+                                      ),
+                                  ],
+                                            [
+InlineKeyboardButton(
+                                          text="КП Москва (все)",
+                                          callback_data="КП Москва (все)"
+                                      ),
+                                            ]
+
+
+
+
+])

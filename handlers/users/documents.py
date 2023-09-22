@@ -5,7 +5,7 @@ from aiogram.types import CallbackQuery, InputFile
 
 
 from keyboards.inline.docs import docs, requisites, contract_Grishatkin, contract_Lifanov, price_tables_keyboard, \
-    kp_keyboard
+    kp_keyboard, kp_mosc_keyboard
 from loader import dp
 
 
@@ -66,11 +66,86 @@ async def document(call: CallbackQuery):
 
 
 @dp.callback_query_handler(text="КПшки для МСК")
-async def document(call: CallbackQuery):
-    path = "docs/КПшки МСК"
-    content = os.listdir(path)
-    for file in content:
-        await call.message.answer_document(document=types.InputFile(f"{path}/{file}"))
+async def send_keyboard_kp(call: CallbackQuery):
+    await call.message.edit_text(text="Выбери нужный дом")
+    await call.message.edit_reply_markup(reply_markup=kp_mosc_keyboard)
+
+@dp.callback_query_handler(text="КП Барн L")
+async def kp(call: CallbackQuery):
+    path = 'docs/KpMsc/Barn L.pdf'
+    await call.message.edit_text(text='Выбери нужный дом. Загрузка "КП Барн L"', reply_markup=kp_mosc_keyboard)
+    try:
+        await call.message.answer_document(document=types.InputFile(path))
+    except:
+        await call.message.answer("Файл не найден")
+    await call.message.edit_text(text='Выбери нужный дом. ', reply_markup=kp_mosc_keyboard)
+@dp.callback_query_handler(text="КП Москва (все)")
+async def kp(call: CallbackQuery):
+    path = 'docs/KpMsc/KP all.pdf'
+    await call.message.edit_text(text='Выбери нужный дом. Загрузка "КП Москва (все)"')
+    try:
+        await call.message.answer_document(document=types.InputFile(path))
+    except:
+        await call.message.answer("Файл не найден")
+    await call.message.edit_text(text='Выбери нужный дом. ', reply_markup=kp_mosc_keyboard)
+
+@dp.callback_query_handler(text="КП Финляндия XL")
+async def kp(call: CallbackQuery):
+    path = 'docs/KpMsc/Fin XL.pdf'
+    await call.message.edit_text(text='Выбери нужный дом. Загрузка "КП Финляндия XL"', reply_markup=kp_mosc_keyboard)
+    try:
+        await call.message.answer_document(document=types.InputFile(path))
+    except:
+        await call.message.answer("Файл не найден")
+    await call.message.edit_text(text='Выбери нужный дом. ', reply_markup=kp_mosc_keyboard)
+
+@dp.callback_query_handler(text="КП Финляндия L")
+async def kp(call: CallbackQuery):
+    path = 'docs/KpMsc/Fin L.pdf'
+    await call.message.edit_text(text='Выбери нужный дом. Загрузка "КП Финляндия L"', reply_markup=kp_mosc_keyboard)
+    try:
+        await call.message.answer_document(document=types.InputFile(path))
+    except:
+        await call.message.answer("Файл не найден")
+    await call.message.edit_text(text='Выбери нужный дом. ', reply_markup=kp_mosc_keyboard)
+
+@dp.callback_query_handler(text="КП Модульный 49")
+async def kp(call: CallbackQuery):
+    path = 'docs/KpMsc/Mod 49.pdf'
+    await call.message.edit_text(text='Выбери нужный дом. Загрузка "Модульный 49"', reply_markup=kp_mosc_keyboard)
+    try:
+        await call.message.answer_document(document=types.InputFile(path))
+    except:
+        await call.message.answer("Файл не найден")
+    await call.message.edit_text(text='Выбери нужный дом. ', reply_markup=kp_mosc_keyboard)
+@dp.callback_query_handler(text="КП Модульный 57")
+async def kp(call: CallbackQuery):
+    path = 'docs/KpMsc/Mod 57.pdf'
+    await call.message.edit_text(text='Выбери нужный дом. Загрузка "Модульный 57"', reply_markup=kp_mosc_keyboard)
+    try:
+        await call.message.answer_document(document=types.InputFile(path))
+    except:
+        await call.message.answer("Файл не найден")
+    await call.message.edit_text(text='Выбери нужный дом. ', reply_markup=kp_mosc_keyboard)
+
+@dp.callback_query_handler(text="КП Норвегия XL")
+async def kp(call: CallbackQuery):
+    path = 'docs/KpMsc/Norv XL.pdf'
+    await call.message.edit_text(text='Выбери нужный дом. Загрузка "КП Норвегия XL"', reply_markup=kp_mosc_keyboard)
+    try:
+        await call.message.answer_document(document=types.InputFile(path))
+    except:
+        await call.message.answer("Файл не найден")
+    await call.message.edit_text(text='Выбери нужный дом. ', reply_markup=kp_mosc_keyboard)
+@dp.callback_query_handler(text="КП Норвегия L")
+async def kp(call: CallbackQuery):
+    path = 'docs/KpMsc/Norv L.pdf'
+    await call.message.edit_text(text='Выбери нужный дом. Загрузка "КП Норвегия L"', reply_markup=kp_mosc_keyboard)
+    try:
+        await call.message.answer_document(document=types.InputFile(path))
+    except:
+        await call.message.answer("Файл не найден")
+    await call.message.edit_text(text='Выбери нужный дом. ', reply_markup=kp_mosc_keyboard)
 
 @dp.callback_query_handler(text="Реквизиты Гришаткин")
 async def document(call: CallbackQuery):
