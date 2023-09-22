@@ -76,16 +76,16 @@ async def kp(call: CallbackQuery):
     await call.message.edit_text(text='Выбери нужный дом. Загрузка "КП Барн L"', reply_markup=kp_mosc_keyboard)
     try:
         await call.message.answer_document(document=types.InputFile(path))
-    except:
+    except FileNotFoundError:
         await call.message.answer("Файл не найден")
     await call.message.edit_text(text='Выбери нужный дом. ', reply_markup=kp_mosc_keyboard)
 @dp.callback_query_handler(text="КП Москва (все)")
 async def kp(call: CallbackQuery):
-    path = 'docs/KpMsc/KP all.pdf'
-    await call.message.edit_text(text='Выбери нужный дом. Загрузка "КП Москва (все)"')
+    path = 'docs/KpMsc/KP all.pd'
+    await call.message.edit_text(text='Выбери нужный дом. Загрузка "КП Москва (все)"', reply_markup=kp_mosc_keyboard)
     try:
         await call.message.answer_document(document=types.InputFile(path))
-    except:
+    except FileNotFoundError:
         await call.message.answer("Файл не найден")
     await call.message.edit_text(text='Выбери нужный дом. ', reply_markup=kp_mosc_keyboard)
 
@@ -95,7 +95,7 @@ async def kp(call: CallbackQuery):
     await call.message.edit_text(text='Выбери нужный дом. Загрузка "КП Финляндия XL"', reply_markup=kp_mosc_keyboard)
     try:
         await call.message.answer_document(document=types.InputFile(path))
-    except:
+    except FileNotFoundError:
         await call.message.answer("Файл не найден")
     await call.message.edit_text(text='Выбери нужный дом. ', reply_markup=kp_mosc_keyboard)
 
@@ -105,7 +105,7 @@ async def kp(call: CallbackQuery):
     await call.message.edit_text(text='Выбери нужный дом. Загрузка "КП Финляндия L"', reply_markup=kp_mosc_keyboard)
     try:
         await call.message.answer_document(document=types.InputFile(path))
-    except:
+    except FileNotFoundError:
         await call.message.answer("Файл не найден")
     await call.message.edit_text(text='Выбери нужный дом. ', reply_markup=kp_mosc_keyboard)
 
@@ -115,7 +115,7 @@ async def kp(call: CallbackQuery):
     await call.message.edit_text(text='Выбери нужный дом. Загрузка "Модульный 49"', reply_markup=kp_mosc_keyboard)
     try:
         await call.message.answer_document(document=types.InputFile(path))
-    except:
+    except FileNotFoundError:
         await call.message.answer("Файл не найден")
     await call.message.edit_text(text='Выбери нужный дом. ', reply_markup=kp_mosc_keyboard)
 @dp.callback_query_handler(text="КП Модульный 57")
@@ -124,7 +124,7 @@ async def kp(call: CallbackQuery):
     await call.message.edit_text(text='Выбери нужный дом. Загрузка "Модульный 57"', reply_markup=kp_mosc_keyboard)
     try:
         await call.message.answer_document(document=types.InputFile(path))
-    except:
+    except FileNotFoundError:
         await call.message.answer("Файл не найден")
     await call.message.edit_text(text='Выбери нужный дом. ', reply_markup=kp_mosc_keyboard)
 
@@ -134,7 +134,7 @@ async def kp(call: CallbackQuery):
     await call.message.edit_text(text='Выбери нужный дом. Загрузка "КП Норвегия XL"', reply_markup=kp_mosc_keyboard)
     try:
         await call.message.answer_document(document=types.InputFile(path))
-    except:
+    except FileNotFoundError:
         await call.message.answer("Файл не найден")
     await call.message.edit_text(text='Выбери нужный дом. ', reply_markup=kp_mosc_keyboard)
 @dp.callback_query_handler(text="КП Норвегия L")
@@ -143,7 +143,7 @@ async def kp(call: CallbackQuery):
     await call.message.edit_text(text='Выбери нужный дом. Загрузка "КП Норвегия L"', reply_markup=kp_mosc_keyboard)
     try:
         await call.message.answer_document(document=types.InputFile(path))
-    except:
+    except FileNotFoundError:
         await call.message.answer("Файл не найден")
     await call.message.edit_text(text='Выбери нужный дом. ', reply_markup=kp_mosc_keyboard)
 

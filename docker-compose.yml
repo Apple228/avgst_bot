@@ -9,7 +9,7 @@ services:
     env_file:
       - ".env"
     environment:
-      PG_PASSWORD: $PGPASSWORD
+      PG_PASSWORD: $DB_PASS
     restart: always
     ports:
       - 5432:5432
