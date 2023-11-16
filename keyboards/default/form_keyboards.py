@@ -62,12 +62,12 @@ count_room_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,
                                               [
                                                   KeyboardButton(text="1"),
                                                   KeyboardButton(text="2"),
-                                                  KeyboardButton(text="3"),
+
                                               ],
                                               [
+                                                  KeyboardButton(text="3"),
                                                   KeyboardButton(text="4"),
-                                                  KeyboardButton(text="5"),
-                                                  KeyboardButton(text="6"),
+
                                               ]
                                           ])
 equipment_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,
@@ -84,29 +84,19 @@ equipment_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,
 project_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,
                                        keyboard=[
                                            [
-                                               KeyboardButton(text="Барнхаус XL"),
-                                               KeyboardButton(text="Барнхаус L"),
-                                               KeyboardButton(text="Прованс XL"),
-                                           ],
-                                           [
+                                               KeyboardButton(text="Барн L"),
                                                KeyboardButton(text="Норвегия L"),
                                                KeyboardButton(text="Норвегия XL"),
                                            ],
                                            [
-                                               KeyboardButton(text="Финляндия М"),
-                                               KeyboardButton(text="Финляндия L"),
                                                KeyboardButton(text="Финляндия XL"),
-                                           ],
-                                           [
-                                               KeyboardButton(text="Модульный 25"),
-                                               KeyboardButton(text="Модульный 38"),
-                                               KeyboardButton(text="Модульный 49"),
-                                           ],
-                                           [
                                                KeyboardButton(text="Шведский L"),
-                                               KeyboardButton(text="Шведский M"),
-                                               KeyboardButton(text="Пропустить"),
                                            ],
+                                           [
+                                               KeyboardButton(text="Модульный 49"),
+                                               KeyboardButton(text="Модульный 57"),
+                                           ],
+
 
                                        ])
 
@@ -128,6 +118,9 @@ payment_method_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,
                                                       KeyboardButton(text="Наличные"),
                                                       KeyboardButton(text="Ипотека"),
                                                   ],
+                                                  [
+                                                      KeyboardButton(text="Продажа квартиры")
+                                                  ]
                                               ])
 
 comment_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,
