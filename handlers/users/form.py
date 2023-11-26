@@ -124,7 +124,7 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
                          # f"12. {data.get('project')}\n"
                          # f"13. {data.get('budget')}\n"
                          # f"14. {data.get('payment_method')}\n"
-                         f"15. {data.get('comment')}\n",
+                         f"8. {data.get('comment')}\n",
                          reply_markup=menu)
     await state.reset_state()
     spreadsheet_id = '1hocu-OWJdIDiTmy1WlteqprXhYPn7sIKkNUi8vdjXfQ'
