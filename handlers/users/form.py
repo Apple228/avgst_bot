@@ -10,7 +10,7 @@ from data.config import PATH
 from keyboards.default import menu
 from keyboards.default.form_keyboards import location_keyboard, interesting_keyboard, target_keyboard, square_keyboard, \
     count_room_keyboard, equipment_keyboard, project_keyboard, budget_keyboard, payment_method_keyboard, \
-    comment_keyboard, start_keyboard, planing_build_keyboard
+    clent_from_keyboard, komplekt_keyboard, comment_keyboard
 from loader import dp
 from google.oauth2.service_account import Credentials
 import gspread_asyncio
@@ -88,16 +88,31 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
 async def state_data_gsheets(message: types.Message, state: FSMContext):
     client_budget = message.text
     await state.update_data(client_budget=client_budget)
+    await message.answer("Комплектация", reply_markup=komplekt_keyboard)
+    await state.set_state("Комплектация")
+
+@dp.message_handler(state="Комплектация")
+async def state_data_gsheets(message: types.Message, state: FSMContext):
+    client_komplekt = message.text
+    await state.update_data(client_komplekt=client_komplekt)
     await message.answer("Способ оплаты", reply_markup=payment_method_keyboard)
     await state.set_state("Способ оплаты")
 
-
 @dp.message_handler(state="Способ оплаты")
 async def state_data_gsheets(message: types.Message, state: FSMContext):
-    client_pay = message.text
-    await state.update_data(client_pay=client_pay)
+    payment_method = message.text
+    await state.update_data(payment_method=payment_method)
+    await message.answer("Откуда пришли", reply_markup=clent_from_keyboard)
+    await state.set_state("Откуда пришли")
+
+@dp.message_handler(state="Откуда пришли")
+async def state_data_gsheets(message: types.Message, state: FSMContext):
+    client_from = message.text
+    await state.update_data(client_from=client_from)
     await message.answer("Комментарий", reply_markup=comment_keyboard)
     await state.set_state("Комментарий")
+
+
 @dp.message_handler(Command("stop"), state='*')
 @dp.message_handler(state="Комментарий")
 async def state_data_gsheets(message: types.Message, state: FSMContext):
@@ -117,26 +132,31 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
                          f"5. {data.get('client_project')}\n"
                          f"6. {data.get('client_room')}\n"
                          f"7. {data.get('client_budget')}\n"
+                         f"8. {data.get('client_komplekt')}\n"
                          # f"8. {data.get('client_target')}\n"
                          # f"9. {data.get('client_square')}\n"
                          # f"10. {data.get('count_room')}\n"
                          # f"11. {data.get('equipment')}\n"
                          # f"12. {data.get('project')}\n"
                          # f"13. {data.get('budget')}\n"
-                         # f"14. {data.get('payment_method')}\n"
-                         f"8. {data.get('comment')}\n",
+                         f"9. {data.get('payment_method')}\n"
+                         f"10. {data.get('client_from')}\n"
+                         f"11. {data.get('comment')}\n",
                          reply_markup=menu)
     await state.reset_state()
-    spreadsheet_id = '1hocu-OWJdIDiTmy1WlteqprXhYPn7sIKkNUi8vdjXfQ'
+    spreadsheet_id = '1RDCvRLVibW0cGEqS8RtCgI0bmsLM5EN-CKYmToyBciA'
     client = gspread_asyncio.AsyncioGspreadClientManager(get_scoped_credentials(PATH))  # импорт из конфига
     client = await client.authorize()
     async_spreadsheet = await client.open_by_key(spreadsheet_id)
 
-    worksheet = await async_spreadsheet.worksheet('Опросник выставка лето 2023')
+    worksheet = await async_spreadsheet.worksheet('БОТ КП Авангард')
     values = [message.from_user.full_name, today.strftime('%d.%m.%y'), data.get('client_name'),
               data.get('client_phone_number'), data.get('client_project'),data.get('client_room'), data.get('client_budget'),
+              data.get('client_komplekt'),
+              data.get('payment_method'),
+              data.get('client_from'),
               # data.get('client_target'), data.get('client_square'), data.get('count_room'),
-              # data.get('equipment'), data.get('project'), data.get('budget'), data.get('payment_method'),
+              # data.get('equipment'), data.get('project'), data.get('budget'),
               data.get('comment')]
     await worksheet.append_row(values)
 # @dp.message_handler(state="Какую локацию рассматриваете?")
@@ -222,11 +242,11 @@ async def state_data_gsheets(message: types.Message, state: FSMContext):
 @dp.message_handler(text = "/get_stats_today")
 async def get_records(message: types.message, state: FSMContext):
 
-    spreadsheet_id = '1hocu-OWJdIDiTmy1WlteqprXhYPn7sIKkNUi8vdjXfQ'
+    spreadsheet_id = '1RDCvRLVibW0cGEqS8RtCgI0bmsLM5EN-CKYmToyBciA'
     client = gspread_asyncio.AsyncioGspreadClientManager(get_scoped_credentials(PATH))  # импорт из конфига
     client = await client.authorize()
     async_spreadsheet = await client.open_by_key(spreadsheet_id)
-    worksheet = await async_spreadsheet.worksheet('Опросник выставка лето 2023')
+    worksheet = await async_spreadsheet.worksheet('БОТ КП Авангард')
 
     data = await worksheet.range(name = "A2:B2000")
 
