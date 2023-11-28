@@ -122,7 +122,14 @@ payment_method_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,
                                                       KeyboardButton(text="Продажа квартиры")
                                                   ]
                                               ])
-
+komplekt_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,
+                                        keyboard=[
+                                            [KeyboardButton(text="Теплый контур(Премиум)"),
+                                             KeyboardButton(text="WB")],
+                                            [
+                                                KeyboardButton(text="Под ключ")
+                                            ]
+                                        ])
 comment_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,
                                        keyboard=[
                                            [
@@ -135,3 +142,14 @@ comment_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,
                                            ]
 
                                        ])
+clent_from_keyboard = ReplyKeyboardMarkup(resize_keyboard=True,
+                                          keyboard=[
+                                              [
+                                                  KeyboardButton(text="ВК"),
+                                                  KeyboardButton(text="Inst"),
+                                              ],
+                                              [
+                                                  KeyboardButton(text="Сайт поселка"),
+                                                  KeyboardButton(text="Авито фейк")
+                                              ]
+                                          ])
