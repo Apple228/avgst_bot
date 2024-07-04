@@ -57,10 +57,10 @@ async def get_contact(message: types.Message):
                          reply_markup=menu)
 
 
-@dp.message_handler(text="📢Объявление для всех")
-async def ad(message: types.Message, state: FSMContext):
-    await message.answer("Введите текст объявления", reply_markup=cancel)
-    await state.set_state("ad")
+# @dp.message_handler(text="📢Объявление для всех")
+# async def ad(message: types.Message, state: FSMContext):
+#     await message.answer("Введите текст объявления", reply_markup=cancel)
+#     await state.set_state("ad")
 
 
 @dp.message_handler(state="ad")
